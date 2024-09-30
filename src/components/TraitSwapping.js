@@ -1,0 +1,83 @@
+import React from 'react';
+import { Typography, Card, CardContent, Grid, Button } from '@mui/material';
+import { styled } from '@mui/system';
+import TraitImg from '../assets/traits.webp';  // Import the image
+
+const TraitImage = styled('img')(({ theme }) => ({
+  width: '100%',
+  height: '200px',
+  objectFit: 'cover',  // Ensures the image covers the container without distortion
+  borderRadius: '8px',
+  marginBottom: theme.spacing(2),
+}));
+
+function TraitSwapping() {
+  return (
+    <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', borderRadius: '16px', padding: '20px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)' }}>
+      <CardContent>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <TraitImage src={TraitImg} alt="Trait Swapping Platform" /> {/* Use the imported image */}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4' }}>
+              Trait Swapping Platform
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              Flux Inc. provides a trait swapping platform that allows your holders to update the look of their NFTs with new traits you release.
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              This platform helps projects provide a unique NFT update experience to their holders.
+            </Typography>
+            <Button variant="contained" sx={{ mt: 2, backgroundColor: '#00bcd4' }}>
+              Learn More
+            </Button>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3} sx={{ mt: 4 }}>
+          <Grid item xs={12}>
+            <Typography variant="h5" sx={{ color: '#ff9800' }}>How Does it Work?</Typography>
+            <Typography variant="body2" gutterBottom>
+              Holders visit the trait swapping platform, select their NFT, and choose from the traits provided. They are charged a Sol fee and a token fee for each applied trait or removal. Projects set the fees for each action.
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Typography variant="h6" sx={{ color: '#ff9800' }}>For Projects:</Typography>
+            <Typography variant="body2" gutterBottom>
+              - Allow holders to customize NFTs <br />
+              - Setup a custom UI <br />
+              - Create another revenue stream and token burn mechanism <br />
+              - Mint and manage traits from the dashboard
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Typography variant="h6" sx={{ color: '#ff9800' }}>For Holders:</Typography>
+            <Typography variant="body2" gutterBottom>
+              - Customize their NFTs <br />
+              - Burn tokens earned from staking <br />
+              - Create unique NFT pieces <br />
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3} sx={{ mt: 4 }}>
+          <Grid item xs={12}>
+            <Typography variant="h5" sx={{ color: '#00bcd4' }}>Get the Platform for Your Project</Typography>
+            <Typography variant="body2" gutterBottom>
+              The Trait Swapping Platform is available for white-label solutions with various payment plans. Join our Discord to open a ticket and get started!
+            </Typography>
+            <Button variant="contained" sx={{ mt: 2, backgroundColor: '#00bcd4' }}>
+              Join Discord
+            </Button>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  );
+}
+
+export default TraitSwapping;
+
