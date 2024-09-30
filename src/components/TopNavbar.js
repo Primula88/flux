@@ -158,6 +158,8 @@ const Title = styled.h1`
   margin: 0;
   font-size: 20px;
   color: #ffffff;
+  letter-spacing: 0.25em; // Adds spacing between letters
+
 `;
 
 // Link that wraps the logo and title
@@ -228,14 +230,16 @@ const StyledLink = styled(Link)`
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
   cursor: pointer; /* Adds pointer cursor on hover */
+  letter-spacing: 0.25em; // Adds spacing between letters
+
 
   &:hover {
-    color: #00bcd4;
+    color: #64d9fb;
     background-color: rgba(255, 255, 255, 0.1);
   }
 
   &.active {
-    color: #00bcd4;
+    color: #64d9fb;
   }
 `;
 

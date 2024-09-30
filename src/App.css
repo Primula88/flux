@@ -1,15 +1,26 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('./assets/font/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body, html {
   margin: 0;
   padding: 0;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  background-image: url('./assets/SITE_BG.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps background in place during scroll */
 }
 
 body {
   background-color: #121212;
   color: #ffffff;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Bebas Neue', 'Arial', sans-serif; /* Using Bebas Neue as the primary font */
 }
 
 .app {

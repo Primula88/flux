@@ -14,15 +14,15 @@ import AdventureImg from '../assets/adventure.webp';
 const ServiceImage = styled('img')(({ theme }) => ({
   width: '100%',
   height: '200px',
-  objectFit: 'cover', // Ensures the image fits properly within the container
+  objectFit: 'cover',
   borderRadius: '8px',
   marginBottom: theme.spacing(2),
 }));
 
 const servicesList = [
-  { id: 'staking', title: 'Staking', component: <Staking />, image: StakingImg }, // Use the imported image
-  { id: 'trait-swapping', title: 'Trait Swapping', component: <TraitSwapping />, image: TraitSwappingImg }, // Use the imported image
-  { id: 'adventure', title: 'Adventure', component: <Adventure />, image: AdventureImg }, // Use the imported image
+  { id: 'staking', title: 'Staking', component: <Staking />, image: StakingImg },
+  { id: 'trait-swapping', title: 'Trait Swapping', component: <TraitSwapping />, image: TraitSwappingImg },
+  { id: 'adventure', title: 'Adventure', component: <Adventure />, image: AdventureImg },
 ];
 
 function Services() {
@@ -44,11 +44,16 @@ function Services() {
                 onClick={() => handleServiceClick(service.id)}
               >
                 <CardContent>
-                  <ServiceImage src={service.image} alt={`${service.title} Image`} /> {/* Display the service image */}
+                  <ServiceImage src={service.image} alt={`${service.title} Image`} />
                   <Typography
                     variant="h5"
                     gutterBottom
-                    sx={{ textAlign: 'center', color: '#00bcd4' }}
+                    sx={{
+                      textAlign: 'center',
+                      color: '#00bcd4',
+                      letterSpacing: '0.25em',
+                      fontFamily: 'Bebas Neue, Arial, sans-serif', // Using Bebas Neue font
+                    }}
                   >
                     {service.title}
                   </Typography>
