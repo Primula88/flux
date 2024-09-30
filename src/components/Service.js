@@ -34,13 +34,24 @@ function Services() {
   };
 
   return (
-    <div>
+    <div style={{ padding: '20px' }}> {/* Optional padding to space it from edges */}
       {!selectedService ? (
         <Grid container spacing={3}>
           {servicesList.map((service) => (
             <Grid item xs={12} sm={4} key={service.id}>
               <Card
-                sx={{ backgroundColor: '#1e1e1e', color: '#fff', cursor: 'pointer' }}
+                sx={{
+                  backgroundColor: '#1e1e1e',
+                  color: '#fff',
+                  cursor: 'pointer',
+                  borderRadius: '12px', // Add rounded corners for a smooth feel
+                  boxShadow: '0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb', // Subtle 3D shadow
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease', // Smooth hover effect
+                  '&:hover': {
+                    transform: 'translateY(-4px)', // Subtle lift on hover
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 4px #64d9fb', // Slightly enhanced shadow on hover
+                  },
+                }}
                 onClick={() => handleServiceClick(service.id)}
               >
                 <CardContent>
