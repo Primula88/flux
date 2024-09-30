@@ -29,9 +29,6 @@ function Adventure() {
             <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
               This platform helps projects provide fun and engagement within their communities, while rewarding holders and creating a strong revenue stream for the project.
             </Typography>
-            <Button variant="contained" sx={{ mt: 2, backgroundColor: '#00bcd4' }}>
-              Learn More
-            </Button>
           </Grid>
         </Grid>
 
@@ -83,10 +80,23 @@ function Adventure() {
             <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
               The Adventure Platform is available for white-label solutions with various payment plans. Join our Discord to open an adventure ticket and learn more.
             </Typography>
-            <Button variant="contained" sx={{ mt: 2, backgroundColor: '#00bcd4' }}>
-              Join Discord
-            </Button>
-          </Grid>
+             <Button 
+  variant="contained" 
+  sx={{ 
+    mt: 2, 
+    backgroundColor: '#00bcd4', 
+    fontFamily: 'inherit', // Ensure it inherits the app-wide font
+    fontSize: '16px',       // Set a standard size for better appearance
+    textTransform: 'none'   // Disable uppercase transformation for a clean look
+  }} 
+  href="https://discord.com/invite/fluxinc"  // Link to the provided Discord invite
+  target="_blank"  // Opens link in a new tab
+  rel="noopener noreferrer"  // Security measure for external links
+>
+  Join Discord
+</Button>
+
+	  </Grid>
         </Grid>
       </CardContent>
     </Card>
