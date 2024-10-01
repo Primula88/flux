@@ -4,11 +4,13 @@ import { styled } from '@mui/system';
 import Staking from './Staking';
 import TraitSwapping from './TraitSwapping';
 import Adventure from './Adventure';
+import Fluxtility from './Fluxtility'; // Import the Fluxtility component
 
 // Import images for each service
 import StakingImg from '../assets/staking.webp';
 import TraitSwappingImg from '../assets/traits.webp';
 import AdventureImg from '../assets/adventure.webp';
+import FluxtilityImg from '../assets/fluxtility.webp'; // Import Fluxtility image
 
 // Styled component for the service image
 const ServiceImage = styled('img')(({ theme }) => ({
@@ -19,10 +21,12 @@ const ServiceImage = styled('img')(({ theme }) => ({
   marginBottom: theme.spacing(2),
 }));
 
+// Add Fluxtility to the servicesList array
 const servicesList = [
   { id: 'staking', title: 'Staking', component: <Staking />, image: StakingImg },
   { id: 'trait-swapping', title: 'Trait Swapping', component: <TraitSwapping />, image: TraitSwappingImg },
   { id: 'adventure', title: 'Adventure', component: <Adventure />, image: AdventureImg },
+  { id: 'fluxtility', title: 'Fluxtility', component: <Fluxtility />, image: FluxtilityImg }, // Fluxtility added
 ];
 
 function Services() {
@@ -34,11 +38,17 @@ function Services() {
   };
 
   return (
-    <div style={{ padding: '20px' }}> {/* Optional padding to space it from edges */}
+    <div style={{ padding: '20px' }}>
       {!selectedService ? (
-        <Grid container spacing={3}>
+        <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
           {servicesList.map((service) => (
-            <Grid item xs={12} sm={4} key={service.id}>
+            <Grid
+              item
+              xs={12} // Full width on mobile
+              sm={6} // 2 columns on tablets and above
+              md={6} // 2 columns on desktops
+              key={service.id}
+            >
               <Card
                 sx={{
                   backgroundColor: '#1e1e1e',
