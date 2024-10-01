@@ -21,6 +21,24 @@ const ServiceImage = styled('img')(({ theme }) => ({
   marginBottom: theme.spacing(2),
 }));
 
+// Use Material-UI Button component and style it
+const StyledButton = styled(Button)(({ theme }) => ({
+  padding: '10px 30px',
+  border: '2px solid #00bcd4',
+  borderRadius: '50px',
+  color: '#00bcd4',
+  fontSize: '18px',
+  fontWeight: '600',
+  textDecoration: 'none',
+  maxWidth: '200px',
+  margin: '20px auto', // Center align the button
+  backgroundColor: 'transparent',
+  '&:hover': {
+    backgroundColor: '#00bcd4',
+    color: '#121212',
+  },
+}));
+
 // Add Fluxtility to the servicesList array
 const servicesList = [
   { id: 'staking', title: 'Staking', component: <Staking />, image: StakingImg },
@@ -85,13 +103,10 @@ function Services() {
         </Grid>
       ) : (
         <div>
-          <Button
-            variant="contained"
-            sx={{ backgroundColor: '#00bcd4', mb: 3 }}
-            onClick={() => setSelectedService(null)}
-          >
-            Back to Services
-          </Button>
+          {/* Using StyledButton */}
+          <StyledButton onClick={() => setSelectedService(null)}>
+            Back
+          </StyledButton>
           {selectedService.component}
         </div>
       )}

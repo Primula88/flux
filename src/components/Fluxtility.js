@@ -1,15 +1,45 @@
 import React from 'react';
-import { Typography, Card, CardContent, Grid, Button } from '@mui/material';
-import { styled } from '@mui/system';
+import { Typography, Card, CardContent, Grid } from '@mui/material';
+import styled from 'styled-components';  // Use styled-components for button styling
+import { FaDiscord } from 'react-icons/fa';  // Discord icon
 import FluxtilityImg from '../assets/fluxtility.webp';  // Import Fluxtility image
 
-const FluxtilityImage = styled('img')(({ theme }) => ({
-  width: '100%',
-  height: '200px',
-  objectFit: 'cover',  // Ensures the image covers the container without distortion
-  borderRadius: '8px',
-  marginBottom: theme.spacing(2),
-}));
+// Styled component for the service image
+const FluxtilityImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+`;
+
+// Styled Button (reusing the button style)
+const StyledButton = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  border: 2px solid #00bcd4;
+  border-radius: 50px;
+  color: #00bcd4;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  max-width: 300px; /* Limit the button width */
+  margin: 0 auto; /* Center align the button */
+  
+  &:hover {
+    background-color: #00bcd4;
+    color: #121212;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+    padding: 8px 20px;
+    max-width: 200px; /* Adjust button width for smaller screens */
+  }
+`;
 
 function Fluxtility() {
   return (
@@ -17,7 +47,7 @@ function Fluxtility() {
       <CardContent>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
-            <FluxtilityImage src={FluxtilityImg} alt="Fluxtility Platform" /> {/* Using the imported image */}
+            <FluxtilityImage src={FluxtilityImg} alt="Fluxtility Platform" /> {/* Use the imported image */}
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'inherit' }}>
@@ -68,21 +98,15 @@ function Fluxtility() {
             <Typography variant="body2" gutterBottom sx={{ fontFamily: 'inherit' }}>
               Ready to streamline your community management and offer advanced tools for your members? Get started today by joining our Discord!
             </Typography>
-            <Button 
-              variant="contained" 
-              sx={{ 
-                mt: 2, 
-                backgroundColor: '#00bcd4', 
-                fontFamily: 'inherit', 
-                fontSize: '16px',
-                textTransform: 'none'
-              }} 
+
+            {/* Join Discord button using the new StyledButton */}
+            <StyledButton
               href="https://discord.com/invite/fluxinc"  // Link to the provided Discord invite
-              target="_blank"
-              rel="noopener noreferrer"
+              target="_blank"  // Opens link in a new tab
+              rel="noopener noreferrer"  // Security measure for external links
             >
-              Join Discord
-            </Button>
+              <FaDiscord style={{ marginRight: '10px' }} /> Join Discord
+            </StyledButton>
           </Grid>
         </Grid>
       </CardContent>

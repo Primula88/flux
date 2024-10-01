@@ -1,15 +1,44 @@
 import React from 'react';
-import { Typography, Card, CardContent, Grid, Button } from '@mui/material';
-import { styled } from '@mui/system';
+import { Typography, Card, CardContent, Grid } from '@mui/material';
+import styled from 'styled-components';  // Using styled-components for button styling
 import StakingImg from '../assets/staking.webp';  // Import the staking image
 
-const StakingImage = styled('img')(({ theme }) => ({
-  width: '100%',
-  height: '200px',
-  objectFit: 'cover',  // Ensures the image covers the container without distortion
-  borderRadius: '8px',
-  marginBottom: theme.spacing(2),
-}));
+// Styled component for the service image
+const StakingImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;  // Ensures the image covers the container without distortion
+  border-radius: 8px;
+  margin-bottom: 16px;
+`;
+
+// Styled Button (reusing the button style)
+const StyledButton = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  border: 2px solid #00bcd4;
+  border-radius: 50px;
+  color: #00bcd4;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  max-width: 300px; /* Limit the button width */
+  margin: 0 auto; /* Center align the button */
+  
+  &:hover {
+    background-color: #00bcd4;
+    color: #121212;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+    padding: 8px 20px;
+    max-width: 200px; /* Adjust button width for smaller screens */
+  }
+`;
 
 function Staking() {
   return (
@@ -75,23 +104,16 @@ function Staking() {
             <Typography variant="body2" gutterBottom sx={{ fontFamily: 'inherit' }}>
               The platform is available for white-label solutions with various payment plans. Join our Discord to open an adventure ticket and get started!
             </Typography>
-             <Button 
-  variant="contained" 
-  sx={{ 
-    mt: 2, 
-    backgroundColor: '#00bcd4', 
-    fontFamily: 'inherit', // Ensure it inherits the app-wide font
-    fontSize: '16px',       // Set a standard size for better appearance
-    textTransform: 'none'   // Disable uppercase transformation for a clean look
-  }} 
-  href="https://discord.com/invite/fluxinc"  // Link to the provided Discord invite
-  target="_blank"  // Opens link in a new tab
-  rel="noopener noreferrer"  // Security measure for external links
->
-  Join Discord
-</Button>
 
-	  </Grid>
+            {/* Join Discord button using the new StyledButton */}
+            <StyledButton
+              href="https://discord.com/invite/fluxinc"  // Link to the provided Discord invite
+              target="_blank"  // Opens link in a new tab
+              rel="noopener noreferrer"  // Security measure for external links
+            >
+              Join Discord
+            </StyledButton>
+          </Grid>
         </Grid>
       </CardContent>
     </Card>
