@@ -126,8 +126,6 @@ const Wrapper = styled.nav`
   left: 0;
   z-index: 9999;
   transition: height 0.3s ease, background-color 0.3s ease;
-  background-color: #1e1e1e;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 `;
 
 const NavInner = styled.div`
