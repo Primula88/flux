@@ -85,11 +85,11 @@ function Services() {
                 <CardContent>
                   <ServiceImage src={service.image} alt={`${service.title} Image`} />
                   <Typography
-                    variant="h5"
+                    variant="h4"
                     gutterBottom
                     sx={{
                       textAlign: 'center',
-                      color: '#00bcd4',
+                      color: '#fff',
                       letterSpacing: '0.25em',
                       fontFamily: 'Bebas Neue, Arial, sans-serif', // Using Bebas Neue font
                     }}
