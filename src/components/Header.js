@@ -5,7 +5,7 @@ import { FaTwitter } from 'react-icons/fa'; // X (Twitter) icon
 import { Link } from 'react-scroll'; // Importing react-scroll's Link
 
 // Assets
-import AkiraFont from '../assets/font/Akira Expanded Demo.otf'; // Custom font
+import AkiraFont from '../assets/font/AkiraExpandedDemo.otf'; // Custom font
 
 const totalTriangles = 30; // Reduced the number of triangles
 const animationTime = 30; // Slow down animation further for more subtle effect
@@ -125,7 +125,7 @@ const ContentWrapper = styled.div`
 `;
 
 const HeaderText = styled.h1`
-  font-family: 'AkiraExpanded', sans-serif;
+  font-family: 'AkiraExpanded';
   font-size: 48px;
   font-weight: 900;
   letter-spacing: 0.1em;
