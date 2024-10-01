@@ -110,11 +110,7 @@ const StyledButton = styled.a`
 
 const LearnMoreWrapper = styled.div`
   margin-top: 40px;
-  display: none;
-
-  @media (min-width: 768px) {
-    display: block; /* Show Learn More only on desktop */
-  }
+  display: block; /* Display on all screen sizes */
 `;
 
 const LearnMoreButton = styled.button`
