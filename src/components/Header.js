@@ -1,15 +1,72 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { FaDiscord, FaTwitter } from 'react-icons/fa'; // Icons for Discord and Twitter
-import { BsArrowDown } from 'react-icons/bs'; // Arrow Down icon
-import { Link as ScrollLink } from 'react-scroll'; // Scroll link for smooth scrolling
+import { FaDiscord } from 'react-icons/fa'; // Discord icon
+import { FaTwitter } from 'react-icons/fa'; // X (Twitter) icon
+import { Link } from 'react-scroll'; // Importing react-scroll's Link
 
 // Assets
 import AkiraFont from '../assets/font/Akira Expanded Demo.otf'; // Custom font
 
-export default function Header() {
+const totalTriangles = 30; // Reduced the number of triangles
+const animationTime = 30; // Slow down animation further for more subtle effect
+
+const generateTriangles = () => {
+  let styles = '';
+
+  for (let i = 1; i <= totalTriangles; i++) {
+    const size = Math.random() * 10 + 3; // Further reduced triangle size
+    const rotate = Math.random() * 360;
+    const opacity = 0.3; // Reduced opacity for more subtle triangles
+
+    styles += `
+      .tri:nth-child(${i}) {
+        border-top: ${size}px solid hsla(${Math.random() * 360}, 100%, 50%, ${opacity});
+        border-right: ${size}px solid transparent;
+        border-left: ${size}px solid transparent;
+        margin-left: -${size / 2}px;
+        margin-top: -${size / 2}px;
+        filter: grayscale(1);
+        transform: rotate(${rotate}deg) translate3d(0, 0, -1500px) scale(0);
+        animation: anim${i} ${animationTime * 2}s infinite linear; /* Slow down the animation */
+        animation-delay: ${-(animationTime / totalTriangles) * i}s;
+        opacity: 0;
+      }
+      
+      @keyframes anim${i} {
+        0% {
+          opacity: 0.1; /* Low opacity for subtle effect */
+          transform: rotate(${rotate * 1.5}deg) translate3d(${Math.random() * 400}px, ${Math.random() * 400}px, 500px) scale(1); /* Reduced movement range */
+        }
+        100% {
+          opacity: 0; /* Fade out */
+          transform: rotate(${rotate * 2}deg) translate3d(${Math.random() * 400}px, ${Math.random() * 400}px, 1000px) scale(0); /* Reduced ending range */
+        }
+      }
+    `;
+  }
+
+  return styles;
+};
+
+const Header = () => {
+  useEffect(() => {
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = generateTriangles();
+    document.head.appendChild(styleTag);
+
+    return () => {
+      document.head.removeChild(styleTag);
+    };
+  }, []);
+
   return (
     <Wrapper id="home">
+      <TrianglesWrapper>
+        {Array.from({ length: totalTriangles }).map((_, index) => (
+          <div key={index} className="tri" />
+        ))}
+      </TrianglesWrapper>
+
       <ContentWrapper>
         <HeaderText>TOOLS BUILT FOR SOLANA COMMUNITIES</HeaderText>
         <ButtonWrapper>
@@ -20,26 +77,19 @@ export default function Header() {
             <FaDiscord style={{ marginRight: '10px' }} /> Join
           </StyledButton>
         </ButtonWrapper>
-
-        {/* Learn More Button */}
-        <LearnMoreWrapper>
-          <ScrollLink
-            to="services" // The ID of the target element in Services.js
-            smooth={true}
-            duration={800} // Duration for smooth scrolling
-          >
-            <LearnMoreButton>
-              Learn More <BsArrowDown style={{ marginLeft: '10px' }} />
-            </LearnMoreButton>
-          </ScrollLink>
-        </LearnMoreWrapper>
+        {/* Using react-scroll's Link component */}
+        <ScrollDown to="services" smooth={true} duration={500}>
+          Learn More ↓
+        </ScrollDown>
       </ContentWrapper>
     </Wrapper>
   );
-}
+};
 
 // Styled Components
+
 const Wrapper = styled.section`
+  position: relative;
   width: 100%;
   height: 100vh; /* Fullscreen height */
   display: flex;
@@ -47,6 +97,7 @@ const Wrapper = styled.section`
   align-items: center;
   color: #fff;
   text-align: center;
+  overflow: hidden; /* Hide overflow for the triangles */
 
   /* Import custom font */
   @font-face {
@@ -55,7 +106,18 @@ const Wrapper = styled.section`
   }
 `;
 
+const TrianglesWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`;
+
 const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 1; /* Ensure content is on top of triangles */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,6 +144,7 @@ const HeaderText = styled.h1`
 const ButtonWrapper = styled.div`
   display: flex;
   gap: 20px; /* Space between the buttons */
+  margin-bottom: 20px;
 `;
 
 const StyledButton = styled.a`
@@ -108,24 +171,22 @@ const StyledButton = styled.a`
   }
 `;
 
-const LearnMoreWrapper = styled.div`
-  margin-top: 40px;
-  display: block; /* Display on all screen sizes */
-`;
-
-const LearnMoreButton = styled.button`
-  background: none;
-  border: none;
-  color: #fff;
+const ScrollDown = styled(Link)`
+  margin-top: 20px;
   font-size: 18px;
+  color: #fff;
+  text-decoration: none;
   cursor: pointer;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
-
+  transition: color 0.3s ease;
+  
   &:hover {
-    color: #ff9800;
+    color: #00bcd4;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
   }
 `;
+
+export default Header;
 
