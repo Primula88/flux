@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaDiscord } from 'react-icons/fa'; // Discord icon
-import { FaTwitter } from 'react-icons/fa'; // X (Twitter) icon
+import { FaDiscord, FaTwitter } from 'react-icons/fa'; // Icons for Discord and Twitter
+import { BsArrowDown } from 'react-icons/bs'; // Arrow Down icon
+import { Link as ScrollLink } from 'react-scroll'; // Scroll link for smooth scrolling
 
 // Assets
 import AkiraFont from '../assets/font/Akira Expanded Demo.otf'; // Custom font
@@ -19,6 +20,19 @@ export default function Header() {
             <FaDiscord style={{ marginRight: '10px' }} /> Join
           </StyledButton>
         </ButtonWrapper>
+
+        {/* Learn More Button */}
+        <LearnMoreWrapper>
+          <ScrollLink
+            to="services" // The ID of the target element in Services.js
+            smooth={true}
+            duration={800} // Duration for smooth scrolling
+          >
+            <LearnMoreButton>
+              Learn More <BsArrowDown style={{ marginLeft: '10px' }} />
+            </LearnMoreButton>
+          </ScrollLink>
+        </LearnMoreWrapper>
       </ContentWrapper>
     </Wrapper>
   );
@@ -93,3 +107,29 @@ const StyledButton = styled.a`
     padding: 8px 20px;
   }
 `;
+
+const LearnMoreWrapper = styled.div`
+  margin-top: 40px;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block; /* Show Learn More only on desktop */
+  }
+`;
+
+const LearnMoreButton = styled.button`
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #ff9800;
+  }
+`;
+
