@@ -221,7 +221,7 @@ const MobileMenuWrapper = styled.ul`
 const StyledLink = styled(Link)`
   color: #ffffff;
   padding: 10px 15px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   transition: color 0.3s ease, background-color 0.3s ease;

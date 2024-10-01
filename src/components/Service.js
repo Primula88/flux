@@ -85,7 +85,7 @@ function Services() {
                 <CardContent>
                   <ServiceImage src={service.image} alt={`${service.title} Image`} />
                   <Typography
-                    variant="h4"
+                    variant="h6"
                     gutterBottom
                     sx={{
                       textAlign: 'center',
