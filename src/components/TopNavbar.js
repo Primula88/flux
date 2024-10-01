@@ -31,7 +31,6 @@ export default function TopNavbar() {
           <LogoLink className="pointer flexNullCenter" to="home" smooth={true}>
             <LogoTitleWrapper>
               <LogoImg src={Logo} alt="Flux Inc. Logo" />
-              <Title className="font20 extraBold whiteColor">Flux Inc.</Title>
             </LogoTitleWrapper>
           </LogoLink>
           <UlWrapper className="flexNullCenter desktopMenu">

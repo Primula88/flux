@@ -128,7 +128,7 @@ const HeaderText = styled.h1`
   font-family: 'AkiraExpanded';
   font-size: 48px;
   font-weight: 900;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   max-width: 900px;
   margin-bottom: 40px;
   
