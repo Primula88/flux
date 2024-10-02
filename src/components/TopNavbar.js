@@ -151,13 +151,13 @@ const LogoImg = styled.img`
   }
 `;
 
-const Title = styled.h1`
-  margin: 0;
-  font-size: 20px;
-  color: #ffffff;
-  letter-spacing: 0.25em; // Adds spacing between letters
+//const Title = styled.h1`
+//  margin: 0;
+//  font-size: 20px;
+//  color: #ffffff;
+//  letter-spacing: 0.25em; // Adds spacing between letters
 
-`;
+//`;
 
 // Link that wraps the logo and title
 const LogoLink = styled(Link)`
