@@ -2,7 +2,6 @@ import React from 'react';
 import { Typography, Card, CardContent, Grid } from '@mui/material';
 import styled from 'styled-components';  // Use styled-components for button styling
 import { FaDiscord } from 'react-icons/fa'; // Discord icon
-import TraitImg from '../assets/traits.webp';  // Import the image
 
 // Styled Button (reusing the button style)
 const StyledButton = styled.a`

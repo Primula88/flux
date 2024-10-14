@@ -1,7 +1,6 @@
 import React from 'react';
 import { Typography, Card, CardContent, Grid } from '@mui/material';
 import styled from 'styled-components';  // Using styled-components for button styling
-import StakingImg from '../assets/staking.webp';  // Import the staking image
 
 // Styled Button (reusing the button style)
 const StyledButton = styled.a`
