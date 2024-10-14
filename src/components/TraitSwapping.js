@@ -1,34 +1,25 @@
 import React from 'react';
 import { Typography, Card, CardContent, Grid } from '@mui/material';
-import styled from 'styled-components';  // Use styled-components
+import styled from 'styled-components';  // Use styled-components for button styling
 import { FaDiscord } from 'react-icons/fa'; // Discord icon
 import TraitImg from '../assets/traits.webp';  // Import the image
 
-// Styled component for the service image
-const TraitImage = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
-`;
-
-// Styled Button (reusing the button style from the Header component)
+// Styled Button (reusing the button style)
 const StyledButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 30px;
-  border: 2px solid #00bcd4; /* Border with color */
-  border-radius: 50px; /* Large border-radius for round buttons */
+  border: 2px solid #00bcd4;
+  border-radius: 50px;
   color: #00bcd4;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
   max-width: 300px; /* Limit the button width */
-  margin: 0 auto; /* Center align the button */ 
- 
+  margin: 0 auto; /* Center align the button */
+  
   &:hover {
     background-color: #00bcd4;
     color: #121212;
@@ -44,11 +35,9 @@ function TraitSwapping() {
   return (
     <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', borderRadius: '16px', padding: '20px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)' }}>
       <CardContent>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <TraitImage src={TraitImg} alt="Trait Swapping Platform" /> {/* Use the imported image */}
-          </Grid>
-          <Grid item xs={12} sm={6}>
+        <Grid container spacing={3} justifyContent="center">
+          {/* Full width grid item for the title and description */}
+          <Grid item xs={12} sx={{ textAlign: 'center' }}>
             <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
               Trait Swapping Platform
             </Typography>

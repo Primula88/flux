@@ -4,15 +4,6 @@ import styled from 'styled-components';  // Use styled-components for button sty
 import { FaDiscord } from 'react-icons/fa';  // Discord icon
 import FluxtilityImg from '../assets/fluxtility.webp';  // Import Fluxtility image
 
-// Styled component for the service image
-const FluxtilityImage = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
-`;
-
 // Styled Button (reusing the button style)
 const StyledButton = styled.a`
   display: flex;
@@ -45,11 +36,9 @@ function Fluxtility() {
   return (
     <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', borderRadius: '16px', padding: '20px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)' }}>
       <CardContent>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <FluxtilityImage src={FluxtilityImg} alt="Fluxtility Platform" /> {/* Use the imported image */}
-          </Grid>
-          <Grid item xs={12} sm={6}>
+        <Grid container spacing={3} justifyContent="center">
+          {/* Make this grid item take full width and center its content */}
+          <Grid item xs={12} sx={{ textAlign: 'center' }}>
             <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'inherit' }}>
               Fluxtility Platform
             </Typography>

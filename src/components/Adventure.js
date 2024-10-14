@@ -4,23 +4,14 @@ import styled from 'styled-components';  // Use styled-components for button sty
 import { FaDiscord } from 'react-icons/fa'; // Discord icon
 import AdventureImg from '../assets/adventure.webp';  // Importing the image
 
-// Styled component for the service image
-const AdventureImage = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
-`;
-
 // Styled Button (reusing the button style)
 const StyledButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 30px;
-  border: 2px solid #00bcd4; /* Border with color */
-  border-radius: 50px; /* Large border-radius for round buttons */
+  border: 2px solid #00bcd4;
+  border-radius: 50px;
   color: #00bcd4;
   font-size: 18px;
   font-weight: 600;
@@ -45,11 +36,9 @@ function Adventure() {
   return (
     <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', borderRadius: '16px', padding: '20px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)' }}>
       <CardContent>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <AdventureImage src={AdventureImg} alt="Adventure Platform" /> {/* Use the imported image */}
-          </Grid>
-          <Grid item xs={12} sm={6}>
+        <Grid container spacing={3} justifyContent="center">
+          {/* Make this grid item take full width and center its content */}
+          <Grid item xs={12} sx={{ textAlign: 'center' }}>
             <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
               Adventure Platform
             </Typography>
