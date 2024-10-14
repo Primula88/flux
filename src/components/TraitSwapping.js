@@ -32,7 +32,7 @@ const StyledButton = styled.a`
 
 function TraitSwapping() {
   return (
-    <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', borderRadius: '16px', padding: '20px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)' }}>
+    <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', padding: '20px' }}>
       <CardContent>
         <Grid container spacing={3} justifyContent="center">
           {/* Full width grid item for the title and description */}
