@@ -78,7 +78,7 @@ const Header = () => {
           </StyledButton>
         </ButtonWrapper>
         {/* Using react-scroll's Link component */}
-        <ScrollDown to="services" smooth={true} duration={500}>
+        <ScrollDown to="whoweare" smooth={true} duration={500}>
           Learn More ↓
         </ScrollDown>
       </ContentWrapper>

@@ -10,8 +10,10 @@ function App() {
   return (
     <div className="app">
         <TopNavbar />
-        <Header /> 
+        <Header />
+        <section className="whoweare"> 
         <WhoWeAre />
+        </section>
      <section className="services">
         <Services />
       </section>

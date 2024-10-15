@@ -43,9 +43,8 @@ function WhoWeAre() {
                 lineHeight: '1.8',
               }}
             >
-              Our Collections: <br />
               <a href="https://magiceden.io/creators/fluxinc" style={{ color: '#00bcd4', textDecoration: 'none' }}>
-                https://magiceden.io/creators/fluxinc
+                Our Collections
               </a>
             </Typography>
           </Grid>
