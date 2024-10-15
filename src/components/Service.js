@@ -16,7 +16,7 @@ import FluxtilityImg from '../assets/fluxtility.webp';
 const ServiceImage = styled('img')(({ theme }) => ({
   width: '100%',
   height: '200px',
-  objectFit: 'cover',
+  objectFit: 'contain',
   borderRadius: '8px',
   marginBottom: theme.spacing(2),
 }));
