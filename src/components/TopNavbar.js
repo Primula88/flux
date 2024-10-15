@@ -9,7 +9,9 @@ export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
   const [menuOpen, setMenuOpen] = useState(false); // State for mobile menu open/close
   const [holderMenuOpen, setHolderMenuOpen] = useState(false); // State for desktop Holder Area dropdown
+  const [aboutMenuOpen, setAboutMenuOpen] = useState(false); // State for desktop About dropdown
   const holderRef = useRef(null); // Reference for Holder Area dropdown
+  const aboutRef = useRef(null); // Reference for About dropdown
 
   useEffect(() => {
     const handleScroll = () => setY(window.scrollY);
@@ -19,18 +21,21 @@ export default function TopNavbar() {
     };
   }, []);
 
-  // Close Holder Area dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         holderRef.current &&
-        !holderRef.current.contains(event.target)
+        !holderRef.current.contains(event.target) &&
+        aboutRef.current &&
+        !aboutRef.current.contains(event.target)
       ) {
         setHolderMenuOpen(false);
+        setAboutMenuOpen(false);
       }
     };
 
-    if (holderMenuOpen) {
+    if (holderMenuOpen || aboutMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -39,7 +44,7 @@ export default function TopNavbar() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [holderMenuOpen]);
+  }, [holderMenuOpen, aboutMenuOpen]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen); // Toggle the mobile menu
@@ -48,10 +53,17 @@ export default function TopNavbar() {
   const closeMenu = () => {
     setMenuOpen(false); // Close the mobile menu when a menu item is clicked
     setHolderMenuOpen(false); // Also close the Holder Area dropdown if open
+    setAboutMenuOpen(false); // Also close the About dropdown if open
   };
 
   const toggleHolderMenu = () => {
     setHolderMenuOpen(!holderMenuOpen); // Toggle Holder Area dropdown on desktop
+    setAboutMenuOpen(false); // Close About dropdown if open
+  };
+
+  const toggleAboutMenu = () => {
+    setAboutMenuOpen(!aboutMenuOpen); // Toggle About dropdown on desktop
+    setHolderMenuOpen(false); // Close Holder Area dropdown if open
   };
 
   return (
@@ -78,20 +90,54 @@ export default function TopNavbar() {
                 Home
               </StyledLink>
             </li>
-            <li className="semiBold font15 pointer">
-              <StyledLink
-                activeClass="active"
-                to="services"
-                spy={true}
-                smooth={true}
-                offset={-80}
+            {/* About Dropdown */}
+            <HolderDropdown ref={aboutRef}>
+              <HolderDropdownButton
+                onClick={toggleAboutMenu}
+                aria-haspopup="true"
+                aria-expanded={aboutMenuOpen}
               >
-                Services
-              </StyledLink>
-            </li>
+                About ▾
+              </HolderDropdownButton>
+              {aboutMenuOpen && (
+                <HolderDropdownContent>
+                  <StyledScrollLink
+                    to="whoweare"
+                    spy={true}
+                    smooth={true}
+                    offset={-80}
+                    onClick={closeMenu}
+                  >
+                    Who We Are
+                  </StyledScrollLink>
+                  <StyledScrollLink
+                    to="services"
+                    spy={true}
+                    smooth={true}
+                    offset={-80}
+                    onClick={closeMenu}
+                  >
+                    Services
+                  </StyledScrollLink>
+                  <StyledScrollLink
+                    to="FAQ"
+                    spy={true}
+                    smooth={true}
+                    offset={-80}
+                    onClick={closeMenu}
+                  >
+                    FAQ
+                  </StyledScrollLink>
+                </HolderDropdownContent>
+              )}
+            </HolderDropdown>
             {/* Holder Area Dropdown */}
             <HolderDropdown ref={holderRef}>
-              <HolderDropdownButton onClick={toggleHolderMenu}>
+              <HolderDropdownButton
+                onClick={toggleHolderMenu}
+                aria-haspopup="true"
+                aria-expanded={holderMenuOpen}
+              >
                 Holder Area ▾
               </HolderDropdownButton>
               {holderMenuOpen && (
@@ -177,18 +223,47 @@ export default function TopNavbar() {
                 Home
               </StyledLink>
             </li>
-            <li>
-              <StyledLink
-                activeClass="active"
-                to="services"
-                spy={true}
-                smooth={true}
-                offset={-80}
-                onClick={closeMenu}
-              >
-                Services
-              </StyledLink>
-            </li>
+            {/* About Section in Mobile Menu */}
+            <HolderAreaSection>
+              <HolderAreaTitle>About</HolderAreaTitle>
+              <Divider />
+              <li>
+                <StyledLink
+                  activeClass="active"
+                  to="whoweare"
+                  spy={true}
+                  smooth={true}
+                  offset={-80}
+                  onClick={closeMenu}
+                >
+                  Who We Are
+                </StyledLink>
+              </li>
+              <li>
+                <StyledLink
+                  activeClass="active"
+                  to="services"
+                  spy={true}
+                  smooth={true}
+                  offset={-80}
+                  onClick={closeMenu}
+                >
+                  Services
+                </StyledLink>
+              </li>
+              <li>
+                <StyledLink
+                  activeClass="active"
+                  to="FAQ"
+                  spy={true}
+                  smooth={true}
+                  offset={-80}
+                  onClick={closeMenu}
+                >
+                  FAQ
+                </StyledLink>
+              </li>
+            </HolderAreaSection>
             {/* Holder Area Section in Mobile Menu */}
             <HolderAreaSection>
               <HolderAreaTitle>Holder Area</HolderAreaTitle>
@@ -347,7 +422,7 @@ const MenuButton = styled.button`
 // Mobile dropdown menu
 const MobileMenuWrapper = styled.ul`
   position: absolute;
-  top: 40px; /* Adjust based on navbar height */
+  top: 80px; /* Adjust based on navbar height */
   right: 20px;
   background-color: #1e1e1e;
   border-radius: 8px;
@@ -357,6 +432,7 @@ const MobileMenuWrapper = styled.ul`
   width: 220px; /* Increased width to accommodate Holder Area links */
 
   li {
+    /* Removed padding to allow individual padding in links */
   }
 
   .social-icons {
@@ -373,7 +449,7 @@ const MobileMenuWrapper = styled.ul`
 // Styled Link for navigation items
 const StyledLink = styled(Link)`
   color: #ffffff;
-  padding: 10px 15px;
+  padding: 4px;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -395,8 +471,30 @@ const StyledLink = styled(Link)`
 
   /* Media query for mobile devices */
   @media (max-width: 760px) {
-    padding: 8px 0; /* Reduce vertical padding */
     display: block; /* Change display to block for better alignment */
+  }
+`;
+
+// Styled Scroll Link for About dropdown links (Who We Are, Services, FAQ)
+const StyledScrollLink = styled(Link)`
+  color: #ffffff;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 5px;
+  cursor: pointer; /* Adds pointer cursor on hover */
+  letter-spacing: 0.25em;
+  display: block; /* Ensure block display for full-width clickable area */
+
+  &:hover {
+    color: #64d9fb;
+    background-color: #3e3e3e; /* Slight background change on hover */
+  }
+
+  &.active {
+    color: #64d9fb;
   }
 `;
 
@@ -420,6 +518,7 @@ const HolderDropdown = styled.li`
   user-select: none;
 `;
 
+// Adjusted HolderDropdownButton for vertical alignment
 const HolderDropdownButton = styled.div`
   color: #fff;
   padding: 10px 15px;
@@ -430,12 +529,15 @@ const HolderDropdownButton = styled.div`
   cursor: pointer;
   letter-spacing: 0.25em;
   transition: color 0.3s ease;
+  display: flex; /* Added flex */
+  align-items: center; /* Center vertically */
 
   &:hover {
     color: #64d9fb;
   }
 `;
 
+// Dropdown content for Holder Area and About
 const HolderDropdownContent = styled.div`
   position: absolute;
   top: 40px; /* Adjust based on dropdown button height */
@@ -445,6 +547,8 @@ const HolderDropdownContent = styled.div`
   min-width: 160px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  display: flex;
+  flex-direction: column; /* Stack links vertically */
 
   a {
     color: #ffffff;
@@ -460,21 +564,25 @@ const HolderDropdownContent = styled.div`
   }
 `;
 
-// Mobile Holder Area Section
+// Mobile Holder Area Section and About Section
 const HolderAreaSection = styled.li`
   width: 100%;
   box-sizing: border-box;
 `;
 
+// Enhanced Holder Area Title for Mobile
 const HolderAreaTitle = styled.div`
   color: #ffffff;
   font-weight: 700;
   margin-bottom: 5px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: 1rem; /* Increased font size for emphasis */
+  font-size: 1.2rem; /* Increased font size for emphasis */
+  text-align: left; /* Align text to left */
+  padding: 10px; /* Add padding */
 `;
 
+// Divider for Mobile Holder Area Section
 const Divider = styled.hr`
   border: 0;
   height: 1px;
@@ -492,6 +600,11 @@ const DropdownLink = styled.a`
 
   &:hover {
     color: #64d9fb;
+  }
+
+  /* Further reduce padding on mobile */
+  @media (max-width: 760px) {
+    padding: 6px 0;
   }
 `;
 

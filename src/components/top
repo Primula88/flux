@@ -347,7 +347,7 @@ const MenuButton = styled.button`
 // Mobile dropdown menu
 const MobileMenuWrapper = styled.ul`
   position: absolute;
-  top: 80px; /* Adjust based on navbar height */
+  top: 40px; /* Adjust based on navbar height */
   right: 20px;
   background-color: #1e1e1e;
   border-radius: 8px;
@@ -357,6 +357,7 @@ const MobileMenuWrapper = styled.ul`
   width: 220px; /* Increased width to accommodate Holder Area links */
 
   li {
+    /* Removed padding to allow individual padding in links */
   }
 
   .social-icons {
@@ -392,6 +393,12 @@ const StyledLink = styled(Link)`
   &.active {
     color: #64d9fb;
   }
+
+  /* Media query for mobile devices */
+  @media (max-width: 760px) {
+    padding: 8px 0; /* Reduce vertical padding */
+    display: block; /* Change display to block for better alignment */
+  }
 `;
 
 // Styled Link for social media icons
@@ -414,6 +421,7 @@ const HolderDropdown = styled.li`
   user-select: none;
 `;
 
+// Adjusted HolderDropdownButton for vertical alignment
 const HolderDropdownButton = styled.div`
   color: #fff;
   padding: 10px 15px;
@@ -424,12 +432,15 @@ const HolderDropdownButton = styled.div`
   cursor: pointer;
   letter-spacing: 0.25em;
   transition: color 0.3s ease;
+  display: flex; /* Added flex */
+  align-items: center; /* Center vertically */
 
   &:hover {
     color: #64d9fb;
   }
 `;
 
+// Dropdown content for Holder Area
 const HolderDropdownContent = styled.div`
   position: absolute;
   top: 40px; /* Adjust based on dropdown button height */
@@ -460,15 +471,19 @@ const HolderAreaSection = styled.li`
   box-sizing: border-box;
 `;
 
+// Enhanced Holder Area Title for Mobile
 const HolderAreaTitle = styled.div`
   color: #ffffff;
   font-weight: 700;
   margin-bottom: 5px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: 1rem; /* Increased font size for emphasis */
+  font-size: 0.8rem; /* Increased font size for emphasis */
+  text-align: left; /* Align text to left */
+  padding-top: 10px; /* Add padding */
 `;
 
+// Divider for Mobile Holder Area Section
 const Divider = styled.hr`
   border: 0;
   height: 1px;
@@ -481,12 +496,16 @@ const DropdownLink = styled.a`
   color: #ffffff;
   text-decoration: none;
   display: block;
-  padding: 8px 0;
+  padding: 8px 0; /* Reduced padding for closer spacing */
   transition: color 0.3s ease;
 
   &:hover {
     color: #64d9fb;
   }
-`;
 
+  /* Further reduce padding on mobile */
+  @media (max-width: 760px) {
+    padding: 6px 0;
+  }
+`;
 

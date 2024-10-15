@@ -17,7 +17,9 @@ function App() {
      <section className="services">
         <Services />
       </section>
+     <section className="FAQ">
       <Socials />
+     </section>
     </div>
   );
 }
