@@ -48,7 +48,7 @@ function Services() {
           letterSpacing: '0.1em',
           fontFamily: 'Bebas Neue, Arial, sans-serif',
           fontSize: '3rem', // Adjust the size based on design preferences
-        }}
+	}}
       >
         Services
       </Typography>
@@ -79,13 +79,18 @@ function Services() {
                 display: 'flex',
                 flexDirection: 'column',
                 maxWidth: '900px', // Increased max-width for wider cards
-                margin: 'auto', // Center align the card
               }}
               onClick={() => handleServiceClick(service.id)}
             >
               <CardContent
                 sx={{
-                  padding: '60px', // Reduced padding to remove extra space
+                  padding: {
+                    xs: '5px', // 20px padding for mobile screens (xs)
+                    md: '60px', // 60px padding for desktop screens (md and up)
+                  },
+    '&:last-child': {
+      paddingBottom: '20px', // Remove default padding-bottom
+    },
                   flexGrow: 1, // Allow card content to grow dynamically
                 }}
               >
@@ -101,7 +106,9 @@ function Services() {
                         color: '#fff',
                         letterSpacing: '0.25em',
                         fontFamily: 'Bebas Neue, Arial, sans-serif',
-                      }}
+                        marginBottom: '4px', // Reduce this value to control the space
+  
+		    }}
                     >
                       {service.title}
                     </Typography>
