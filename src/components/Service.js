@@ -38,6 +38,21 @@ function Services() {
 
   return (
     <div style={{ padding: '20px' }}>
+      {/* Add H1 heading with Bebas Neue font */}
+      <Typography
+        variant="h1"
+        gutterBottom
+        sx={{
+          textAlign: 'center',
+          color: '#00bcd4',  // Set a suitable color
+          letterSpacing: '0.1em',
+          fontFamily: 'Bebas Neue, Arial, sans-serif',
+          fontSize: '3rem', // Adjust the size based on design preferences
+        }}
+      >
+        Services
+      </Typography>
+
       <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
         {servicesList.map((service) => (
           <Grid
