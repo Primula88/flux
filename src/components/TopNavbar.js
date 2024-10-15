@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
+import { FaTwitter, FaDiscord } from "react-icons/fa"; // Import Twitter and Discord icons
 // Assets
 import Logo from "../assets/logo/logo.webp"; // Ensure this path is correct
 
@@ -56,16 +57,16 @@ export default function TopNavbar() {
                 Services
               </StyledLink>
             </li>
+            {/* Social Media Icons */}
             <li className="semiBold font15 pointer">
-              <StyledLink
-                activeClass="active"
-                to="socials"
-                spy={true}
-                smooth={true}
-                offset={-80}
-              >
-                Socials
-              </StyledLink>
+              <SocialIconLink href="https://x.com/FluxInc_" target="_blank" rel="noopener noreferrer">
+                <FaTwitter size={20} />
+              </SocialIconLink>
+            </li>
+            <li className="semiBold font15 pointer">
+              <SocialIconLink href="https://discord.gg/adRHkNwWf9" target="_blank" rel="noopener noreferrer">
+                <FaDiscord size={20} />
+              </SocialIconLink>
             </li>
           </UlWrapper>
           <MenuButton onClick={toggleMenu} className="mobileMenu">
@@ -98,17 +99,14 @@ export default function TopNavbar() {
                 Services
               </StyledLink>
             </li>
-            <li>
-              <StyledLink
-                activeClass="active"
-                to="socials"
-                spy={true}
-                smooth={true}
-                offset={-80}
-                onClick={closeMenu}
-              >
-                Socials
-              </StyledLink>
+            {/* Mobile Social Media Icons Side by Side */}
+            <li className="social-icons">
+              <SocialIconLink href="https://x.com/FluxInc_" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+                <FaTwitter size={20} />
+              </SocialIconLink>
+              <SocialIconLink href="https://discord.gg/adRHkNwWf9" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+                <FaDiscord size={20} />
+              </SocialIconLink>
             </li>
           </MobileMenuWrapper>
         )}
@@ -151,14 +149,6 @@ const LogoImg = styled.img`
   }
 `;
 
-//const Title = styled.h1`
-//  margin: 0;
-//  font-size: 20px;
-//  color: #ffffff;
-//  letter-spacing: 0.25em; // Adds spacing between letters
-
-//`;
-
 // Link that wraps the logo and title
 const LogoLink = styled(Link)`
   cursor: pointer; /* Adds pointer cursor on hover */
@@ -199,18 +189,20 @@ const MenuButton = styled.button`
 // Mobile dropdown menu
 const MobileMenuWrapper = styled.ul`
   position: absolute;
-  top: 60px; /* Position below the navbar */
+  top: 30px; /* Position below the navbar */
   right: 20px;
   background-color: #1e1e1e;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   list-style: none;
   padding: 10px 0;
-  width: 200px;
+  width: 160px; /* Reduced width for more compact mobile menu */
 
   li {
     padding: 10px 20px;
-    text-align: right;
+
+    &.social-icons {
+    }
   }
 
   @media (min-width: 760px) {
@@ -236,6 +228,18 @@ const StyledLink = styled(Link)`
   }
 
   &.active {
+    color: #64d9fb;
+  }
+`;
+
+// Styled Link for Social Media Icons
+const SocialIconLink = styled.a`
+  color: #ffffff;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  padding: 0 5px; /* Adjust padding for better spacing */
+
+  &:hover {
     color: #64d9fb;
   }
 `;
