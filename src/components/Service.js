@@ -33,7 +33,7 @@ function Services() {
   const [activeService, setActiveService] = useState(null);
 
   const handleServiceClick = (serviceId) => {
-    setActiveService(prevService => (prevService === serviceId ? null : serviceId));
+    setActiveService((prevService) => (prevService === serviceId ? null : serviceId));
   };
 
   return (
@@ -59,7 +59,8 @@ function Services() {
             item
             xs={12} // Full width on mobile
             sm={6} // 2 columns on tablets and above
-            md={6} // 2 columns on desktops
+            md={8} // Now 8/12 columns on desktops for wider cards
+            lg={6} // Keep 6/12 columns for larger screens
             key={service.id}
           >
             <Card
@@ -74,11 +75,20 @@ function Services() {
                   transform: 'translateY(-4px)',
                   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 4px #64d9fb',
                 },
-                height: activeService === service.id ? 'auto' : '320px', // Fixed height when not active
+                minHeight: '320px',
+                display: 'flex',
+                flexDirection: 'column',
+                maxWidth: '900px', // Increased max-width for wider cards
+                margin: 'auto', // Center align the card
               }}
               onClick={() => handleServiceClick(service.id)}
             >
-              <CardContent sx={{ padding: '20px' }}>
+              <CardContent
+                sx={{
+                  padding: '60px', // Reduced padding to remove extra space
+                  flexGrow: 1, // Allow card content to grow dynamically
+                }}
+              >
                 {/* Show the image and title only if this service is not active */}
                 {activeService !== service.id && (
                   <>
