@@ -31,7 +31,7 @@ function WhoWeAre() {
                 color: '#fff',
               }}
             >
-              Flux Inc. is the umbrella under which we house various development ventures as well as our PFP projects, the Time Traveling Chimps, and newest addition minting soon, the Portal Beasts. Our goal is to offer professionally developed tools for all projects throughout Solana. This page will give you a glimpse of the products and services we offer and are currently developing to show you some of the ways we are changing how the Solana Eco System interacts.
+              Flux Inc. is the umbrella under which we house various development ventures as well as our PFP projects, the Time Traveling Chimps and the Portal Beasts. Our goal is to offer professionally developed tools for all projects throughout Solana. This page will give you a glimpse of the products and services we offer and are currently developing to show you some of the ways we are changing how the Solana Eco System interacts.
             </Typography>
             <Typography
               variant="body1"
