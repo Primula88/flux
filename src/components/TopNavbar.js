@@ -347,7 +347,7 @@ const MenuButton = styled.button`
 // Mobile dropdown menu
 const MobileMenuWrapper = styled.ul`
   position: absolute;
-  top: 80px; /* Adjust based on navbar height */
+  top: 40px; /* Adjust based on navbar height */
   right: 20px;
   background-color: #1e1e1e;
   border-radius: 8px;
@@ -391,6 +391,12 @@ const StyledLink = styled(Link)`
 
   &.active {
     color: #64d9fb;
+  }
+
+  /* Media query for mobile devices */
+  @media (max-width: 760px) {
+    padding: 8px 0; /* Reduce vertical padding */
+    display: block; /* Change display to block for better alignment */
   }
 `;
 
@@ -481,12 +487,11 @@ const DropdownLink = styled.a`
   color: #ffffff;
   text-decoration: none;
   display: block;
-  padding: 8px 0;
+  padding: 8px 0; /* Reduced padding for closer spacing */
   transition: color 0.3s ease;
 
   &:hover {
     color: #64d9fb;
   }
 `;
-
 
