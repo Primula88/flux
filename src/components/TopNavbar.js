@@ -357,7 +357,6 @@ const MobileMenuWrapper = styled.ul`
   width: 220px; /* Increased width to accommodate Holder Area links */
 
   li {
-    padding: 10px 20px;
   }
 
   .social-icons {
@@ -458,7 +457,6 @@ const HolderDropdownContent = styled.div`
 // Mobile Holder Area Section
 const HolderAreaSection = styled.li`
   width: 100%;
-  padding: 10px 20px;
   box-sizing: border-box;
 `;
 
