@@ -28,13 +28,17 @@ const ServiceLink = styled(Typography)(({ theme }) => ({
 
 // Full width container for the component that expands
 const FullWidthContainer = styled('div')(({ theme }) => ({
-  width: '95%',
+  width: '95%', // Default width for desktop
   margin: '20px 0',
   backgroundColor: '#1e1e1e',
   borderRadius: '12px',
   boxShadow: '0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb',
-  padding: theme.spacing(4),
+  padding: theme.spacing(4), // Default padding for desktop
   color: '#fff',
+  [theme.breakpoints.down('sm')]: { // Media query for mobile
+    width: '90%', // Make the card less wide on mobile
+    padding: theme.spacing(2), // Reduce padding on mobile
+  },
 }));
 
 function Services() {
