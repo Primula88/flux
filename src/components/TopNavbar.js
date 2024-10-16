@@ -80,15 +80,16 @@ export default function TopNavbar() {
           </LogoLink>
           <UlWrapper className="flexNullCenter desktopMenu">
             <li className="semiBold font15 pointer">
-              <StyledLink
+              <NavLink
                 activeClass="active"
                 to="home"
                 spy={true}
                 smooth={true}
                 offset={-80}
+                onClick={closeMenu}
               >
                 Home
-              </StyledLink>
+              </NavLink>
             </li>
             {/* About Dropdown */}
             <HolderDropdown ref={aboutRef}>
@@ -101,7 +102,7 @@ export default function TopNavbar() {
               </HolderDropdownButton>
               {aboutMenuOpen && (
                 <HolderDropdownContent>
-                  <StyledScrollLink
+                  <NavLink
                     to="whoweare"
                     spy={true}
                     smooth={true}
@@ -109,8 +110,8 @@ export default function TopNavbar() {
                     onClick={closeMenu}
                   >
                     Who We Are
-                  </StyledScrollLink>
-                  <StyledScrollLink
+                  </NavLink>
+                  <NavLink
                     to="services"
                     spy={true}
                     smooth={true}
@@ -118,8 +119,8 @@ export default function TopNavbar() {
                     onClick={closeMenu}
                   >
                     Services
-                  </StyledScrollLink>
-                  <StyledScrollLink
+                  </NavLink>
+                  <NavLink
                     to="FAQ"
                     spy={true}
                     smooth={true}
@@ -127,7 +128,7 @@ export default function TopNavbar() {
                     onClick={closeMenu}
                   >
                     FAQ
-                  </StyledScrollLink>
+                  </NavLink>
                 </HolderDropdownContent>
               )}
             </HolderDropdown>
@@ -142,46 +143,46 @@ export default function TopNavbar() {
               </HolderDropdownButton>
               {holderMenuOpen && (
                 <HolderDropdownContent>
-                  <DropdownLink
+                  <NavExternalLink
                     href="https://www.fluxinc.io/factory"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setHolderMenuOpen(false)}
+                    onClick={closeMenu}
                   >
                     Factory
-                  </DropdownLink>
-                  <DropdownLink
+                  </NavExternalLink>
+                  <NavExternalLink
                     href="https://www.fluxinc.io/portal"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setHolderMenuOpen(false)}
+                    onClick={closeMenu}
                   >
                     Portal
-                  </DropdownLink>
-                  <DropdownLink
+                  </NavExternalLink>
+                  <NavExternalLink
                     href="https://www.fluxinc.io/tailor"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setHolderMenuOpen(false)}
+                    onClick={closeMenu}
                   >
                     Tailor
-                  </DropdownLink>
-                  <DropdownLink
+                  </NavExternalLink>
+                  <NavExternalLink
                     href="https://www.fluxinc.io/gm"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setHolderMenuOpen(false)}
+                    onClick={closeMenu}
                   >
                     GM Generator
-                  </DropdownLink>
-                  <DropdownLink
+                  </NavExternalLink>
+                  <NavExternalLink
                     href="https://www.fluxinc.io/shop"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setHolderMenuOpen(false)}
+                    onClick={closeMenu}
                   >
                     Shop
-                  </DropdownLink>
+                  </NavExternalLink>
                 </HolderDropdownContent>
               )}
             </HolderDropdown>
@@ -212,7 +213,7 @@ export default function TopNavbar() {
         {menuOpen && (
           <MobileMenuWrapper>
             <li>
-              <StyledLink
+              <NavLink
                 activeClass="active"
                 to="home"
                 spy={true}
@@ -221,15 +222,14 @@ export default function TopNavbar() {
                 onClick={closeMenu}
               >
                 Home
-              </StyledLink>
+              </NavLink>
             </li>
             {/* About Section in Mobile Menu */}
             <HolderAreaSection>
               <HolderAreaTitle>About</HolderAreaTitle>
               <Divider />
               <li>
-                <StyledLink
-                  activeClass="active"
+                <NavLink
                   to="whoweare"
                   spy={true}
                   smooth={true}
@@ -237,11 +237,10 @@ export default function TopNavbar() {
                   onClick={closeMenu}
                 >
                   Who We Are
-                </StyledLink>
+                </NavLink>
               </li>
               <li>
-                <StyledLink
-                  activeClass="active"
+                <NavLink
                   to="services"
                   spy={true}
                   smooth={true}
@@ -249,11 +248,10 @@ export default function TopNavbar() {
                   onClick={closeMenu}
                 >
                   Services
-                </StyledLink>
+                </NavLink>
               </li>
               <li>
-                <StyledLink
-                  activeClass="active"
+                <NavLink
                   to="FAQ"
                   spy={true}
                   smooth={true}
@@ -261,7 +259,7 @@ export default function TopNavbar() {
                   onClick={closeMenu}
                 >
                   FAQ
-                </StyledLink>
+                </NavLink>
               </li>
             </HolderAreaSection>
             {/* Holder Area Section in Mobile Menu */}
@@ -269,54 +267,54 @@ export default function TopNavbar() {
               <HolderAreaTitle>Holder Area</HolderAreaTitle>
               <Divider />
               <li>
-                <DropdownLink
+                <NavExternalLink
                   href="https://www.fluxinc.io/factory"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
                 >
                   Factory
-                </DropdownLink>
+                </NavExternalLink>
               </li>
               <li>
-                <DropdownLink
+                <NavExternalLink
                   href="https://www.fluxinc.io/portal"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
                 >
                   Portal
-                </DropdownLink>
+                </NavExternalLink>
               </li>
               <li>
-                <DropdownLink
+                <NavExternalLink
                   href="https://www.fluxinc.io/tailor"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
                 >
                   Tailor
-                </DropdownLink>
+                </NavExternalLink>
               </li>
               <li>
-                <DropdownLink
+                <NavExternalLink
                   href="https://www.fluxinc.io/gm"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
                 >
                   GM Generator
-                </DropdownLink>
+                </NavExternalLink>
               </li>
               <li>
-                <DropdownLink
+                <NavExternalLink
                   href="https://www.fluxinc.io/shop"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
                 >
                   Shop
-                </DropdownLink>
+                </NavExternalLink>
               </li>
             </HolderAreaSection>
             {/* Mobile Social Media Icons Side by Side */}
@@ -446,19 +444,20 @@ const MobileMenuWrapper = styled.ul`
   }
 `;
 
-// Styled Link for navigation items
-const StyledLink = styled(Link)`
+// Styled Link for all navigation items
+const NavLink = styled(Link)`
   color: #ffffff;
-  padding: 4px;
+  padding: 4px 8px;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-family: 'Bebas Neue', Arial, sans-serif; /* Unified font */
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
-  cursor: pointer; /* Adds pointer cursor on hover */
-  letter-spacing: 0.25em; /* Adds spacing between letters */
+  cursor: pointer;
   display: flex;
-  align-items: center; /* Ensures vertical alignment */
+  align-items: center;
 
   &:hover {
     color: #64d9fb;
@@ -469,32 +468,34 @@ const StyledLink = styled(Link)`
     color: #64d9fb;
   }
 
-  /* Media query for mobile devices */
   @media (max-width: 760px) {
-    display: block; /* Change display to block for better alignment */
+    display: block;
+    padding: 8px 16px; /* Increased padding for better touch targets on mobile */
   }
 `;
 
-// Styled Scroll Link for About dropdown links (Who We Are, Services, FAQ)
-const StyledScrollLink = styled(Link)`
+// Styled External Link for Holder Area and Mobile Menu
+const NavExternalLink = styled.a`
   color: #ffffff;
-  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  padding: 8px 16px; /* Unified padding */
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-family: 'Bebas Neue', Arial, sans-serif; /* Unified font */
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
-  cursor: pointer; /* Adds pointer cursor on hover */
-  letter-spacing: 0.25em;
-  display: block; /* Ensure block display for full-width clickable area */
+  cursor: pointer;
 
   &:hover {
     color: #64d9fb;
-    background-color: #3e3e3e; /* Slight background change on hover */
+    background-color: #3e3e3e;
   }
 
-  &.active {
-    color: #64d9fb;
+  @media (max-width: 760px) {
+    padding: 6px 16px; /* Adjusted padding for mobile */
   }
 `;
 
@@ -521,7 +522,6 @@ const HolderDropdown = styled.li`
 // Adjusted HolderDropdownButton for vertical alignment
 const HolderDropdownButton = styled.div`
   color: #fff;
-  padding: 10px 15px;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -588,23 +588,5 @@ const Divider = styled.hr`
   height: 1px;
   background: #444;
   margin: 5px 0 10px 0;
-`;
-
-// Dropdown Link (Used in both desktop and mobile)
-const DropdownLink = styled.a`
-  color: #ffffff;
-  text-decoration: none;
-  display: block;
-  padding: 8px 0; /* Reduced padding for closer spacing */
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #64d9fb;
-  }
-
-  /* Further reduce padding on mobile */
-  @media (max-width: 760px) {
-    padding: 6px 0;
-  }
 `;
 
