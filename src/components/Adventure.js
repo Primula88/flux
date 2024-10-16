@@ -10,9 +10,9 @@ const StyledButton = styled.a`
   align-items: center;
   justify-content: center;
   padding: 10px 30px;
-  border: 2px solid #00bcd4;
+  border: 2px solid #83d6f7;
   border-radius: 50px;
-  color: #00bcd4;
+  color: #83d6f7;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
@@ -21,7 +21,7 @@ const StyledButton = styled.a`
   margin: 0 auto;
 
   &:hover {
-    background-color: #00bcd4;
+    background-color: #83d6f7;
     color: #121212;
   }
 
@@ -61,7 +61,7 @@ const RightSection = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #00bcd4;
+    background-color: #83d6f7;
     border-radius: 10px;
     border: 2px solid #1e1e1e;
   }
@@ -83,7 +83,7 @@ function Adventure() {
             <>
               {/* Mobile view: Keep the layout as it was before */}
               <Grid item xs={12} sx={{ textAlign: 'center' }}>
-                <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                <Typography variant="h4" gutterBottom sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                   Adventure Platform
                 </Typography>
                 <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -97,7 +97,7 @@ function Adventure() {
               {/* The rest of the content for mobile (as before) */}
               <Grid container spacing={3} sx={{ mt: 4 }}>
                 <Grid item xs={12}>
-                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>How Does it Work?</Typography>
+                  <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>How Does it Work?</Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     Prizes, Adventure length, Maximum number of adventurers, and cost are set by the team. Holders can select their NFT, confirm the transaction, and send it on an adventure.
                   </Typography>
@@ -106,7 +106,7 @@ function Adventure() {
                   </Typography>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <Typography variant="h6" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>For Projects:</Typography>
+                  <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>For Projects:</Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     - Increased engagement in Discord <br />
                     - Custom Adventure UI <br />
@@ -116,7 +116,7 @@ function Adventure() {
                   </Typography>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <Typography variant="h6" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>For Holders:</Typography>
+                  <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>For Holders:</Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     - Earn amazing rewards <br />
                     - Support your project <br />
@@ -128,7 +128,7 @@ function Adventure() {
 
               <Grid container spacing={3} sx={{ mt: 4 }}>
                 <Grid item xs={12}>
-                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>What Else Can the Platform Do?</Typography>
+                  <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>What Else Can the Platform Do?</Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     The platform can also be used for Idle Games, gamified raffles, and many other experiences.
                   </Typography>
@@ -137,7 +137,7 @@ function Adventure() {
 
               <Grid container spacing={3} sx={{ mt: 4 }}>
                 <Grid item xs={12}>
-                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>Get the Platform for Your Project</Typography>
+                  <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>Get the Platform for Your Project</Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     The Adventure Platform is available for white-label solutions with various payment plans. Join our Discord to open an adventure ticket and learn more.
                   </Typography>
@@ -153,7 +153,7 @@ function Adventure() {
             <>
               {/* Left Section: Basic/Most Important Information */}
               <Grid item xs={4} sx={{ textAlign: 'center' }}>
-                <Typography variant="h3" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '2rem' }}>
+                <Typography variant="h3" gutterBottom sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '2rem' }}>
                   Adventure Platform
                 </Typography>
                 <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '1.2rem' }}>
@@ -170,7 +170,7 @@ function Adventure() {
               {/* Right Section: Scrollable Content */}
               <Grid item xs={8}>
                 <RightSection>
-                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     How Does it Work?
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -180,7 +180,7 @@ function Adventure() {
                     You can send up to 18 NFTs at a time on PC and 9 at a time on Mobile.
                   </Typography>
 
-                  <Typography variant="h6" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     For Projects:
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -191,7 +191,7 @@ function Adventure() {
                     - 100% ROI in under 3 months
                   </Typography>
 
-                  <Typography variant="h6" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     For Holders:
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -201,7 +201,7 @@ function Adventure() {
                     - Brag about your adventure in Discord
                   </Typography>
 
-                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     What Else Can the Platform Do?
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>

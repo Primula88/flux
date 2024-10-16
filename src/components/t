@@ -44,7 +44,7 @@ function Services() {
         gutterBottom
         sx={{
           textAlign: 'center',
-          color: '#00bcd4',  // Set a suitable color
+          color: '#83d6f7',  // Set a suitable color
           letterSpacing: '0.1em',
           fontFamily: 'Bebas Neue, Arial, sans-serif',
           fontSize: '3rem', // Adjust the size based on design preferences

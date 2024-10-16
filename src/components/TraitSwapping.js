@@ -9,9 +9,9 @@ const StyledButton = styled.a`
   align-items: center;
   justify-content: center;
   padding: 10px 30px;
-  border: 2px solid #00bcd4;
+  border: 2px solid #83d6f7;
   border-radius: 50px;
-  color: #00bcd4;
+  color: #83d6f7;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
@@ -20,7 +20,7 @@ const StyledButton = styled.a`
   margin: 0 auto; /* Center align the button */
   
   &:hover {
-    background-color: #00bcd4;
+    background-color: #83d6f7;
     color: #121212;
   }
 
@@ -37,7 +37,7 @@ function TraitSwapping() {
         <Grid container spacing={3} justifyContent="center">
           {/* Full width grid item for the title and description */}
           <Grid item xs={12} sx={{ textAlign: 'center' }}>
-            <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+            <Typography variant="h4" gutterBottom sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
               Trait Swapping Platform
             </Typography>
             <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -79,7 +79,7 @@ function TraitSwapping() {
 
         <Grid container spacing={3} sx={{ mt: 4 }}>
           <Grid item xs={12}>
-            <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>Get the Platform for Your Project</Typography>
+            <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>Get the Platform for Your Project</Typography>
             <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
               The Trait Swapping Platform is available for white-label solutions with various payment plans. Join our Discord to open a ticket and get started!
             </Typography>

@@ -9,19 +9,6 @@ function WhoWeAre() {
           {/* Full Width Text Section */}
           <Grid item xs={12}>
             <Typography
-              variant="h1"
-              gutterBottom
-              sx={{
-                textAlign: 'center',
-                color: '#00bcd4',
-                letterSpacing: '0.1em',
-                fontFamily: 'Bebas Neue, Arial, sans-serif',
-                fontSize: '3rem', // Adjust the size based on design preferences
-              }}
-            >
-              Who We Are
-            </Typography>
-            <Typography
               variant="body1"
               gutterBottom
               sx={{
@@ -43,7 +30,7 @@ function WhoWeAre() {
                 lineHeight: '1.8',
               }}
             >
-              <a href="https://magiceden.io/creators/fluxinc" style={{ color: '#00bcd4', textDecoration: 'none' }}>
+              <a href="https://magiceden.io/creators/fluxinc" style={{ color: '#83d6f7', textDecoration: 'none' }}>
                 Our Collections
               </a>
             </Typography>

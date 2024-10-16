@@ -9,9 +9,9 @@ const StyledButton = styled.a`
   align-items: center;
   justify-content: center;
   padding: 10px 30px;
-  border: 2px solid #00bcd4;
+  border: 2px solid #83d6f7;
   border-radius: 50px;
-  color: #00bcd4;
+  color: #83d6f7;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
@@ -20,7 +20,7 @@ const StyledButton = styled.a`
   margin: 0 auto; /* Center align the button */
   
   &:hover {
-    background-color: #00bcd4;
+    background-color: #83d6f7;
     color: #121212;
   }
 
@@ -38,7 +38,7 @@ function Fluxtility() {
         <Grid container spacing={3} justifyContent="center">
           {/* Make this grid item take full width and center its content */}
           <Grid item xs={12} sx={{ textAlign: 'center' }}>
-            <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'inherit' }}>
+            <Typography variant="h4" gutterBottom sx={{ color: '#83d6f7', fontFamily: 'inherit' }}>
               Fluxtility Platform
             </Typography>
             <Typography variant="body1" gutterBottom sx={{ fontFamily: 'inherit' }}>
@@ -82,7 +82,7 @@ function Fluxtility() {
 
         <Grid container spacing={3} sx={{ mt: 4 }}>
           <Grid item xs={12}>
-            <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'inherit' }}>Get Started with Fluxtility</Typography>
+            <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'inherit' }}>Get Started with Fluxtility</Typography>
             <Typography variant="body2" gutterBottom sx={{ fontFamily: 'inherit' }}>
               Ready to streamline your community management and offer advanced tools for your members? Get started today by joining our Discord!
             </Typography>
