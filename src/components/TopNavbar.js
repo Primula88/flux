@@ -420,7 +420,7 @@ const MenuButton = styled.button`
 // Mobile dropdown menu
 const MobileMenuWrapper = styled.ul`
   position: absolute;
-  top: 80px; /* Adjust based on navbar height */
+  top: 40px; /* Adjust based on navbar height */
   right: 20px;
   background-color: #1e1e1e;
   border-radius: 8px;
