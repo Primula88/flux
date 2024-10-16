@@ -1,125 +1,81 @@
 import React, { useState } from 'react';
-import { Grid, Card, CardContent, Typography } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 import { styled } from '@mui/system';
 import Staking from './Staking';
 import TraitSwapping from './TraitSwapping';
 import Adventure from './Adventure';
 import Fluxtility from './Fluxtility';
 
-// Import images for each service
-import StakingImg from '../assets/staking.webp';
-import TraitSwappingImg from '../assets/traits.webp';
-import AdventureImg from '../assets/adventure.webp';
-import FluxtilityImg from '../assets/fluxtility.webp';
-
-// Styled component for the service image
-const ServiceImage = styled('img')(({ theme }) => ({
-  width: '100%',
-  height: '200px',
-  objectFit: 'contain',
-  borderRadius: '8px',
-  marginBottom: theme.spacing(2),
-}));
-
 // List of services
 const servicesList = [
-  { id: 'staking', title: 'Staking', component: <Staking />, image: StakingImg },
-  { id: 'trait-swapping', title: 'Trait Swapping', component: <TraitSwapping />, image: TraitSwappingImg },
-  { id: 'adventure', title: 'Adventure', component: <Adventure />, image: AdventureImg },
-  { id: 'fluxtility', title: 'Fluxtility', component: <Fluxtility />, image: FluxtilityImg },
+  { id: 'staking', title: 'Staking', component: <Staking /> },
+  { id: 'adventure', title: 'Adventure', component: <Adventure /> },
+  { id: 'trait-swapping', title: 'Trait Swapping', component: <TraitSwapping /> },
+  { id: 'fluxtility', title: 'Fluxtility', component: <Fluxtility /> },
 ];
+
+// Styled Link for H1 clickable links
+const ServiceLink = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  color: '#00bcd4', // Blue/Teal color
+  cursor: 'pointer',
+  margin: '10px 0',
+  fontFamily: 'Bebas Neue, Arial, sans-serif', // Move font settings inside the object
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+}));
+
+// Full width container for the component that expands
+const FullWidthContainer = styled('div')(({ theme }) => ({
+  width: '95%',
+  margin: '20px 0',
+  backgroundColor: '#1e1e1e',
+  borderRadius: '12px',
+  boxShadow: '0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb',
+  padding: theme.spacing(4),
+  color: '#fff',
+}));
 
 function Services() {
   const [activeService, setActiveService] = useState(null);
 
   const handleServiceClick = (serviceId) => {
+    // Toggle the service component
     setActiveService((prevService) => (prevService === serviceId ? null : serviceId));
   };
 
   return (
     <div style={{ padding: '20px' }}>
-      {/* Add H1 heading with Bebas Neue font */}
+      {/* Heading */}
       <Typography
         variant="h1"
         gutterBottom
         sx={{
           textAlign: 'center',
-          color: '#00bcd4',  // Set a suitable color
+          color: '#00bcd4',
           letterSpacing: '0.1em',
           fontFamily: 'Bebas Neue, Arial, sans-serif',
-          fontSize: '3rem', // Adjust the size based on design preferences
+          fontSize: '3rem',
         }}
       >
         Services
       </Typography>
 
-      <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
+      {/* Clickable Links */}
+      <Grid container justifyContent="center">
         {servicesList.map((service) => (
-          <Grid
-            item
-            xs={12} // Full width on mobile
-            sm={6} // 2 columns on tablets and above
-            md={8} // Now 8/12 columns on desktops for wider cards
-            lg={6} // Keep 6/12 columns for larger screens
-            key={service.id}
-          >
-            <Card
-              sx={{
-                backgroundColor: '#1e1e1e',
-                color: '#fff',
-                cursor: 'pointer',
-                borderRadius: '12px',
-                boxShadow: '0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 4px #64d9fb',
-                },
-                minHeight: '320px',
-                display: 'flex',
-                flexDirection: 'column',
-                maxWidth: '900px', // Increased max-width for wider cards
-              }}
-              onClick={() => handleServiceClick(service.id)}
-            >
-              <CardContent
-                sx={{
-                  padding: {
-                    xs: '20px', // 20px padding for mobile screens (xs)
-                    md: '60px', // 60px padding for desktop screens (md and up)
-                  },
-                  paddingBottom: '0px', // Remove default padding-bottom
-                  flexGrow: 1, // Allow card content to grow dynamically
-                }}
-              >
-                {/* Show the image and title only if this service is not active */}
-                {activeService !== service.id && (
-                  <>
-                    <ServiceImage src={service.image} alt={`${service.title} Image`} />
-                    <Typography
-                      variant="h6"
-                      gutterBottom
-                      sx={{
-                        textAlign: 'center',
-                        color: '#fff',
-                        letterSpacing: '0.25em',
-                        fontFamily: 'Bebas Neue, Arial, sans-serif',
-                        marginBottom: '4px', // Reduce this value to control the space
-                      }}
-                    >
-                      {service.title}
-                    </Typography>
-                  </>
-                )}
+          <Grid item xs={12} key={service.id} onClick={() => handleServiceClick(service.id)}>
+            <ServiceLink variant="h4">
+              {activeService === service.id ? `(-) ${service.title}` : `(+) ${service.title}`}
+            </ServiceLink>
 
-                {/* Show the service content only if this service is active */}
-                {activeService === service.id && (
-                  <div style={{ display: 'block' }}>
-                    {service.component}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+            {/* Show component only if the link is active */}
+            {activeService === service.id && (
+              <FullWidthContainer>
+                {service.component}
+              </FullWidthContainer>
+            )}
           </Grid>
         ))}
       </Grid>
