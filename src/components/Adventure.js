@@ -1,9 +1,9 @@
 import React from 'react';
-import { Typography, Card, CardContent, Grid } from '@mui/material';
-import styled from 'styled-components';  // Use styled-components for button styling
-import { FaDiscord } from 'react-icons/fa'; // Discord icon
+import { Typography, Card, CardContent, Grid, useMediaQuery } from '@mui/material';
+import styled from 'styled-components';
+import { FaDiscord } from 'react-icons/fa';
 
-// Styled Button (reusing the button style)
+// Styled Button
 const StyledButton = styled.a`
   display: flex;
   align-items: center;
@@ -16,9 +16,9 @@ const StyledButton = styled.a`
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  max-width: 300px; /* Limit the button width */
-  margin: 0 auto; /* Center align the button */
-  
+  max-width: 300px;
+  margin: 0 auto;
+
   &:hover {
     background-color: #00bcd4;
     color: #121212;
@@ -27,87 +27,177 @@ const StyledButton = styled.a`
   @media (max-width: 480px) {
     font-size: 16px;
     padding: 8px 20px;
-    max-width: 200px; /* Adjust button width for smaller screens */
+    max-width: 200px;
+  }
+`;
+
+// Styled component for the right section with the scrollbar on the left
+const RightSection = styled.div`
+  overflow-y: auto;
+  max-height: 400px;
+  padding: 20px;
+  position: relative;
+
+  /* Custom scrollbar styling */
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 0; /* Moves the scrollbar to the left */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #2e2e2e;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #00bcd4;
+    border-radius: 10px;
+    border: 2px solid #1e1e1e;
+  }
+
+  @media (max-width: 960px) {
+    overflow: visible;
+    max-height: none;
   }
 `;
 
 function Adventure() {
+  const isDesktop = useMediaQuery('(min-width: 960px)');
+
   return (
     <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', padding: '20px', boxShadow: 'none' }}>
       <CardContent>
-        <Grid container spacing={3} justifyContent="center">
-          {/* Make this grid item take full width and center its content */}
-          <Grid item xs={12} sx={{ textAlign: 'center' }}>
-            <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-              Adventure Platform
-            </Typography>
-            <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-              A highly engaging, chance-based platform that allows you to send your NFTs on Adventures. These are fully customizable missions with set time periods and multiple reward possibilities.
-            </Typography>
-            <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-              This platform helps projects provide fun and engagement within their communities, while rewarding holders and creating a strong revenue stream for the project.
-            </Typography>
-          </Grid>
-        </Grid>
+        <Grid container spacing={3}>
+          {!isDesktop ? (
+            <>
+              {/* Mobile view: Keep the layout as it was before */}
+              <Grid item xs={12} sx={{ textAlign: 'center' }}>
+                <Typography variant="h4" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  Adventure Platform
+                </Typography>
+                <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  A highly engaging, chance-based platform that allows you to send your NFTs on Adventures. These are fully customizable missions with set time periods and multiple reward possibilities.
+                </Typography>
+                <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  This platform helps projects provide fun and engagement within their communities, while rewarding holders and creating a strong revenue stream for the project.
+                </Typography>
+              </Grid>
 
-        <Grid container spacing={3} sx={{ mt: 4 }}>
-          <Grid item xs={12}>
-            <Typography variant="h5" sx={{ color: '#ff9800', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>How Does it Work?</Typography>
-            <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-              Prizes, Adventure length, Maximum number of adventurers, and cost are set by the team. Holders can then select their NFT, confirm the transaction, and send it on an adventure. The NFT remains in their wallet but is frozen until claimed.
-            </Typography>
-            <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-              You can send up to 18 NFTs at a time on PC and 9 at a time on Mobile.
-            </Typography>
-          </Grid>
+              {/* The rest of the content for mobile (as before) */}
+              <Grid container spacing={3} sx={{ mt: 4 }}>
+                <Grid item xs={12}>
+                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>How Does it Work?</Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    Prizes, Adventure length, Maximum number of adventurers, and cost are set by the team. Holders can select their NFT, confirm the transaction, and send it on an adventure.
+                  </Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    You can send up to 18 NFTs at a time on PC and 9 at a time on Mobile.
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography variant="h6" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>For Projects:</Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    - Increased engagement in Discord <br />
+                    - Custom Adventure UI <br />
+                    - Strong revenue stream <br />
+                    - Burn project token <br />
+                    - 100% ROI in under 3 months
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography variant="h6" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>For Holders:</Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    - Earn amazing rewards <br />
+                    - Support your project <br />
+                    - Fun and engaging experiences <br />
+                    - Brag about your adventure in Discord
+                  </Typography>
+                </Grid>
+              </Grid>
 
-          <Grid item xs={12} sm={6}>
-            <Typography variant="h6" sx={{ color: '#ff9800', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>For Projects:</Typography>
-            <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-              - Increased engagement inside the Discord <br />
-              - Custom Adventure UI <br />
-              - Strong revenue stream <br />
-              - Burn project token <br />
-              - 100% ROI in under 3 months
-            </Typography>
-          </Grid>
+              <Grid container spacing={3} sx={{ mt: 4 }}>
+                <Grid item xs={12}>
+                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>What Else Can the Platform Do?</Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    The platform can also be used for Idle Games, gamified raffles, and many other experiences.
+                  </Typography>
+                </Grid>
+              </Grid>
 
-          <Grid item xs={12} sm={6}>
-            <Typography variant="h6" sx={{ color: '#ff9800', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>For Holders:</Typography>
-            <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-              - Earn amazing rewards <br />
-              - Support your project <br />
-              - Fun and engaging experiences <br />
-              - Brag about your adventure in Discord <br />
-            </Typography>
-          </Grid>
-        </Grid>
+              <Grid container spacing={3} sx={{ mt: 4 }}>
+                <Grid item xs={12}>
+                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>Get the Platform for Your Project</Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    The Adventure Platform is available for white-label solutions with various payment plans. Join our Discord to open an adventure ticket and learn more.
+                  </Typography>
 
-        <Grid container spacing={3} sx={{ mt: 4 }}>
-          <Grid item xs={12}>
-            <Typography variant="h5" sx={{ color: '#ff9800', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>What Else Can the Platform Do?</Typography>
-            <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-              The platform can also be used for Idle Games, gamified raffles, and many other experiences. Raffle an NFT through an adventure or set different adventures with varying rewards.
-            </Typography>
-          </Grid>
-        </Grid>
+                  <StyledButton href="https://discord.com/invite/fluxinc" target="_blank" rel="noopener noreferrer">
+                    <FaDiscord style={{ marginRight: '10px' }} /> Join Discord
+                  </StyledButton>
+                </Grid>
+              </Grid>
+            </>
+          ) : (
+            // Desktop view: Split into two columns
+            <>
+              {/* Left Section: Basic/Most Important Information */}
+              <Grid item xs={4} sx={{ textAlign: 'center' }}>
+                <Typography variant="h3" gutterBottom sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '2rem' }}>
+                  Adventure Platform
+                </Typography>
+                <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '1.2rem' }}>
+                  A highly engaging platform to send your NFTs on Adventures.
+                </Typography>
+                <StyledButton href="https://discord.com/invite/fluxinc" target="_blank" rel="noopener noreferrer">
+                  <FaDiscord style={{ marginRight: '10px' }} /> Join Discord
+                </StyledButton>
+              </Grid>
 
-        <Grid container spacing={3} sx={{ mt: 4 }}>
-          <Grid item xs={12}>
-            <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>Get the Platform for Your Project</Typography>
-            <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-              The Adventure Platform is available for white-label solutions with various payment plans. Join our Discord to open an adventure ticket and learn more.
-            </Typography>
+              {/* Right Section: Scrollable Content */}
+              <Grid item xs={8}>
+                <RightSection>
+                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    How Does it Work?
+                  </Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    Prizes, Adventure length, Maximum number of adventurers, and cost are set by the team. Holders can select their NFT, confirm the transaction, and send it on an adventure.
+                  </Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    You can send up to 18 NFTs at a time on PC and 9 at a time on Mobile.
+                  </Typography>
 
-            {/* Join Discord button using the new StyledButton */}
-            <StyledButton
-              href="https://discord.com/invite/fluxinc"  // Link to the provided Discord invite
-              target="_blank"  // Opens link in a new tab
-              rel="noopener noreferrer"  // Security measure for external links
-            >
-              <FaDiscord style={{ marginRight: '10px' }} /> Join Discord
-            </StyledButton>
-          </Grid>
+                  <Typography variant="h6" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    For Projects:
+                  </Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    - Increased engagement in Discord <br />
+                    - Custom Adventure UI <br />
+                    - Strong revenue stream <br />
+                    - Burn project token <br />
+                    - 100% ROI in under 3 months
+                  </Typography>
+
+                  <Typography variant="h6" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    For Holders:
+                  </Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    - Earn amazing rewards <br />
+                    - Support your project <br />
+                    - Fun and engaging experiences <br />
+                    - Brag about your adventure in Discord
+                  </Typography>
+
+                  <Typography variant="h5" sx={{ color: '#00bcd4', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    What Else Can the Platform Do?
+                  </Typography>
+                  <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                    The platform can also be used for Idle Games, gamified raffles, and many other experiences.
+                  </Typography>
+                </RightSection>
+              </Grid>
+            </>
+          )}
         </Grid>
       </CardContent>
     </Card>
