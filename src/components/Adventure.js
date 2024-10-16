@@ -37,6 +37,7 @@ const RightSection = styled.div`
   max-height: 400px;
   padding: 20px;
   position: relative;
+  text-align: left;
 
   /* Custom scrollbar styling */
   &::-webkit-scrollbar {
