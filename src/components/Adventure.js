@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Card, CardContent, Grid, useMediaQuery } from '@mui/material';
 import styled from 'styled-components';
 import { FaDiscord } from 'react-icons/fa';
+import adventurePic from '../assets/adventure.webp'; // Import the image
 
 // Styled Button
 const StyledButton = styled.a`
@@ -29,6 +30,14 @@ const StyledButton = styled.a`
     padding: 8px 20px;
     max-width: 200px;
   }
+`;
+
+// Styled Image for Adventure
+const AdventureImage = styled.img`
+  width: 40%;
+  max-width: 300px;
+  margin-top: 20px;
+  border-radius: 10px;
 `;
 
 // Styled component for the right section with the scrollbar on the left
@@ -153,6 +162,9 @@ function Adventure() {
                 <StyledButton href="https://discord.com/invite/fluxinc" target="_blank" rel="noopener noreferrer">
                   <FaDiscord style={{ marginRight: '10px' }} /> Join Discord
                 </StyledButton>
+
+                {/* Desktop-only Adventure Image */}
+                <AdventureImage src={adventurePic} alt="Adventure" />
               </Grid>
 
               {/* Right Section: Scrollable Content */}
