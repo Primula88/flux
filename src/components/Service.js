@@ -22,7 +22,7 @@ const CustomTypography = styled(Typography)`
   align-items: center;
   text-align: left;
   cursor: pointer;
-  font-size: 1.6rem; /* Reduced font size slightly to fit longer titles */
+  font-size: 1.5rem; /* Reduced font size slightly to fit longer titles */
   white-space: nowrap; /* Prevent the text from wrapping into two lines */
   &:hover {
     text-decoration: underline;
