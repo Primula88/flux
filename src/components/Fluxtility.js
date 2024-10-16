@@ -33,7 +33,7 @@ const StyledButton = styled.a`
 
 function Fluxtility() {
   return (
-    <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', padding: '20px' }}>
+    <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', padding: '20px', boxShadow: 'none' }}>
       <CardContent>
         <Grid container spacing={3} justifyContent="center">
           {/* Make this grid item take full width and center its content */}

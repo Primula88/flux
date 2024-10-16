@@ -32,7 +32,7 @@ const StyledButton = styled.a`
 
 function Staking() {
   return (
-    <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', padding: '20px' }}>
+    <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', padding: '20px', boxShadow: 'none' }}>
       <CardContent>
         <Grid container spacing={3} justifyContent="center">
           {/* Full width grid item for the title and description */}
