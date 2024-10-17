@@ -451,7 +451,7 @@ const NavLink = styled(Link)`
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.15em;
   font-family: 'Bebas Neue', Arial, sans-serif; /* Unified font */
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
@@ -483,7 +483,7 @@ const NavExternalLink = styled.a`
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.15em;
   font-family: 'Bebas Neue', Arial, sans-serif; /* Unified font */
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
@@ -527,7 +527,7 @@ const HolderDropdownButton = styled.div`
   text-transform: uppercase;
   border-radius: 5px;
   cursor: pointer;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.15em;
   transition: color 0.3s ease;
   display: flex; /* Added flex */
   align-items: center; /* Center vertically */

@@ -22,8 +22,13 @@ const CustomTypography = styled(Typography)`
   align-items: center;
   text-align: left;
   cursor: pointer;
-  font-size: 1.5rem; /* Reduced font size slightly to fit longer titles */
-  white-space: nowrap; /* Prevent the text from wrapping into two lines */
+  font-size: 1.5rem; /* Base font size */
+  white-space: nowrap; /* Prevent text wrapping */
+
+  @media (min-width: 960px) {
+    font-size: 2rem; /* Increase font size for desktop */
+  }
+
   &:hover {
     text-decoration: underline;
   }
@@ -33,13 +38,21 @@ const CustomTypography = styled(Typography)`
 const CenteredContainer = styled(Grid)`
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center; /* Ensure center alignment */
+  gap: 15px; /* Increased space between items */
 `;
 
 // Styled for image icon
 const IconImage = styled('img')`
   margin-right: 10px;
-  width: 30px; /* Increased the icon size */
+  width: 30px;
   height: 30px;
+
+  @media (min-width: 960px) {
+    width: 40px; /* Bigger on desktop */
+    height: 40px; /* Bigger on desktop */
+  }
 `;
 
 // Full width container for the component that expands
@@ -49,15 +62,20 @@ const FullWidthContainer = styled('div')(({ theme }) => ({
   backgroundColor: '#1e1e1e',
   borderRadius: '12px',
   boxShadow: '0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb',
-  padding: theme.spacing(4), // Default padding for desktop
   color: '#fff',
+  overflow: 'hidden', // To clip the content during animation
+  transition: 'max-height 0.5s ease', // Smooth transition
+  maxHeight: '0', // Start with maxHeight 0
   [theme.breakpoints.down('sm')]: { // Media query for mobile
     width: '90%', // Make the card less wide on mobile
-    padding: theme.spacing(2), // Reduce padding on mobile
   },
 }));
 
-// List of services
+// Styled component to wrap the expanding content
+const ExpandingContent = styled('div')`
+  padding: ${({ theme }) => theme.spacing(4)};
+`;
+
 const servicesList = [
   { id: 'staking', title: 'Staking', component: <Staking /> },
   { id: 'adventure', title: 'Adventure', component: <Adventure /> },
@@ -76,20 +94,31 @@ function Services() {
   return (
     <div style={{ padding: '20px' }}>
       <CenteredContainer container>
-        <Grid item xs={12} md={10}> {/* Increased the container width */}
+        <Grid item xs={12} md={10}>
           {servicesList.map((service) => (
-            <div key={service.id} onClick={() => handleServiceClick(service.id)}>
-              <CustomTypography variant="h4">
-                <IconImage src={activeService === service.id ? MinusIcon : PlusIcon} alt="Toggle Icon" />
-                {service.title}
-              </CustomTypography>
+            <div key={service.id} style={{ width: '100%' }}>
+              <div onClick={() => handleServiceClick(service.id)}>
+                <CustomTypography variant="h4">
+                  <IconImage
+                    src={activeService === service.id ? MinusIcon : PlusIcon}
+                    alt="Toggle Icon"
+                  />
+                  {service.title}
+                </CustomTypography>
+              </div>
 
-              {/* Show component only if the link is active */}
-              {activeService === service.id && (
-                <FullWidthContainer>
-                  {service.component}
-                </FullWidthContainer>
-              )}
+              {/* Show component with animation */}
+              <FullWidthContainer
+                style={{
+                  maxHeight: activeService === service.id ? '1000px' : '0',
+                }}
+              >
+                {activeService === service.id && (
+                  <ExpandingContent>
+                    {service.component}
+                  </ExpandingContent>
+                )}
+              </FullWidthContainer>
             </div>
           ))}
         </Grid>
