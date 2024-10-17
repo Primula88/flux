@@ -25,41 +25,53 @@ const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
 };
 
-// Styled Sidescroller Container
+// Styled Sidescroller Container with a more intense vignette effect
 const SidescrollerWrapper = styled.div`
-  width: 100vw; /* Ensures full screen width */
+  width: 100vw;
   overflow: hidden;
   margin-bottom: 20px;
+  position: relative;
+  box-shadow: inset 0px 0px 200px 50px rgba(0, 0, 0, 0.7); /* Increased shadow intensity */
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.85) 100%);
+    z-index: 1; /* Ensures vignette is on top of the images */
+  }
 `;
 
 const Sidescroller = styled.div`
   display: flex;
-  width: 200%; /* Double the width to allow smooth looping */
-  animation: scroll 40s linear infinite; /* Infinite scrolling animation */
+  width: 200%;
+  animation: scroll 40s linear infinite;
 
   @keyframes scroll {
     0% {
-      transform: translateX(0); /* Start at the beginning */
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%); /* Scroll to the midpoint, then loop */
+      transform: translateX(-50%);
     }
   }
 
   img {
-    height: 250px; /* Uniform height for all images */
+    height: 250px;
     flex-shrink: 0;
-    width: auto; /* Maintain image aspect ratio */
-    /* Removed margin between images */
+    width: auto;
   }
 `;
 
 function WhoWeAre() {
-  const isDesktop = useMediaQuery('(min-width: 960px)'); // Media query to check for desktop screens
+  const isDesktop = useMediaQuery('(min-width: 960px)');
   const [shuffledImages, setShuffledImages] = useState([]);
 
   useEffect(() => {
-    // Shuffle images on component mount
     setShuffledImages(shuffleArray([...images]));
   }, []);
 
@@ -70,19 +82,17 @@ function WhoWeAre() {
         {isDesktop && (
           <SidescrollerWrapper>
             <Sidescroller>
-              {/* Double the images for smooth looping */}
               {shuffledImages.map((image, index) => (
-                <img key={index} src={image} alt={`Image ${index + 1}`} />
+                <img key={index} src={image} alt={`Artwork ${index + 1}`} />
               ))}
               {shuffledImages.map((image, index) => (
-                <img key={`${index}-loop`} src={image} alt={`Image Loop ${index + 1}`} />
+                <img key={`${index}-loop`} src={image} alt={`Artwork Loop ${index + 1}`} />
               ))}
             </Sidescroller>
           </SidescrollerWrapper>
         )}
 
         <Grid container spacing={3} alignItems="center" justifyContent="center">
-          {/* Full Width Text Section */}
           <Grid item xs={12}>
             <Typography
               variant="body1"
