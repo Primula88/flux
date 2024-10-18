@@ -2,6 +2,19 @@ import React, { useState } from 'react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import styled from 'styled-components';
 
+// Styled container for the FAQ section
+const FaqContainer = styled.div`
+  width: 75%;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb;
+  overflow: hidden;
+  color: #fff;
+`;
+
+// Main container for Tweets and FAQ
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,18 +29,15 @@ const Tweets = styled.div`
   margin: 0 auto;
 `;
 
-const FaqSection = styled.div`
-  width: 75%;
-  max-width: 100%;
-  margin: 0 auto;
-`;
-
 const FaqItem = styled.div`
-  margin-bottom: 20px;
-  background-color: ${({ open }) => (open ? '#2d2b2b' : 'transparent')};
-  padding: 10px;
-  border-radius: 5px;
+  background-color: ${({ open }) => (open ? 'rgba(70, 68, 68, 0.8)' : '#2d2b2b')};
   transition: background-color 0.3s ease;
+  margin: 0; /* Ensure no margin between items */
+  border-bottom: 1px solid #3d3b3b; /* Add a thin border to distinguish items */
+  
+  &:last-child {
+    border-bottom: none; /* Remove border from the last item */
+  }
 `;
 
 const Question = styled.div`
@@ -36,7 +46,9 @@ const Question = styled.div`
   cursor: pointer;
   font-size: 1.2em;
   font-weight: bold;
-  padding-left: 30px; /* Indented for center alignment */
+  padding: 10px 30px;
+  background-color: ${({ open }) => (open ? '#3d3b3b' : '#2d2b2b')}; 
+  transition: background-color 0.3s ease;
 `;
 
 const PlusMinus = styled.span`
@@ -48,13 +60,14 @@ const Answer = styled.div`
   font-size: 0.9em;
   max-height: ${({ open }) => (open ? '100px' : '0')};
   overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding-left: 30px; /* Align with the question */
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: ${({ open }) => (open ? '10px 30px' : '0 30px')};
 `;
 
-const Title = styled.h2`
-  color: #83d6f7; /* Title color */
+const Title = styled.h1`
+  color: #83d6f7; 
   text-align: center;
+  margin-bottom: 20px;
 `;
 
 function Socials() {
@@ -79,7 +92,7 @@ function Socials() {
     <Container>
       {/* Twitter Embeds */}
       <Tweets>
-        <Title>Latest Tweets</Title>
+        <h2>Latest Tweets</h2>
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="FluxInc_"
@@ -92,12 +105,14 @@ function Socials() {
         />
       </Tweets>
 
+      {/* FAQ Title */}
+      <Title>FAQ</Title>
+
       {/* FAQ Section */}
-      <FaqSection>
-        <Title>FAQ</Title>
+      <FaqContainer>
         {faqData.map((item, index) => (
           <FaqItem key={index} open={openFaqs.includes(index)}>
-            <Question onClick={() => toggleFaq(index)}>
+            <Question open={openFaqs.includes(index)} onClick={() => toggleFaq(index)}>
               <PlusMinus>{openFaqs.includes(index) ? '-' : '+'}</PlusMinus>
               {item.question}
             </Question>
@@ -106,7 +121,7 @@ function Socials() {
             </Answer>
           </FaqItem>
         ))}
-      </FaqSection>
+      </FaqContainer>
     </Container>
   );
 }
