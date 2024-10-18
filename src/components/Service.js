@@ -112,7 +112,7 @@ const MobileFullWidthContainer = styled('div')`
 const servicesList = [
   { id: 'staking', title: 'Staking', component: <Staking /> },
   { id: 'adventure', title: 'Adventure', component: <Adventure /> },
-  { id: 'trait-swapping', title: 'Trait Swapping', component: <TraitSwapping /> },
+  { id: 'trait-swapping', title: 'TraitStore', component: <TraitSwapping /> },
   { id: 'fluxtility', title: 'Fluxtility', component: <Fluxtility /> },
 ];
 
@@ -172,4 +172,3 @@ function Services() {
 }
 
 export default Services;
-
