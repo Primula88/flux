@@ -78,7 +78,7 @@ function Fluxtility() {
       <CardContent>
         <Grid container spacing={3}>
           {/* Left Section: Basic/Most Important Information */}
-          <Grid item xs={4} sx={{ textAlign: 'center' }}>
+          <Grid item xs={12} md={4} sx={{ textAlign: 'center' }}> {/* Ensure xs={12} for mobile */}
             <Typography variant="h3" gutterBottom sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '2rem' }}>
               Fluxtility Platform
             </Typography>
@@ -94,7 +94,7 @@ function Fluxtility() {
           </Grid>
 
           {/* Right Section: Scrollable Content */}
-          <Grid item xs={8}>
+          <Grid item xs={12} md={8}> {/* Ensure xs={12} for mobile */}
             <RightSection>
               <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                 Core Features

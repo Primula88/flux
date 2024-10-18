@@ -66,7 +66,7 @@ const FullWidthContainer = styled('div')(({ theme }) => ({
   transition: 'max-height 0.5s ease',
   maxHeight: '0',
   [theme.breakpoints.down('sm')]: {
-    width: '90%',
+    width: '100%',
   },
 }));
 
@@ -83,7 +83,7 @@ const ServicesGrid = styled(Grid)`
   width: 100%;
 
   @media (max-width: 960px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Ensures mobile view is one column */
   }
 `;
 
@@ -96,7 +96,7 @@ const MiddleRow = styled('div')`
   margin: 40px 0;
 
   @media (max-width: 960px) {
-    display: none;
+    display: none; /* Hides middle row on mobile */
   }
 `;
 
@@ -104,6 +104,8 @@ const MiddleRow = styled('div')`
 const MobileFullWidthContainer = styled('div')`
   width: 100%;
   margin-top: 20px;
+  overflow: hidden; /* Ensures no overflow on mobile */
+  max-height: ${({ isOpen }) => (isOpen ? '100%' : '0')}; /* Dynamically handles the content height */
   transition: max-height 0.5s ease;
 `;
 
@@ -133,17 +135,16 @@ function Services() {
                   <CustomTypography variant="h4">
                     <IconImage
                       src={activeService === service.id ? MinusIcon : PlusIcon}
-                      alt="Toggle Icon"
+                      alt="Toggle"
                     />
                     {service.title}
                   </CustomTypography>
                 </div>
 
+                {/* Mobile only: Open card content in 1 column */}
                 {!isDesktop && (
                   <MobileFullWidthContainer
-                    style={{
-                      maxHeight: activeService === service.id ? '1000px' : '0',
-                    }}
+                    isOpen={activeService === service.id} // Open the content only when active
                   >
                     {activeService === service.id && (
                       <ExpandingContent>
