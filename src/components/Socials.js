@@ -3,23 +3,28 @@ import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
   margin: 20px;
 `;
 
 const Tweets = styled.div`
+  width: 75%;
   max-width: 100%;
+  margin: 0 auto;
 `;
 
 const FaqSection = styled.div`
+  width: 75%;
   max-width: 100%;
+  margin: 0 auto;
 `;
 
 const FaqItem = styled.div`
   margin-bottom: 20px;
-  background-color: ${({ open }) => (open ? '#2d2b2b' : 'transparent')}; /* Slightly lighter background */
+  background-color: ${({ open }) => (open ? '#2d2b2b' : 'transparent')};
   padding: 10px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
@@ -29,20 +34,27 @@ const Question = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 1.2em; /* Larger question font */
+  font-size: 1.2em;
   font-weight: bold;
+  padding-left: 30px; /* Indented for center alignment */
 `;
 
 const PlusMinus = styled.span`
-  margin-right: 10px; /* Move the + to the left */
+  margin-right: 10px;
   font-size: 1.2em;
 `;
 
 const Answer = styled.div`
-  font-size: 0.9em; /* Smaller answer font */
+  font-size: 0.9em;
   max-height: ${({ open }) => (open ? '100px' : '0')};
   overflow: hidden;
   transition: max-height 0.3s ease;
+  padding-left: 30px; /* Align with the question */
+`;
+
+const Title = styled.h2`
+  color: #83d6f7; /* Title color */
+  text-align: center;
 `;
 
 function Socials() {
@@ -65,9 +77,9 @@ function Socials() {
 
   return (
     <Container>
-      {/* Left side: Tweets */}
+      {/* Twitter Embeds */}
       <Tweets>
-        <h2>Latest Tweets</h2>
+        <Title>Latest Tweets</Title>
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="FluxInc_"
@@ -80,9 +92,9 @@ function Socials() {
         />
       </Tweets>
 
-      {/* Right side: FAQ */}
+      {/* FAQ Section */}
       <FaqSection>
-        <h2>FAQ</h2>
+        <Title>FAQ</Title>
         {faqData.map((item, index) => (
           <FaqItem key={index} open={openFaqs.includes(index)}>
             <Question onClick={() => toggleFaq(index)}>
