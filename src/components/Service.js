@@ -56,17 +56,17 @@ const IconImage = styled('img')`
 
 // Full width container for the component that expands
 const FullWidthContainer = styled('div')(({ theme }) => ({
-  width: '95%',
-  margin: '20px 0',
+  width: '90%',  // Set the container width to 90% for more space
+  marginTop: '20px',
   backgroundColor: '#1e1e1e',
   borderRadius: '12px',
   boxShadow: '0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb',
   color: '#fff',
   overflow: 'hidden',
-  transition: 'max-height 0.5s ease',
+  transition: 'max-height 0.5s ease, width 0.5s ease',  // Added width transition
   maxHeight: '0',
   [theme.breakpoints.down('sm')]: {
-    width: '100%',
+    width: '100%',  // Full width on mobile
   },
 }));
 
@@ -94,10 +94,7 @@ const MiddleRow = styled('div')`
   justify-content: center;
   align-items: center;
   margin: 40px 0;
-
-  @media (max-width: 960px) {
-    display: none; /* Hides middle row on mobile */
-  }
+  position: relative;  // Ensures content opens under titles
 `;
 
 // A dedicated container for the services content on mobile
@@ -160,7 +157,7 @@ function Services() {
           {/* Middle row where content opens (only for desktop) */}
           {isDesktop && activeService && (
             <MiddleRow>
-              <FullWidthContainer style={{ maxHeight: '1000px', width: '80%' }}>
+              <FullWidthContainer style={{ maxHeight: '1000px', width: '90%' }}>
                 {servicesList.find((service) => service.id === activeService)?.component}
               </FullWidthContainer>
             </MiddleRow>
@@ -172,3 +169,4 @@ function Services() {
 }
 
 export default Services;
+
