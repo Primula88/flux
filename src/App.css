@@ -9,7 +9,6 @@ body, html {
   margin: 0;
   padding: 0;
   width: 100%;
-  max-width: 100%;
   overflow-x: hidden;
   background-image: url('./assets/SITE_BG.webp');
   background-size: cover;
@@ -25,7 +24,7 @@ body {
 
 .app {
   text-align: center;
-  padding: 20px;
+  padding: 0;
 }
 
 header {
@@ -105,6 +104,10 @@ h2 {
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 8px;
+}
+
+.css-46bh2p-MuiCardContent-root {
+    padding: 0 !important; /* Override any existing padding */
 }
 
 .tweets iframe {
