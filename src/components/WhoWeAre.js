@@ -165,7 +165,7 @@ const IconWrapper = styled.div`
   }
 
   img {
-    width: 22px; /* Set icon size */
+    width: auto; /* Set icon size */
     height: 22px;
     filter: brightness(0) saturate(100%) invert(71%) sepia(31%) saturate(750%) hue-rotate(149deg) brightness(101%) contrast(100%); /* Teal color filter */
   }
