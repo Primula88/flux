@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-scroll";
 import { FaTwitter, FaDiscord } from "react-icons/fa"; // Import Twitter and Discord icons
 // Assets
-import Logo from "../assets/logo/logo.webp"; // Ensure this path is correct
 import ChimpLogo from "../assets/chimplogo.webp"; // Add the chimp logo
 
 export default function TopNavbar() {
