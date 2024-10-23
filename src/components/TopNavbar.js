@@ -4,6 +4,7 @@ import { Link } from "react-scroll";
 import { FaTwitter, FaDiscord } from "react-icons/fa"; // Import Twitter and Discord icons
 // Assets
 import Logo from "../assets/logo/logo.webp"; // Ensure this path is correct
+import ChimpLogo from "../assets/chimplogo.webp"; // Add the chimp logo
 
 export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
@@ -73,24 +74,17 @@ export default function TopNavbar() {
         style={y > 100 ? { height: "60px" } : { height: "80px" }}
       >
         <NavInner className="container flexSpaceBetween">
-          <LogoLink className="pointer flexNullCenter" to="home" smooth={true}>
-            <LogoTitleWrapper>
-              <LogoImg src={Logo} alt="Flux Inc. Logo" />
-            </LogoTitleWrapper>
-          </LogoLink>
+          {/* Left: Services Link and Chimp Logo */}
+          <LeftSide>
+            <ServicesLink to="home" spy={true} smooth={true} offset={-80}>
+              Services
+            </ServicesLink>
+          </LeftSide>
+            <ChimpLogoWrapper hide={y > 100}>
+              <ChimpLogoImg src={ChimpLogo} alt="Chimp Logo" />
+            </ChimpLogoWrapper>
+          {/* Right: Desktop Dropdowns and Mobile Menu */}
           <UlWrapper className="flexNullCenter desktopMenu">
-            <li className="semiBold font15 pointer">
-              <NavLink
-                activeClass="active"
-                to="home"
-                spy={true}
-                smooth={true}
-                offset={-80}
-                onClick={closeMenu}
-              >
-                Home
-              </NavLink>
-            </li>
             {/* About Dropdown */}
             <HolderDropdown ref={aboutRef}>
               <HolderDropdownButton
@@ -344,6 +338,7 @@ export default function TopNavbar() {
 }
 
 // Styled Components for Navbar
+
 const Wrapper = styled.nav`
   width: 100%;
   position: fixed;
@@ -357,36 +352,61 @@ const NavInner = styled.div`
   position: relative;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 20px;
 `;
 
-// Wrapper to hold the logo and title next to each other
-const LogoTitleWrapper = styled.div`
+// Left Side: Services Link and Chimp Logo
+const LeftSide = styled.div`
   display: flex;
+  left: 20px;
+  position: absolute;
   align-items: center;
 `;
 
-const LogoImg = styled.img`
-  height: 40px;
-  width: auto;
-  margin-right: 10px;
-  @media (max-width: 760px) {
-    height: 30px;
+const ServicesLink = styled(Link)`
+  font-size: 2.5rem;
+  font-family: "Bebas Neue", Arial, sans-serif;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-right: 20px; /* Add space between Services and Chimp Logo */
+
+  &:hover {
+    color: #64d9fb;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
   }
 `;
 
-// Link that wraps the logo and title
-const LogoLink = styled(Link)`
-  cursor: pointer; /* Adds pointer cursor on hover */
-  display: flex;
-  align-items: center;
+const ChimpLogoWrapper = styled.div`
+   opacity: ${({ hide }) => (hide ? 0 : 1)};
+  transition: opacity 0.3s ease;
+  pointer-events: ${({ hide }) => (hide ? 'none' : 'auto')};
+  padding-top: 20px;
+  @media (max-width: 760px) {
+    padding-left: 0px; /* Adjusted padding for mobile */
+  }
+`;
+
+const ChimpLogoImg = styled.img`
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
 `;
 
 // Desktop Menu
 const UlWrapper = styled.ul`
   display: flex;
+  position: absolute;
+right: 20px;
   justify-content: flex-end;
   list-style: none;
   margin: 0;
@@ -413,8 +433,11 @@ const MenuButton = styled.button`
   cursor: pointer;
 
   @media (max-width: 760px) {
-    display: block; /* Show the menu button on mobile */
+    display: block;
+    position: absolute;
+    right: 20px; /* Ensures it stays on the right */
   }
+
 `;
 
 // Mobile dropdown menu
@@ -451,7 +474,7 @@ const NavLink = styled(Link)`
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.25em;
   font-family: 'Bebas Neue', Arial, sans-serif; /* Unified font */
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
@@ -483,7 +506,7 @@ const NavExternalLink = styled.a`
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.25em;
   font-family: 'Bebas Neue', Arial, sans-serif; /* Unified font */
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
@@ -527,7 +550,7 @@ const HolderDropdownButton = styled.div`
   text-transform: uppercase;
   border-radius: 5px;
   cursor: pointer;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.25em;
   transition: color 0.3s ease;
   display: flex; /* Added flex */
   align-items: center; /* Center vertically */
@@ -576,7 +599,7 @@ const HolderAreaTitle = styled.div`
   font-weight: 700;
   margin-bottom: 5px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
   font-size: 1.2rem; /* Increased font size for emphasis */
   text-align: left; /* Align text to left */
   padding: 10px; /* Add padding */
@@ -589,4 +612,3 @@ const Divider = styled.hr`
   background: #444;
   margin: 5px 0 10px 0;
 `;
-
