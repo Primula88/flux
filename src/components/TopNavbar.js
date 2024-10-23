@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
-import { FaTwitter, FaDiscord } from "react-icons/fa"; // Import Twitter and Discord icons
+import { FaTwitter, FaDiscord, FaBars, FaTimes } from "react-icons/fa"; // Import necessary icons
 // Assets
-import ChimpLogo from "../assets/chimplogo.webp"; // Add the chimp logo
+import ChimpLogo from "../assets/chimplogo.webp"; // Ensure this path is correct
 
 export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
-  const [menuOpen, setMenuOpen] = useState(false); // State for mobile menu open/close
+  const [menuOpen, setMenuOpen] = useState(false); // State for menu open/close
   const [holderMenuOpen, setHolderMenuOpen] = useState(false); // State for desktop Holder Area dropdown
   const [aboutMenuOpen, setAboutMenuOpen] = useState(false); // State for desktop About dropdown
   const holderRef = useRef(null); // Reference for Holder Area dropdown
@@ -47,11 +47,11 @@ export default function TopNavbar() {
   }, [holderMenuOpen, aboutMenuOpen]);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen); // Toggle the mobile menu
+    setMenuOpen(!menuOpen); // Toggle the dropdown menu
   };
 
   const closeMenu = () => {
-    setMenuOpen(false); // Close the mobile menu when a menu item is clicked
+    setMenuOpen(false); // Close the dropdown menu when a menu item is clicked
     setHolderMenuOpen(false); // Also close the Holder Area dropdown if open
     setAboutMenuOpen(false); // Also close the About dropdown if open
   };
@@ -73,245 +73,137 @@ export default function TopNavbar() {
         style={y > 100 ? { height: "60px" } : { height: "80px" }}
       >
         <NavInner className="container flexSpaceBetween">
-          {/* Left: Services Link and Chimp Logo */}
+          {/* Left: Services Link */}
           <LeftSide>
             <ServicesLink to="home" spy={true} smooth={true} offset={-80}>
               Services
             </ServicesLink>
           </LeftSide>
-            <ChimpLogoWrapper hide={y > 100}>
-              <ChimpLogoImg src={ChimpLogo} alt="Chimp Logo" />
-            </ChimpLogoWrapper>
-          {/* Right: Desktop Dropdowns and Mobile Menu */}
-          <UlWrapper className="flexNullCenter desktopMenu">
-            {/* About Dropdown */}
-            <HolderDropdown ref={aboutRef}>
-              <HolderDropdownButton
-                onClick={toggleAboutMenu}
-                aria-haspopup="true"
-                aria-expanded={aboutMenuOpen}
-              >
-                About ▾
-              </HolderDropdownButton>
-              {aboutMenuOpen && (
-                <HolderDropdownContent>
-                  <NavLink
-                    to="whoweare"
-                    spy={true}
-                    smooth={true}
-                    offset={-80}
-                    onClick={closeMenu}
-                  >
-                    Who We Are
-                  </NavLink>
-                  <NavLink
-                    to="services"
-                    spy={true}
-                    smooth={true}
-                    offset={-80}
-                    onClick={closeMenu}
-                  >
-                    Services
-                  </NavLink>
-                  <NavLink
-                    to="FAQ"
-                    spy={true}
-                    smooth={true}
-                    offset={-80}
-                    onClick={closeMenu}
-                  >
-                    FAQ
-                  </NavLink>
-                </HolderDropdownContent>
-              )}
-            </HolderDropdown>
-            {/* Holder Area Dropdown */}
-            <HolderDropdown ref={holderRef}>
-              <HolderDropdownButton
-                onClick={toggleHolderMenu}
-                aria-haspopup="true"
-                aria-expanded={holderMenuOpen}
-              >
-                Holder Area ▾
-              </HolderDropdownButton>
-              {holderMenuOpen && (
-                <HolderDropdownContent>
-                  <NavExternalLink
-                    href="https://www.fluxinc.io/factory"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMenu}
-                  >
-                    Factory
-                  </NavExternalLink>
-                  <NavExternalLink
-                    href="https://www.fluxinc.io/portal"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMenu}
-                  >
-                    Portal
-                  </NavExternalLink>
-                  <NavExternalLink
-                    href="https://www.fluxinc.io/tailor"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMenu}
-                  >
-                    Tailor
-                  </NavExternalLink>
-                  <NavExternalLink
-                    href="https://www.fluxinc.io/gm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMenu}
-                  >
-                    GM Generator
-                  </NavExternalLink>
-                  <NavExternalLink
-                    href="https://www.fluxinc.io/shop"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMenu}
-                  >
-                    Shop
-                  </NavExternalLink>
-                </HolderDropdownContent>
-              )}
-            </HolderDropdown>
-            {/* Social Media Icons */}
-            <li className="semiBold font15 pointer">
-              <SocialIconLink
-                href="https://x.com/FluxInc_"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter size={20} />
-              </SocialIconLink>
-            </li>
-            <li className="semiBold font15 pointer">
-              <SocialIconLink
-                href="https://discord.gg/adRHkNwWf9"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaDiscord size={20} />
-              </SocialIconLink>
-            </li>
-          </UlWrapper>
-          <MenuButton onClick={toggleMenu} className="mobileMenu">
-            {menuOpen ? "Close" : "Menu"}
+
+          {/* Center: Chimp Logo */}
+          <ChimpLogoWrapper hide={y > 100}>
+            <ChimpLogoImg src={ChimpLogo} alt="Chimp Logo" />
+          </ChimpLogoWrapper>
+
+          {/* Right: Menu Button */}
+          <MenuButton onClick={toggleMenu} aria-label="Toggle menu">
+            {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </MenuButton>
         </NavInner>
+
+        {/* Dropdown Menu */}
         {menuOpen && (
-          <MobileMenuWrapper>
-            <li>
-              <NavLink
-                activeClass="active"
-                to="home"
-                spy={true}
-                smooth={true}
-                offset={-80}
-                onClick={closeMenu}
-              >
-                Home
-              </NavLink>
-            </li>
-            {/* About Section in Mobile Menu */}
-            <HolderAreaSection>
-              <HolderAreaTitle>About</HolderAreaTitle>
-              <Divider />
+          <DropdownMenu>
+            <MenuLinks>
               <li>
                 <NavLink
-                  to="whoweare"
+                  to="home"
                   spy={true}
                   smooth={true}
                   offset={-80}
                   onClick={closeMenu}
                 >
-                  Who We Are
+                  Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="services"
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
-                  onClick={closeMenu}
+              {/* About Dropdown */}
+              <DropdownItem ref={aboutRef}>
+                <DropdownButton
+                  onClick={toggleAboutMenu}
+                  aria-haspopup="true"
+                  aria-expanded={aboutMenuOpen}
                 >
-                  Services
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="FAQ"
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
-                  onClick={closeMenu}
+                  About ▾
+                </DropdownButton>
+                {aboutMenuOpen && (
+                  <DropdownContent>
+                    <NavLink
+                      to="whoweare"
+                      spy={true}
+                      smooth={true}
+                      offset={-80}
+                      onClick={closeMenu}
+                    >
+                      Who We Are
+                    </NavLink>
+                    <NavLink
+                      to="services"
+                      spy={true}
+                      smooth={true}
+                      offset={-80}
+                      onClick={closeMenu}
+                    >
+                      Services
+                    </NavLink>
+                    <NavLink
+                      to="FAQ"
+                      spy={true}
+                      smooth={true}
+                      offset={-80}
+                      onClick={closeMenu}
+                    >
+                      FAQ
+                    </NavLink>
+                  </DropdownContent>
+                )}
+              </DropdownItem>
+              {/* Holder Area Dropdown */}
+              <DropdownItem ref={holderRef}>
+                <DropdownButton
+                  onClick={toggleHolderMenu}
+                  aria-haspopup="true"
+                  aria-expanded={holderMenuOpen}
                 >
-                  FAQ
-                </NavLink>
-              </li>
-            </HolderAreaSection>
-            {/* Holder Area Section in Mobile Menu */}
-            <HolderAreaSection>
-              <HolderAreaTitle>Holder Area</HolderAreaTitle>
-              <Divider />
-              <li>
-                <NavExternalLink
-                  href="https://www.fluxinc.io/factory"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={closeMenu}
-                >
-                  Factory
-                </NavExternalLink>
-              </li>
-              <li>
-                <NavExternalLink
-                  href="https://www.fluxinc.io/portal"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={closeMenu}
-                >
-                  Portal
-                </NavExternalLink>
-              </li>
-              <li>
-                <NavExternalLink
-                  href="https://www.fluxinc.io/tailor"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={closeMenu}
-                >
-                  Tailor
-                </NavExternalLink>
-              </li>
-              <li>
-                <NavExternalLink
-                  href="https://www.fluxinc.io/gm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={closeMenu}
-                >
-                  GM Generator
-                </NavExternalLink>
-              </li>
-              <li>
-                <NavExternalLink
-                  href="https://www.fluxinc.io/shop"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={closeMenu}
-                >
-                  Shop
-                </NavExternalLink>
-              </li>
-            </HolderAreaSection>
-            {/* Mobile Social Media Icons Side by Side */}
-            <li className="social-icons">
+                  Holder Area ▾
+                </DropdownButton>
+                {holderMenuOpen && (
+                  <DropdownContent>
+                    <NavExternalLink
+                      href="https://www.fluxinc.io/factory"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMenu}
+                    >
+                      Factory
+                    </NavExternalLink>
+                    <NavExternalLink
+                      href="https://www.fluxinc.io/portal"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMenu}
+                    >
+                      Portal
+                    </NavExternalLink>
+                    <NavExternalLink
+                      href="https://www.fluxinc.io/tailor"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMenu}
+                    >
+                      Tailor
+                    </NavExternalLink>
+                    <NavExternalLink
+                      href="https://www.fluxinc.io/gm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMenu}
+                    >
+                      GM Generator
+                    </NavExternalLink>
+                    <NavExternalLink
+                      href="https://www.fluxinc.io/shop"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMenu}
+                    >
+                      Shop
+                    </NavExternalLink>
+                  </DropdownContent>
+                )}
+              </DropdownItem>
+            </MenuLinks>
+            {/* Social Media Icons */}
+            <SocialIcons>
               <SocialIconLink
                 href="https://x.com/FluxInc_"
                 target="_blank"
@@ -328,8 +220,8 @@ export default function TopNavbar() {
               >
                 <FaDiscord size={20} />
               </SocialIconLink>
-            </li>
-          </MobileMenuWrapper>
+            </SocialIcons>
+          </DropdownMenu>
         )}
       </Wrapper>
     </>
@@ -345,32 +237,34 @@ const Wrapper = styled.nav`
   left: 0;
   z-index: 9999;
   transition: height 0.3s ease, background-color 0.3s ease;
+  background-color: transparent; /* Change as needed */
 `;
 
 const NavInner = styled.div`
   position: relative;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Space between left and right */
   align-items: center;
   padding: 0 20px;
 `;
 
-// Left Side: Services Link and Chimp Logo
+// Left Side: Services Link
 const LeftSide = styled.div`
   display: flex;
-  left: 20px;
-  position: absolute;
   align-items: center;
+  position: absolute;
+  left: 20px; /* Position it to the left */
 `;
 
+// Services Link
 const ServicesLink = styled(Link)`
   font-size: 2.5rem;
   font-family: "Bebas Neue", Arial, sans-serif;
   color: #fff;
   cursor: pointer;
   transition: color 0.3s ease;
-  margin-right: 20px; /* Add space between Services and Chimp Logo */
+  margin-right: 20px; /* Space between Services and potentially other elements */
 
   &:hover {
     color: #64d9fb;
@@ -385,101 +279,127 @@ const ServicesLink = styled(Link)`
   }
 `;
 
+// Center: Chimp Logo
 const ChimpLogoWrapper = styled.div`
-   opacity: ${({ hide }) => (hide ? 0 : 1)};
+  opacity: ${({ hide }) => (hide ? 0 : 1)};
   transition: opacity 0.3s ease;
-  pointer-events: ${({ hide }) => (hide ? 'none' : 'auto')};
-  padding-top: 20px;
-  @media (max-width: 760px) {
-    padding-left: 0px; /* Adjusted padding for mobile */
-  }
+  pointer-events: ${({ hide }) => (hide ? "none" : "auto")};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ChimpLogoImg = styled.img`
   width: 80px;
   height: 80px;
   object-fit: cover;
-`;
 
-// Desktop Menu
-const UlWrapper = styled.ul`
-  display: flex;
-  position: absolute;
-right: 20px;
-  justify-content: flex-end;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  li {
-    margin-left: 30px;
-    display: flex;
-    align-items: center; /* Ensures vertical alignment */
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
   }
 
-  @media (max-width: 760px) {
-    display: none; /* Hide the desktop menu on mobile */
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
   }
 `;
 
-// Button for mobile menu
+// Menu Button
 const MenuButton = styled.button`
-  display: none;
-  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
   color: #fff;
   background: transparent;
   border: none;
   cursor: pointer;
 
-  @media (max-width: 760px) {
-    display: block;
-    position: absolute;
-    right: 20px; /* Ensures it stays on the right */
-  }
+  /* Position it to the right */
+  position: absolute;
+  right: 20px;
 
+  @media (min-width: 761px) {
+    /* Optional: Adjust size or color for desktop */
+  }
 `;
 
-// Mobile dropdown menu
-const MobileMenuWrapper = styled.ul`
+// Dropdown Menu
+const DropdownMenu = styled.div`
   position: absolute;
-  top: 40px; /* Adjust based on navbar height */
+  top: 80px; /* Adjust based on navbar height */
   right: 20px;
   background-color: #1e1e1e;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  list-style: none;
+  width: 250px; /* Adjust width as needed */
   padding: 10px 0;
-  width: 220px; /* Increased width to accommodate Holder Area links */
+  z-index: 1000; /* Ensure it appears above other elements */
+  display: flex;
+  flex-direction: column;
+`;
 
-  li {
-    /* Removed padding to allow individual padding in links */
-  }
+// Menu Links Container
+const MenuLinks = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
 
-  .social-icons {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 20px;
-  }
+// Dropdown Item for About and Holder Area
+const DropdownItem = styled.li`
+  position: relative;
+`;
 
-  @media (min-width: 760px) {
-    display: none; /* Hide the mobile menu on desktop */
+// Dropdown Button
+const DropdownButton = styled.div`
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #2e2e2e;
+    color: #64d9fb;
   }
+`;
+
+// Dropdown Content
+const DropdownContent = styled.div`
+  background-color: #2e2e2e;
+  border-radius: 8px;
+  margin-top: 5px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+`;
+
+// Social Media Icons Container
+const SocialIcons = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  border-top: 1px solid #444;
+  margin-top: 10px;
 `;
 
 // Styled Link for all navigation items
 const NavLink = styled(Link)`
   color: #ffffff;
-  padding: 4px 8px;
+  padding: 10px 20px;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-family: 'Bebas Neue', Arial, sans-serif; /* Unified font */
+  letter-spacing: 0.1em;
+  font-family: 'Bebas Neue', Arial, sans-serif;
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
+  display: block;
 
   &:hover {
     color: #64d9fb;
@@ -489,11 +409,6 @@ const NavLink = styled(Link)`
   &.active {
     color: #64d9fb;
   }
-
-  @media (max-width: 760px) {
-    display: block;
-    padding: 8px 16px; /* Increased padding for better touch targets on mobile */
-  }
 `;
 
 // Styled External Link for Holder Area and Mobile Menu
@@ -501,12 +416,12 @@ const NavExternalLink = styled.a`
   color: #ffffff;
   text-decoration: none;
   display: block;
-  padding: 8px 16px; /* Unified padding */
+  padding: 10px 20px;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-family: 'Bebas Neue', Arial, sans-serif; /* Unified font */
+  letter-spacing: 0.1em;
+  font-family: 'Bebas Neue', Arial, sans-serif;
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
   cursor: pointer;
@@ -515,10 +430,6 @@ const NavExternalLink = styled.a`
     color: #64d9fb;
     background-color: #3e3e3e;
   }
-
-  @media (max-width: 760px) {
-    padding: 6px 16px; /* Adjusted padding for mobile */
-  }
 `;
 
 // Styled Link for social media icons
@@ -526,88 +437,10 @@ const SocialIconLink = styled.a`
   color: #ffffff;
   transition: color 0.3s ease;
   cursor: pointer;
-  padding: 0 5px; /* Adjust padding for better spacing */
+  padding: 0 10px;
 
   &:hover {
     color: #64d9fb;
   }
 `;
 
-// Desktop Holder Area Dropdown
-const HolderDropdown = styled.li`
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  user-select: none;
-`;
-
-// Adjusted HolderDropdownButton for vertical alignment
-const HolderDropdownButton = styled.div`
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  border-radius: 5px;
-  cursor: pointer;
-  letter-spacing: 0.25em;
-  transition: color 0.3s ease;
-  display: flex; /* Added flex */
-  align-items: center; /* Center vertically */
-
-  &:hover {
-    color: #64d9fb;
-  }
-`;
-
-// Dropdown content for Holder Area and About
-const HolderDropdownContent = styled.div`
-  position: absolute;
-  top: 40px; /* Adjust based on dropdown button height */
-  left: 0;
-  background-color: #2e2e2e;
-  border-radius: 8px;
-  min-width: 160px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  display: flex;
-  flex-direction: column; /* Stack links vertically */
-
-  a {
-    color: #ffffff;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #3e3e3e;
-      color: #64d9fb;
-    }
-  }
-`;
-
-// Mobile Holder Area Section and About Section
-const HolderAreaSection = styled.li`
-  width: 100%;
-  box-sizing: border-box;
-`;
-
-// Enhanced Holder Area Title for Mobile
-const HolderAreaTitle = styled.div`
-  color: #ffffff;
-  font-weight: 700;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 1.2rem; /* Increased font size for emphasis */
-  text-align: left; /* Align text to left */
-  padding: 10px; /* Add padding */
-`;
-
-// Divider for Mobile Holder Area Section
-const Divider = styled.hr`
-  border: 0;
-  height: 1px;
-  background: #444;
-  margin: 5px 0 10px 0;
-`;
