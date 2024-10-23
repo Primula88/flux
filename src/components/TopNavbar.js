@@ -451,7 +451,7 @@ const NavLink = styled(Link)`
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   font-family: 'Bebas Neue', Arial, sans-serif; /* Unified font */
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
