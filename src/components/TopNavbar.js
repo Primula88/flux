@@ -333,7 +333,7 @@ const DropdownMenu = styled.div`
   background-color: #1e1e1e;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  width: 250px; /* Adjust width as needed */
+  width: 140px; /* Adjust width as needed */
   padding: 10px 0;
   z-index: 1000; /* Ensure it appears above other elements */
   display: flex;
