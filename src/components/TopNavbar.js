@@ -272,7 +272,7 @@ const ServicesLink = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
   }
 
   @media (max-width: 480px) {
