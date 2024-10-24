@@ -276,7 +276,7 @@ const ServicesLink = styled(Link)`
   }
 
   @media (max-width: 480px) {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 `;
 
@@ -305,8 +305,8 @@ const ChimpLogoImg = styled.img`
   }
 
   @media (max-width: 480px) {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 `;
 
