@@ -92,7 +92,7 @@ const ContentWrapper = styled.div`
 // Styled Title with custom colors
 const StyledTitle = styled.h2`
   font-family: 'AkiraExpanded';
-  font-size: 1.4rem;
+  font-size: 1.75rem;
   color: white;
   letter-spacing: 0.02em;
   margin-bottom: 20px;
