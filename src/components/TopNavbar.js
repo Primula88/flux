@@ -81,7 +81,7 @@ export default function TopNavbar() {
           </LeftSide>
 
           {/* Center: Chimp Logo */}
-          <ChimpLogoWrapper hide={y > 100}>
+<ChimpLogoWrapper isHidden={y > 100}>
             <ChimpLogoImg src={ChimpLogo} alt="Chimp Logo" />
           </ChimpLogoWrapper>
 
@@ -285,17 +285,18 @@ const ServicesLink = styled(Link)`
 `;
 
 // Center: Chimp Logo
-const ChimpLogoWrapper = styled.div`
-  opacity: ${({ hide }) => (hide ? 0 : 1)};
+const ChimpLogoWrapper = styled(({ isHidden, ...rest }) => <div {...rest} />)`
+  opacity: ${({ isHidden }) => (isHidden ? 0 : 1)};
   transition: opacity 0.3s ease;
-  pointer-events: ${({ hide }) => (hide ? "none" : "auto")};
+  pointer-events: ${({ isHidden }) => (isHidden ? "none" : "auto")};
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 40px;
+
   @media (max-width: 768px) {
-  padding-top: 20px;  
-}   
+    padding-top: 20px;  
+  }   
 `;
 
 const ChimpLogoImg = styled.img`

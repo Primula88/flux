@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import BebasNeueFont from '../assets/font/BebasNeue-Regular.ttf'; // Import Bebas Neue font
+
+// Global font styles
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Bebas Neue';
+    src: url(${BebasNeueFont}) format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+`;
 
 // Styled container for the FAQ section
 const FaqContainer = styled.div`
@@ -64,10 +79,17 @@ const Answer = styled.div`
   padding: ${({ open }) => (open ? '10px 30px' : '0 30px')};
 `;
 
-const Title = styled.h1`
-  color: #83d6f7; 
+const CustomHeaderTypography = styled.h1`
+  font-family: 'Bebas Neue', sans-serif;
+  color: white;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+
+  @media (min-width: 960px) {
+    font-size: 3rem;
+    font-weight: 300;
+  }
 `;
 
 function Socials() {
@@ -89,40 +111,43 @@ function Socials() {
   ];
 
   return (
-    <Container>
-      {/* Twitter Embeds */}
-      <Tweets>
-        <h2>Latest Tweets</h2>
-        <TwitterTimelineEmbed
-          sourceType="profile"
-          screenName="FluxInc_"
-          options={{ height: 400, theme: 'dark' }}
-        />
-        <TwitterTimelineEmbed
-          sourceType="profile"
-          screenName="TimeTravelingChimps"
-          options={{ height: 400, theme: 'dark' }}
-        />
-      </Tweets>
+    <>
+      <GlobalStyle />
+      <Container>
+        {/* Twitter Embeds */}
+        <Tweets>
+          <CustomHeaderTypography>X Updates</CustomHeaderTypography>
+          <TwitterTimelineEmbed
+            sourceType="profile"
+            screenName="FluxInc_"
+            options={{ height: 400, theme: 'dark' }}
+          />
+          <TwitterTimelineEmbed
+            sourceType="profile"
+            screenName="TimeTravelingChimps"
+            options={{ height: 400, theme: 'dark' }}
+          />
+        </Tweets>
 
-      {/* FAQ Title */}
-      <Title>FAQ</Title>
+        {/* FAQ Title */}
+        <CustomHeaderTypography>FAQ</CustomHeaderTypography>
 
-      {/* FAQ Section */}
-      <FaqContainer>
-        {faqData.map((item, index) => (
-          <FaqItem key={index} open={openFaqs.includes(index)}>
-            <Question open={openFaqs.includes(index)} onClick={() => toggleFaq(index)}>
-              <PlusMinus>{openFaqs.includes(index) ? '-' : '+'}</PlusMinus>
-              {item.question}
-            </Question>
-            <Answer open={openFaqs.includes(index)}>
-              <p>{item.answer}</p>
-            </Answer>
-          </FaqItem>
-        ))}
-      </FaqContainer>
-    </Container>
+        {/* FAQ Section */}
+        <FaqContainer>
+          {faqData.map((item, index) => (
+            <FaqItem key={index} open={openFaqs.includes(index)}>
+              <Question open={openFaqs.includes(index)} onClick={() => toggleFaq(index)}>
+                <PlusMinus>{openFaqs.includes(index) ? '-' : '+'}</PlusMinus>
+                {item.question}
+              </Question>
+              <Answer open={openFaqs.includes(index)}>
+                <p>{item.answer}</p>
+              </Answer>
+            </FaqItem>
+          ))}
+        </FaqContainer>
+      </Container>
+    </>
   );
 }
 
