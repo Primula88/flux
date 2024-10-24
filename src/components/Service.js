@@ -117,19 +117,6 @@ const MobileFullWidthContainer = styled('div')`
   transition: max-height 0.5s ease;
 `;
 
-// Header for "SERVICES WE OFFER"
-const Header = styled(Typography)`
-  font-family: 'Bebas Neue', sans-serif;
-  color: white;
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-
-  @media (min-width: 960px) {
-    font-size: 3rem;
-  }
-`;
-
 const servicesList = [
   { id: 'staking', title: 'Staking', component: <Staking /> },
   { id: 'adventure', title: 'Adventure', component: <Adventure /> },
@@ -148,10 +135,9 @@ function Services() {
   return (
     <div style={{ padding: '20px' }}>
       {/* Header Title */}
-      <Header variant="h2">
-        SERVICES WE OFFER
-      </Header>
-
+               <CustomHeaderTypography variant="h2">
+       SERVICES WE OFFER
+</ CustomHeaderTypography>
       <CenteredContainer container>
         <Grid item xs={12} md={10}>
           {/* Services Grid */}
