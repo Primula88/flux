@@ -264,6 +264,7 @@ const ServicesLink = styled(Link)`
   color: #fff;
   cursor: pointer;
   transition: color 0.3s ease;
+  letter-spacing: 0.5rem;
   margin-right: 20px; /* Space between Services and potentially other elements */
 
   &:hover {
@@ -287,6 +288,10 @@ const ChimpLogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 50px;
+  @media (max-width: 768px) {
+  padding-top: 20px;  
+}   
 `;
 
 const ChimpLogoImg = styled.img`
