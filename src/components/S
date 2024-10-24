@@ -8,15 +8,14 @@ import Fluxtility from './Fluxtility';
 import PlusIcon from '../assets/plus.webp';
 import MinusIcon from '../assets/minus.webp';
 import BebasNeueFont from '../assets/font/BebasNeue-Regular.ttf'; // Import Bebas Neue font
-import AkiraFont from '../assets/font/AkiraExpandedDemo.otf'; // Import Akira font
+import AkiraFont from '../assets/font/AkiraExpandedDemo.otf'; // If this is the correct path
+
 
 // Custom font-face for Bebas Neue
 const CustomHeaderTypography = styled(Typography)`
   @font-face {
     font-family: 'Bebas Neue';
-    src: url(${BebasNeueFont}) format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    src: url(${BebasNeueFont}) format('opentype');
   }
   font-family: 'Bebas Neue', sans-serif;
   color: white;
@@ -34,8 +33,6 @@ const CustomTypography = styled(Typography)`
   @font-face {
     font-family: 'Akira';
     src: url(${AkiraFont}) format('opentype');
-    font-weight: normal;
-    font-style: normal;
   }
   font-family: 'Akira', sans-serif;
   color: #83d6f7;
@@ -55,7 +52,7 @@ const CustomTypography = styled(Typography)`
   }
 `;
 
-// Wrapper to center the links while keeping the text aligned left on desktop
+// Wrapper to center the links while keeping the text aligned left
 const CenteredContainer = styled(Grid)`
   display: flex;
   justify-content: center;
@@ -76,34 +73,47 @@ const IconImage = styled('img')`
   }
 `;
 
-// Full width container for the component that expands (Desktop)
-const ActiveServiceContainer = styled('div')`
-  width: 70%;
-  margin: 20px auto 0 auto;
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb;
-  color: #fff;
-  overflow: hidden;
-  transition: max-height 0.5s ease, width 0.5s ease;
-`;
+// Full width container for the component that expands
+const FullWidthContainer = styled('div')(({ theme }) => ({
+  width: '90%',  // Set the container width to 90% for more space
+  marginTop: '20px',
+  backgroundColor: '#1e1e1e',
+  borderRadius: '12px',
+  boxShadow: '0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb',
+  color: '#fff',
+  overflow: 'hidden',
+  transition: 'max-height 0.5s ease, width 0.5s ease',  // Added width transition
+  maxHeight: '0',
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',  // Full width on mobile
+  },
+}));
 
 // Wrapper for the expanding content
 const ExpandingContent = styled('div')`
-  padding: 40px;
+  padding: ${({ theme }) => theme.spacing(4)};
 `;
 
-// Styled grid for desktop layout with a single row
+// Styled grid for desktop layout with 2 rows of 2 columns
 const ServicesGrid = styled(Grid)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   width: 100%;
 
   @media (max-width: 960px) {
-    flex-direction: column; /* Ensures mobile view is one column */
+    grid-template-columns: 1fr; /* Ensures mobile view is one column */
   }
+`;
+
+// Middle row for the desktop layout
+const MiddleRow = styled('div')`
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  position: relative;  // Ensures content opens under titles
 `;
 
 // A dedicated container for the services content on mobile
@@ -113,19 +123,6 @@ const MobileFullWidthContainer = styled('div')`
   overflow: hidden; /* Ensures no overflow on mobile */
   max-height: ${({ isOpen }) => (isOpen ? '100%' : '0')}; /* Dynamically handles the content height */
   transition: max-height 0.5s ease;
-`;
-
-// Header for "SERVICES WE OFFER"
-const Header = styled(Typography)`
-  font-family: 'Bebas Neue', sans-serif;
-  color: white;
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-
-  @media (min-width: 960px) {
-    font-size: 3rem;
-  }
 `;
 
 const servicesList = [
@@ -146,16 +143,15 @@ function Services() {
   return (
     <div style={{ padding: '20px' }}>
       {/* Header Title */}
-      <Header variant="h2">
+      <CustomHeaderTypography variant="h2">
         SERVICES WE OFFER
-      </Header>
+      </CustomHeaderTypography>
 
       <CenteredContainer container>
         <Grid item xs={12} md={10}>
-          {/* Services Grid */}
           <ServicesGrid>
             {servicesList.map((service) => (
-              <div key={service.id} style={{ width: isDesktop ? 'auto' : '100%' }}>
+              <div key={service.id} style={{ width: '100%' }}>
                 <div onClick={() => handleServiceClick(service.id)}>
                   <CustomTypography variant="h4">
                     <IconImage
@@ -182,13 +178,13 @@ function Services() {
             ))}
           </ServicesGrid>
 
-          {/* Desktop only: Open service content in a separate 70% div centered below the links */}
+          {/* Middle row where content opens (only for desktop) */}
           {isDesktop && activeService && (
-            <ActiveServiceContainer>
-              <ExpandingContent>
+            <MiddleRow>
+              <FullWidthContainer style={{ maxHeight: '1000px', width: '90%' }}>
                 {servicesList.find((service) => service.id === activeService)?.component}
-              </ExpandingContent>
-            </ActiveServiceContainer>
+              </FullWidthContainer>
+            </MiddleRow>
           )}
         </Grid>
       </CenteredContainer>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Typography, Card, CardContent, useMediaQuery } from '@mui/material';
 import styled from 'styled-components';
+import ChimpLogo from '../assets/chimplogo.webp'; // Import the logo
 import TensorIcon from '../assets/tensor.webp'; // Import Tensor icon
 import MEIcon from '../assets/ME.webp'; // Import Magic Eden icon
 
@@ -67,31 +68,52 @@ const Sidescroller = styled.div`
   }
 `;
 
-// TextWrapper without the logo
+// TextWrapper with white border on both sides, hidden on mobile
 const TextWrapper = styled.div`
   max-width: 70%;
   margin: auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
   padding: 40px 0;
 
   @media (max-width: 960px) {
     max-width: 100%;
-    padding: 20px 0;
+    flex-direction: column;
+    border-left: none; /* Hide border on mobile */
+    border-right: none; /* Hide border on mobile */
+  }
+`;
+
+// Logo Wrapper for the image, hidden on mobile
+const LogoWrapper = styled.div`
+  flex: 0 0 25%; /* Takes up 25% of the space */
+  display: flex;
+  justify-content: center;
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 960px) {
+    display: none; /* Hide logo on mobile */
   }
 `;
 
 // Content Wrapper for the title and text
 const ContentWrapper = styled.div`
-  flex: 0 0 auto;
+  flex: 0 0 75%; /* Takes up 75% of the space */
+  
+  @media (max-width: 960px) {
+    flex: 0 0 auto;
+    text-align: center;
+  }
 `;
 
 // Styled Title with custom colors
 const StyledTitle = styled.h2`
-  font-family: 'AkiraExpanded';
+    font-family: 'AkiraExpanded';
   font-size: 1.4rem;
   color: white;
   letter-spacing: 0.02em;
@@ -103,6 +125,7 @@ const StyledTitle = styled.h2`
 
   @media (max-width: 960px) {
     font-size: 1.5rem;
+    text-align: center;
   }
 `;
 
@@ -114,7 +137,14 @@ const TextAndIconsWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   margin-top: 20px;
+
+  @media (max-width: 960px) {
+    flex-direction: column; /* Icons move below text on mobile */
+    align-items: center;
+    gap: 10px;
+  }
 `;
 
 // Icon Wrapper for displaying Tensor and Magic Eden icons
@@ -145,6 +175,7 @@ const IconWrapper = styled.div`
   }
 `;
 
+
 function WhoWeAre() {
   const isDesktop = useMediaQuery('(min-width: 960px)');
   const [shuffledImages, setShuffledImages] = useState([]);
@@ -170,10 +201,16 @@ function WhoWeAre() {
           </SidescrollerWrapper>
         )}
 
-        {/* Content without the logo */}
+        {/* Content with Logo and Text */}
         <Grid container spacing={3} alignItems="center" justifyContent="center">
           <Grid item xs={12}>
             <TextWrapper>
+              {/* Left: Logo (Hidden on mobile) */}
+              <LogoWrapper>
+                <img src={ChimpLogo} alt="Chimp Logo" />
+              </LogoWrapper>
+
+              {/* Right: Title and Text */}
               <ContentWrapper>
                 <StyledTitle>
                   <span className="teal">WE ARE THE</span> PRESENT, <span className="teal">WE ARE THE</span> FUTURE
@@ -192,20 +229,25 @@ function WhoWeAre() {
                 </Typography>
                 {/* View our PFP Collections with icons */}
                 <TextAndIconsWrapper>
-                  <Typography
-                    variant="body1"
-                    gutterBottom
-                    sx={{
-                      fontFamily: 'Apple Symbols, Arial, sans-serif', // Using Apple Symbols
-                      fontSize: '1rem',
-                      color: '#A9A9A9',
-                      lineHeight: '1.8',
-                      textAlign: 'center',
-                    }}
-                  >
-                    VIEW OUR PFP COLLECTIONS:
-                  </Typography>
-                  <IconWrapper>
+  <Typography
+    variant="body1"
+    gutterBottom
+    sx={{
+      fontFamily: 'Apple Symbols, Arial, sans-serif', // Using Apple Symbols
+      fontSize: '1rem',
+      color: '#A9A9A9', /* Greyish color for the text */
+      lineHeight: '1.8',
+      textAlign: 'center', // Center-align the text
+    }}
+  >
+    VIEW OUR PFP COLLECTIONS:
+  </Typography>
+
+                  {/* Icons for Tensor and Magic Eden */}
+                  <IconWrapper     
+      sx={{
+      justifyContent: 'center', // Center the icons
+    }}>
                     <a href="https://magiceden.io/creators/fluxinc" target="_blank" rel="noopener noreferrer">
                       <img src={MEIcon} alt="Magic Eden Icon" />
                     </a>
@@ -214,6 +256,7 @@ function WhoWeAre() {
                     </a>
                   </IconWrapper>
                 </TextAndIconsWrapper>
+
               </ContentWrapper>
             </TextWrapper>
           </Grid>
