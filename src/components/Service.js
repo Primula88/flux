@@ -100,8 +100,10 @@ const ServicesGrid = styled(Grid)`
   justify-content: center;
   gap: 20px;
   width: 100%;
+  padding-top: 50px;
 
   @media (max-width: 960px) {
+    padding-top: 0px;
     flex-direction: column; /* Ensures mobile view is one column */
   }
 `;
