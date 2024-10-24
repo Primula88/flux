@@ -259,20 +259,24 @@ const LeftSide = styled.div`
 
 // Services Link
 const ServicesLink = styled(Link)`
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-family: "Bebas Neue", Arial, sans-serif;
   color: #fff;
   cursor: pointer;
+  font-weight: 500;
   transition: color 0.3s ease;
   letter-spacing: 0.5rem;
   margin-right: 20px; /* Space between Services and potentially other elements */
-
+  padding-top: 40px;
+  padding-left: 40px;
   &:hover {
     color: #64d9fb;
   }
 
   @media (max-width: 768px) {
     font-size: 1.75rem;
+  padding-top: 10px;
+  padding-left: 10px;
   }
 
   @media (max-width: 480px) {
@@ -288,15 +292,15 @@ const ChimpLogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 40px;
   @media (max-width: 768px) {
   padding-top: 20px;  
 }   
 `;
 
 const ChimpLogoImg = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
   object-fit: cover;
 
   @media (max-width: 768px) {

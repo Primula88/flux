@@ -61,11 +61,6 @@ const Header = () => {
 
   return (
     <Wrapper id="home">
-      <TrianglesWrapper>
-        {Array.from({ length: totalTriangles }).map((_, index) => (
-          <div key={index} className="tri" />
-        ))}
-      </TrianglesWrapper>
 
       <ContentWrapper>
         <HeaderText>TOOLS BUILT FOR SOLANA COMMUNITIES</HeaderText>
