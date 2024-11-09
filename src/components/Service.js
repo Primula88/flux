@@ -78,7 +78,7 @@ const IconImage = styled('img')`
 
 // Full width container for the component that expands (Desktop)
 const ActiveServiceContainer = styled('div')`
-  width: 110%;
+  width: 100%;
 background-color: transparent;
   margin: 20px auto 0 auto;
   border-radius: 12px;
