@@ -129,7 +129,7 @@ function Services() {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ }}>
       {/* Header Title */}
       <CustomHeaderTypography variant="h2">
         SERVICES WE OFFER

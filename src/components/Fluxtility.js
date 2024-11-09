@@ -1,10 +1,10 @@
-import React from 'react';
-import { Typography, Card, CardContent, Grid } from '@mui/material';
+import React, { useState } from 'react';
+import { Typography, Card, CardContent, Grid, Modal, Box } from '@mui/material';
 import styled from 'styled-components';
-import fluxtilityPic from '../assets/fluxtility.webp'; // Import the Fluxtility image
-import { FaDiscord } from 'react-icons/fa';  // Discord icon
+import fluxtilityPic from '../assets/fluxtility.webp';
+import { FaDiscord } from 'react-icons/fa';
 
-// Styled Button
+// Styled Button with Bebas Neue
 const StyledButton = styled.a`
   display: flex;
   align-items: center;
@@ -18,122 +18,110 @@ const StyledButton = styled.a`
   text-decoration: none;
   transition: all 0.3s ease;
   max-width: 300px;
-  margin: 0 auto;
+  margin: 20px auto;
+  font-family: 'Bebas Neue', sans-serif;
 
   &:hover {
     background-color: #83d6f7;
     color: #121212;
   }
-
-  @media (max-width: 480px) {
-    font-size: 16px;
-    padding: 8px 20px;
-    max-width: 200px;
-  }
 `;
 
-// Styled Image for Fluxtility
 const FluxtilityImage = styled.img`
-  width: 40%;
-  max-width: 300px;
-  margin-top: 20px;
+  width: 90%;
+  max-width: 400px;
   border-radius: 10px;
 `;
 
-// Styled component for the right section with the scrollbar on the left
-const RightSection = styled.div`
-  overflow-y: auto;
-  max-height: 400px;
-  padding: 20px;
-  position: relative;
-  text-align: left;
+// List item with Apple Symbols font
+const ListItem = styled(Typography)`
+  display: flex;
+  text-align: left;  // Align text to the left
+  margin-bottom: 12px !important;
+  color: white;
+  font-family: 'Apple Symbols', sans-serif;
+  font-size: 1.1rem;
 
-  /* Custom scrollbar styling */
-  &::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    left: 0; /* Moves the scrollbar to the left */
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #2e2e2e;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #83d6f7;
-    border-radius: 10px;
-    border: 2px solid #1e1e1e;
-  }
-
-  @media (max-width: 960px) {
-    overflow: visible;
-    max-height: none;
+  &::before {
+    content: '•';
+    color: #83d6f7;
+    font-size: 1.5rem;
+    margin-right: 8px;
   }
 `;
 
 function Fluxtility() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
-    <Card sx={{ color: '#fff', padding: '20px', boxShadow: 'none', backgroundColor: 'transparent' }}>
+    <Card sx={{ color: '#fff', boxShadow: 'none', backgroundColor: 'transparent' }}>
       <CardContent>
         <Grid container spacing={3}>
-          {/* Left Section: Basic/Most Important Information */}
-          <Grid item xs={12} md={4} sx={{ textAlign: 'center' }}> {/* Ensure xs={12} for mobile */}
-            <Typography variant="h3" gutterBottom sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '2rem' }}>
-              Fluxtility Platform
-            </Typography>
-            <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '1.2rem' }}>
-              Fluxtility is an advanced semi-automated suite of Discord programs and services integrated into one game-changing platform for community managers.
-            </Typography>
-            <StyledButton href="https://discord.com/invite/fluxinc" target="_blank" rel="noopener noreferrer">
-              <FaDiscord style={{ marginRight: '10px' }} /> Join Discord
-            </StyledButton>
-
-            {/* Desktop-only Fluxtility Image */}
+          {/* Left Section: Image and Invite Button */}
+          <Grid item xs={12} md={3} sx={{ textAlign: 'center' }}>
             <FluxtilityImage src={fluxtilityPic} alt="Fluxtility" />
+            <StyledButton href="https://discord.com/oauth2/authorize?client_id=1041223731328065607&permissions=361047256272&scope=applications.commands%20bot" target="_blank" rel="noopener noreferrer">
+              <FaDiscord style={{ marginRight: '10px' }} /> Invite Fluxtility
+            </StyledButton>
           </Grid>
 
-          {/* Right Section: Scrollable Content */}
-          <Grid item xs={12} md={8}> {/* Ensure xs={12} for mobile */}
-            <RightSection>
-              <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-                Core Features
-              </Typography>
-              <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-                - Raid-to-Earn with an auto-reward system and participation verification. <br />
-                - On-chain NFT raffles and giveaways directly in Discord. <br />
-                - Real-time wallet balance tracker for Solana and SPL tokens. <br />
-                - Full admin dashboard for easy project management.
-              </Typography>
+          {/* Right Section: Description and Feature List */}
+          <Grid item xs={12} md={9}>
+              <Typography variant="h3" sx={{ color: 'white', fontFamily: 'Bebas Neue, Arial, sans-serif', mb: 2, letterSpacing: '0.2em', textAlign: 'left' }}>
 
-              <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-                For Community Managers:
-              </Typography>
-              <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-                - Manage raids, giveaways, and raffles seamlessly. <br />
-                - Track participation and performance through real-time leaderboards. <br />
-                - Automatically distribute rewards without manual interaction.
-              </Typography>
+		FLUXTILITY <span style={{ color: '#83d6f7' }}>Discord</span> App Suite
+            </Typography>
 
-              <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-                For Participants:
-              </Typography>
-              <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-                - Participate in raids, earn rewards, and join raffles directly in Discord. <br />
-                - Access real-time wallet balance and collection performance. <br />
-                - Earn rewards in supported SPL tokens, including Jelly, Whey, and more.
-              </Typography>
+            <ListItem>Solana Wallet / Discord Integration system (Discord Solana Wallet)</ListItem>
+            <ListItem>Advanced web3 R2E module with auto rewards in Solana, NFTs, and other SPL tokens (no claim required)</ListItem>
+            <ListItem>On-Chain NFT/TOKEN Raffle system with auto reward (no claim required)</ListItem>
+            <ListItem>On-Chain NFT/TOKEN Giveaway system with auto reward (no claim required)</ListItem>
+            <ListItem>On-Chain NFT auction system with auto reward (no claim required)</ListItem>
+            <ListItem>On-Chain NFT p2p Swap system in the server through private threads!</ListItem>
+            <ListItem>Advanced snapshot tool for NFT hashlists and wallet hashlist creation</ListItem>
+            <ListItem>Direct tipping in server; send NFTs and tokens with no claim needed from the recipient</ListItem>
+            <ListItem>Detailed Sales, Listings, Volume, and Wallet tracker</ListItem>
 
-              <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-                Get Started with Fluxtility
-              </Typography>
-              <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
-                Ready to streamline your community management and offer advanced tools for your members? Get started today by joining our Discord!
-              </Typography>
-            </RightSection>
+            <Typography 
+              onClick={handleOpen}
+              sx={{
+                fontFamily: 'Bebas Neue, Arial, sans-serif',
+                color: '#83d6f7',
+                textAlign: 'center',
+                cursor: 'pointer',
+                letterSpacing: '0.2em',
+                mt: 2
+              }}
+            >
+              Fluxtility is free to add to your server with minimal <span style={{ color: 'white' }}>fees</span> on certain transactions.
+            </Typography>
           </Grid>
         </Grid>
       </CardContent>
+
+      {/* Modal for Pricing Info */}
+      <Modal open={open} onClose={handleClose}>
+        <Box sx={{ p: 4, bgcolor: '#121212', borderRadius: 2, maxWidth: 400, mx: 'auto', mt: '20vh' }}>
+          <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif', mb: 2 }}>
+            Fluxtility Pricing Info
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#fff', fontFamily: 'Arial, sans-serif' }}>
+            Fluxtility has no upfront costs. You can use the App suite with minimal fees on specific transactions:
+            <br />
+            <br />
+            • Raffle Create: 0.01<br />
+            • Auction Create: 0.01<br />
+            • On-Chain Giveaway Create: 0.01<br />
+            • DAO Transfer: 0.001<br />
+            • DAO Withdraw: 0.001<br />
+            • Raid2Earn Reward (if set): 0.01<br />
+            • RaidDraw (if set): 0.001<br />
+            • Trade/Swap: 0.01 each person
+          </Typography>
+        </Box>
+      </Modal>
     </Card>
   );
 }
