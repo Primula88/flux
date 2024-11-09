@@ -1,74 +1,17 @@
 import React, { useState } from 'react';
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
-import { Typography } from '@mui/material';
-import styled from 'styled-components';
+import { Typography, Grid } from '@mui/material';
+import { styled } from '@mui/system';
+import Staking from './Staking';
+import TraitSwapping from './TraitSwapping';
+import Adventure from './Adventure';
+import Fluxtility from './Fluxtility';
+import PlusIcon from '../assets/plus.webp';
+import MinusIcon from '../assets/minus.webp';
 import BebasNeueFont from '../assets/font/BebasNeue-Regular.ttf'; // Import Bebas Neue font
-
-
-// Styled container for the FAQ section
-const FaqContainer = styled.div`
-  width: 75%;
-  max-width: 100%;
-  margin: 0 auto;
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb;
-  overflow: hidden;
-  color: #fff;
-`;
-
-// Main container for Tweets and FAQ
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  margin: 20px;
-`;
-
-const Tweets = styled.div`
-  width: 75%;
-  max-width: 100%;
-  margin: 0 auto;
-`;
-
-const FaqItem = styled.div`
-  background-color: ${({ open }) => (open ? 'rgba(70, 68, 68, 0.8)' : '#2d2b2b')};
-  transition: background-color 0.3s ease;
-  margin: 0; /* Ensure no margin between items */
-  border-bottom: 1px solid #3d3b3b; /* Add a thin border to distinguish items */
-  
-  &:last-child {
-    border-bottom: none; /* Remove border from the last item */
-  }
-`;
-
-const Question = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
-  padding: 10px 30px;
-  background-color: ${({ open }) => (open ? '#3d3b3b' : '#2d2b2b')}; 
-  transition: background-color 0.3s ease;
-`;
-
-const PlusMinus = styled.span`
-  margin-right: 10px;
-  font-size: 1.2em;
-`;
-
-const Answer = styled.div`
-  font-size: 0.9em;
-  max-height: ${({ open }) => (open ? '100px' : '0')};
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: ${({ open }) => (open ? '10px 30px' : '0 30px')};
-`;
+import AkiraFont from '../assets/font/AkiraExpandedDemo.otf'; // Import Akira font
 
 // Custom font-face for Bebas Neue
-const Title = styled(Typography)`
+const CustomHeaderTypography = styled(Typography)`
   @font-face {
     font-family: 'Bebas Neue';
     src: url(${BebasNeueFont}) format('truetype');
@@ -86,62 +29,157 @@ const Title = styled(Typography)`
   }
 `;
 
-function Socials() {
-  const [openFaqs, setOpenFaqs] = useState([]);
+// Custom font-face for Akira font
+const CustomTypography = styled(Typography)`
+  @font-face {
+    font-family: 'Akira';
+    src: url(${AkiraFont}) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: 'Akira', sans-serif;
+  color: #6cdffb;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1.5rem;
 
-  const toggleFaq = (index) => {
-    setOpenFaqs((prevOpenFaqs) =>
-      prevOpenFaqs.includes(index)
-        ? prevOpenFaqs.filter((i) => i !== index)
-        : [...prevOpenFaqs, index]
-    );
+  @media (min-width: 960px) {
+    font-size: 2rem;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+// Wrapper to center the links while keeping the text aligned left on desktop
+const CenteredContainer = styled(Grid)`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+`;
+
+// Styled for image icon
+const IconImage = styled('img')`
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+
+  @media (min-width: 960px) {
+    width: 40px;
+    height: 40px;
+  }
+`;
+
+// Full width container for the component that expands (Desktop)
+const ActiveServiceContainer = styled('div')`
+  width: 100%;
+background-color: transparent;
+  margin: 20px 0; // Adjust margin to avoid centering  
+border-radius: 12px;
+`;
+
+// Wrapper for the expanding content
+const ExpandingContent = styled('div')`
+  padding-top: 40px;
+`;
+
+// Styled grid for desktop layout with a single row
+const ServicesGrid = styled(Grid)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center; // Align content to the left
+  gap: 20px;
+  width: 100%;
+  padding-top: 50px;
+
+  @media (max-width: 960px) {
+    padding-top: 0px;
+    flex-direction: column; /* Ensures mobile view is one column */
+  }
+`;
+
+// A dedicated container for the services content on mobile
+const MobileFullWidthContainer = styled('div')`
+  width: 100%;
+  margin-top: 20px;
+  overflow: hidden; /* Ensures no overflow on mobile */
+  max-height: ${({ isOpen }) => (isOpen ? '100%' : '0')}; /* Dynamically handles the content height */
+  transition: max-height 0.5s ease;
+`;
+
+const servicesList = [
+  { id: 'staking', title: 'Staking', component: <Staking /> },
+  { id: 'adventure', title: 'Adventure', component: <Adventure /> },
+  { id: 'trait-swapping', title: 'TraitSwap', component: <TraitSwapping /> },
+  { id: 'fluxtility', title: 'Fluxtility', component: <Fluxtility /> },
+];
+
+function Services() {
+  const [activeService, setActiveService] = useState('staking'); // Set 'staking' as default active service
+  const isDesktop = window.innerWidth >= 960;
+
+  const handleServiceClick = (serviceId) => {
+    setActiveService((prevService) => (prevService === serviceId ? null : serviceId));
   };
 
-  const faqData = [
-    { question: 'What is Flux Inc?', answer: 'Flux Inc is a platform that...' },
-    { question: 'How does staking work?', answer: 'Staking in Flux Inc allows you to...' },
-    { question: 'What are Time Traveling Chimps?', answer: 'Time Traveling Chimps are...' },
-    { question: 'How do I participate in the adventure?', answer: 'To participate in the adventure...' },
-  ];
-
   return (
-    <Container>
-      {/* Twitter Embeds */}
-      <Tweets>
-        
-        <Title>X Updates</Title>
-        <TwitterTimelineEmbed
-          sourceType="profile"
-          screenName="FluxInc_"
-          options={{ height: 400, theme: 'dark' }}
-        />
-        <TwitterTimelineEmbed
-          sourceType="profile"
-          screenName="TimeTravelingChimps"
-          options={{ height: 400, theme: 'dark' }}
-        />
-      </Tweets>
+    <div style={{ }}>
+      {/* Header Title */}
+      <CustomHeaderTypography variant="h2">
+        SERVICES WE OFFER
+      </CustomHeaderTypography>
+      <CenteredContainer container>
+        <Grid item xs={12} md={10}>
+          {/* Services Grid */}
+          <ServicesGrid>
+            {servicesList.map((service) => (
+              <div key={service.id} style={{ width: isDesktop ? 'auto' : '100%' }}>
+                <div onClick={() => handleServiceClick(service.id)}>
+                  <CustomTypography variant="h4">
+                    <IconImage
+                      src={activeService === service.id ? MinusIcon : PlusIcon}
+                      alt="Toggle"
+                    />
+                    {service.title}
+                  </CustomTypography>
+                </div>
 
-      {/* FAQ Title */}
-      <Title>FAQ</Title>
+                {/* Mobile only: Open card content in 1 column */}
+                {!isDesktop && (
+                  <MobileFullWidthContainer
+                    isOpen={activeService === service.id} // Open the content only when active
+                  >
+                    {activeService === service.id && (
+                      <ExpandingContent>
+                        {service.component}
+                      </ExpandingContent>
+                    )}
+                  </MobileFullWidthContainer>
+                )}
+              </div>
+            ))}
+          </ServicesGrid>
 
-      {/* FAQ Section */}
-      <FaqContainer>
-        {faqData.map((item, index) => (
-          <FaqItem key={index} open={openFaqs.includes(index)}>
-            <Question open={openFaqs.includes(index)} onClick={() => toggleFaq(index)}>
-              <PlusMinus>{openFaqs.includes(index) ? '-' : '+'}</PlusMinus>
-              {item.question}
-            </Question>
-            <Answer open={openFaqs.includes(index)}>
-              <p>{item.answer}</p>
-            </Answer>
-          </FaqItem>
-        ))}
-      </FaqContainer>
-    </Container>
+          {/* Desktop only: Open service content in a separate 70% div centered below the links */}
+          {isDesktop && activeService && (
+            <ActiveServiceContainer>
+              <ExpandingContent>
+                {servicesList.find((service) => service.id === activeService)?.component}
+              </ExpandingContent>
+            </ActiveServiceContainer>
+          )}
+        </Grid>
+      </CenteredContainer>
+    </div>
   );
 }
 
-export default Socials;
+
+export default Services;
 

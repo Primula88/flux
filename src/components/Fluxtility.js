@@ -4,39 +4,44 @@ import styled from 'styled-components';
 import fluxtilityPic from '../assets/fluxtility.webp';
 import { FaDiscord } from 'react-icons/fa';
 
-// Styled Button with Bebas Neue
+// Styled Button with Akira font and adjusted icon/text sizes
 const StyledButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 30px;
+  padding: 8px 20px;
   border: 2px solid #6cdffb;
   border-radius: 50px;
   color: #6cdffb;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  max-width: 300px;
+  max-width: 250px;
   margin: 20px auto;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Akira', sans-serif;
 
   &:hover {
     background-color: #6cdffb;
     color: #121212;
   }
+
+  .discord-icon {
+    font-size: 30px;
+    margin-right: 8px;
+  }
 `;
 
 const FluxtilityImage = styled.img`
-  width: 90%;
-  max-width: 400px;
+  width: 100%;
+  max-width: 440px;
   border-radius: 10px;
 `;
 
 // List item with Apple Symbols font
 const ListItem = styled(Typography)`
   display: flex;
-  text-align: left;  // Align text to the left
+  text-align: left;
   margin-bottom: 12px !important;
   color: white;
   font-family: 'Apple Symbols', sans-serif;
@@ -58,20 +63,27 @@ function Fluxtility() {
   return (
     <Card sx={{ color: '#fff', boxShadow: 'none', backgroundColor: 'transparent' }}>
       <CardContent>
-        <Grid container spacing={3}>
+        <Grid container spacing={0}>
           {/* Left Section: Image and Invite Button */}
           <Grid item xs={12} md={3} sx={{ textAlign: 'center' }}>
             <FluxtilityImage src={fluxtilityPic} alt="Fluxtility" />
             <StyledButton href="https://discord.com/oauth2/authorize?client_id=1041223731328065607&permissions=361047256272&scope=applications.commands%20bot" target="_blank" rel="noopener noreferrer">
-              <FaDiscord style={{ marginRight: '10px' }} /> Invite Fluxtility
+              <FaDiscord className="discord-icon" /> Invite Fluxtility
             </StyledButton>
           </Grid>
 
           {/* Right Section: Description and Feature List */}
-          <Grid item xs={12} md={9}>
-              <Typography variant="h3" sx={{ color: 'white', fontFamily: 'Bebas Neue, Arial, sans-serif', mb: 2, letterSpacing: '0.2em', textAlign: 'left' }}>
-
-		FLUXTILITY <span style={{ color: '#6cdffb' }}>Discord</span> App Suite
+          <Grid 
+            item 
+            xs={12} 
+            md={9} 
+            style={{
+              paddingLeft: window.innerWidth >= 960 ? '80px' : '0px', // Apply 80px padding on desktop
+              textAlign: 'left'
+            }}
+          >  
+            <Typography variant="h3" sx={{ color: 'white', fontFamily: 'Bebas Neue, Arial, sans-serif', mb: 2, letterSpacing: '0.2em', textAlign: 'left' }}>
+              FLUXTILITY <span style={{ color: '#6cdffb' }}>Discord</span> App Suite
             </Typography>
 
             <ListItem>Solana Wallet / Discord Integration system (Discord Solana Wallet)</ListItem>
