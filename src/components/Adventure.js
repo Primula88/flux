@@ -74,7 +74,7 @@ const RightSection = styled.div`
 
 function Adventure() {
   return (
-    <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', padding: '20px', boxShadow: 'none' }}>
+    <Card sx={{ color: '#fff', padding: '20px', boxShadow: 'none', backgroundColor: 'transparent' }}>
       <CardContent>
         <Grid container spacing={3}>
           {/* Left Section: Basic/Most Important Information */}

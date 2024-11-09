@@ -78,14 +78,10 @@ const IconImage = styled('img')`
 
 // Full width container for the component that expands (Desktop)
 const ActiveServiceContainer = styled('div')`
-  width: 90%;
+  width: 110%;
+background-color: transparent;
   margin: 20px auto 0 auto;
-  background-color: #1e1e1e;
   border-radius: 12px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 2px #64d9fb;
-  color: #fff;
-  overflow: hidden;
-  transition: max-height 0.5s ease, width 0.5s ease;
 `;
 
 // Wrapper for the expanding content
@@ -125,7 +121,7 @@ const servicesList = [
 ];
 
 function Services() {
-  const [activeService, setActiveService] = useState(null);
+  const [activeService, setActiveService] = useState('staking'); // Set 'staking' as default active service
   const isDesktop = window.innerWidth >= 960;
 
   const handleServiceClick = (serviceId) => {
@@ -135,9 +131,9 @@ function Services() {
   return (
     <div style={{ padding: '20px' }}>
       {/* Header Title */}
-               <CustomHeaderTypography variant="h2">
-       SERVICES WE OFFER
-</ CustomHeaderTypography>
+      <CustomHeaderTypography variant="h2">
+        SERVICES WE OFFER
+      </CustomHeaderTypography>
       <CenteredContainer container>
         <Grid item xs={12} md={10}>
           {/* Services Grid */}
@@ -183,6 +179,7 @@ function Services() {
     </div>
   );
 }
+
 
 export default Services;
 

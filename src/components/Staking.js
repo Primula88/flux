@@ -76,7 +76,7 @@ function Staking() {
   const isDesktop = useMediaQuery('(min-width: 960px)'); // Media query for desktop view
 
   return (
-    <Card sx={{ backgroundColor: '#1e1e1e', color: '#fff', padding: '20px', boxShadow: 'none' }}>
+    <Card sx={{ color: '#fff', padding: '20px', boxShadow: 'none', backgroundColor: 'transparent' }}>
       <CardContent>
         <Grid container spacing={3}>
           {!isDesktop ? (
