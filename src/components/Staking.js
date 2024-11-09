@@ -10,9 +10,9 @@ const StyledButton = styled.a`
   align-items: center;
   justify-content: center;
   padding: 10px 30px;
-  border: 2px solid #83d6f7;
+  border: 2px solid #6cdffb;
   border-radius: 50px;
-  color: #83d6f7;
+  color: #6cdffb;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
@@ -21,7 +21,7 @@ const StyledButton = styled.a`
   margin: 0 auto;
 
   &:hover {
-    background-color: #83d6f7;
+    background-color: #6cdffb;
     color: #121212;
   }
 
@@ -61,7 +61,7 @@ const RightSection = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #83d6f7;
+    background-color: #6cdffb;
     border-radius: 10px;
     border: 2px solid #1e1e1e;
   }
@@ -83,7 +83,7 @@ function Staking() {
             <>
               {/* Mobile view: Single-column layout */}
               <Grid item xs={12} sx={{ textAlign: 'center' }}>
-                <Typography variant="h4" gutterBottom sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                <Typography variant="h4" gutterBottom sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                   Staking Platform
                 </Typography>
                 <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -102,14 +102,14 @@ function Staking() {
               {/* Mobile view: Scrollable Content */}
               <Grid item xs={12}>
                 <RightSection>
-                  <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h5" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     How Does it Work?
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     You simply fill out a form with the needed information, and we set up your staking for you. We provide a dashboard that gives you full control, allowing adjustments and offering support for any questions.
                   </Typography>
 
-                  <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h6" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     For Projects:
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -119,7 +119,7 @@ function Staking() {
                     - Set stake/unstake and claim fees to help provide revenue
                   </Typography>
 
-                  <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h6" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     For Holders:
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -128,7 +128,7 @@ function Staking() {
                     - Quickly download NFT images
                   </Typography>
 
-                  <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h5" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     Admin Dashboard Preview
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -142,7 +142,7 @@ function Staking() {
             <>
               {/* Left Section: Basic/Most Important Information */}
               <Grid item xs={4} sx={{ textAlign: 'center' }}>
-                <Typography variant="h3" gutterBottom sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '2rem' }}>
+                <Typography variant="h3" gutterBottom sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '2rem' }}>
                   Staking Platform
                 </Typography>
                 <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif', fontSize: '1.2rem' }}>
@@ -159,14 +159,14 @@ function Staking() {
               {/* Right Section: Scrollable Content */}
               <Grid item xs={8}>
                 <RightSection>
-                  <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h5" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     How Does it Work?
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     You simply fill out a form with the needed information, and we set up your staking for you. We provide a dashboard that gives you full control, allowing adjustments and offering support for any questions.
                   </Typography>
 
-                  <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h6" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     For Projects:
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -176,7 +176,7 @@ function Staking() {
                     - Set stake/unstake and claim fees to help provide revenue
                   </Typography>
 
-                  <Typography variant="h6" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h6" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     For Holders:
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
@@ -185,7 +185,7 @@ function Staking() {
                     - Quickly download NFT images
                   </Typography>
 
-                  <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
+                  <Typography variant="h5" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif' }}>
                     Admin Dashboard Preview
                   </Typography>
                   <Typography variant="body2" gutterBottom sx={{ fontFamily: 'Bebas Neue, Arial, sans-serif' }}>

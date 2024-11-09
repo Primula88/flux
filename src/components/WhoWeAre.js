@@ -98,7 +98,7 @@ const StyledTitle = styled.h2`
   margin-bottom: 20px;
 
   span.teal {
-    color: #83d6f7; /* Teal color for "WE ARE THE" */
+    color: #6cdffb; /* Teal color for "WE ARE THE" */
   }
 
   @media (max-width: 960px) {

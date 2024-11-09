@@ -38,7 +38,7 @@ const CustomTypography = styled(Typography)`
     font-style: normal;
   }
   font-family: 'Akira', sans-serif;
-  color: #83d6f7;
+  color: #6cdffb;
   margin: 10px 0;
   display: flex;
   align-items: center;

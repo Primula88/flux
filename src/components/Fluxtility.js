@@ -10,9 +10,9 @@ const StyledButton = styled.a`
   align-items: center;
   justify-content: center;
   padding: 10px 30px;
-  border: 2px solid #83d6f7;
+  border: 2px solid #6cdffb;
   border-radius: 50px;
-  color: #83d6f7;
+  color: #6cdffb;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
@@ -22,7 +22,7 @@ const StyledButton = styled.a`
   font-family: 'Bebas Neue', sans-serif;
 
   &:hover {
-    background-color: #83d6f7;
+    background-color: #6cdffb;
     color: #121212;
   }
 `;
@@ -44,7 +44,7 @@ const ListItem = styled(Typography)`
 
   &::before {
     content: '•';
-    color: #83d6f7;
+    color: #6cdffb;
     font-size: 1.5rem;
     margin-right: 8px;
   }
@@ -71,7 +71,7 @@ function Fluxtility() {
           <Grid item xs={12} md={9}>
               <Typography variant="h3" sx={{ color: 'white', fontFamily: 'Bebas Neue, Arial, sans-serif', mb: 2, letterSpacing: '0.2em', textAlign: 'left' }}>
 
-		FLUXTILITY <span style={{ color: '#83d6f7' }}>Discord</span> App Suite
+		FLUXTILITY <span style={{ color: '#6cdffb' }}>Discord</span> App Suite
             </Typography>
 
             <ListItem>Solana Wallet / Discord Integration system (Discord Solana Wallet)</ListItem>
@@ -88,7 +88,7 @@ function Fluxtility() {
               onClick={handleOpen}
               sx={{
                 fontFamily: 'Bebas Neue, Arial, sans-serif',
-                color: '#83d6f7',
+                color: '#6cdffb',
                 textAlign: 'center',
                 cursor: 'pointer',
                 letterSpacing: '0.2em',
@@ -104,7 +104,7 @@ function Fluxtility() {
       {/* Modal for Pricing Info */}
       <Modal open={open} onClose={handleClose}>
         <Box sx={{ p: 4, bgcolor: '#121212', borderRadius: 2, maxWidth: 400, mx: 'auto', mt: '20vh' }}>
-          <Typography variant="h5" sx={{ color: '#83d6f7', fontFamily: 'Bebas Neue, Arial, sans-serif', mb: 2 }}>
+          <Typography variant="h5" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif', mb: 2 }}>
             Fluxtility Pricing Info
           </Typography>
           <Typography variant="body2" sx={{ color: '#fff', fontFamily: 'Arial, sans-serif' }}>

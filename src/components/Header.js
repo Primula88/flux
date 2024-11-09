@@ -139,16 +139,16 @@ const StyledButton = styled.a`
   align-items: center;
   justify-content: center;
   padding: 10px 30px;
-  border: 2px solid #83d6f7; /* Border with color */
+  border: 2px solid #6cdffb; /* Border with color */
   border-radius: 50px; /* Large border-radius for round buttons */
-  color: #83d6f7;
+  color: #6cdffb;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
   
   &:hover {
-    background-color: #83d6f7;
+    background-color: #6cdffb;
     color: #121212;
   }
 
@@ -167,7 +167,7 @@ const ScrollDown = styled(Link)`
   transition: color 0.3s ease;
   
   &:hover {
-    color: #83d6f7;
+    color: #6cdffb;
   }
 
   @media (max-width: 480px) {
