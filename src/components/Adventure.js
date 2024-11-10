@@ -126,8 +126,8 @@ function Adventure() {
             }}
           >  
             <RightSection>
-              <Typography variant="h3" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif', letterSpacing: '0.2em', mb: 2 }}>
-                Flux Adventures Platform
+              <Typography variant="h3" sx={{ color: '#fff', fontFamily: 'Bebas Neue, Arial, sans-serif', letterSpacing: '0.2em', mb: 2 }}>
+                Flux <span style={{ color: '#6cdffb' }}>Adventures</span> Platform
               </Typography>
               <TextItem>
                 A highly engaging chance-based platform that allows you to send your NFTs on Adventures. These are fully customizable missions with set time periods and multiple reward possibilities.

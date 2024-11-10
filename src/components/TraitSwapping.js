@@ -126,8 +126,8 @@ function TraitSwapping() {
             }}
           >  
             <RightSection>
-              <Typography variant="h3" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif', letterSpacing: '0.2em', mb: 2 }}>
-                Trait Swapper
+              <Typography variant="h3" sx={{ color: '#fff', fontFamily: 'Bebas Neue, Arial, sans-serif', letterSpacing: '0.2em', mb: 2 }}>
+                Flux Inc <span style={{ color: '#6cdffb' }}>Trait</span> Swapper
               </Typography>
               <TextItem>
                 This platform helps projects provide a unique NFT update experience to their holders with a clean user interface and smooth processing.

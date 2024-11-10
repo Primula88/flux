@@ -126,8 +126,8 @@ function Staking() {
             }}
           >  
             <RightSection>
-              <Typography variant="h3" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif', letterSpacing: '0.2em', mb: 2 }}>
-                Flux Inc. Staking Platform              </Typography>
+              <Typography variant="h3" sx={{ color: 'fff', fontFamily: 'Bebas Neue, Arial, sans-serif', letterSpacing: '0.2em', mb: 2 }}>
+                Flux Inc. <span style={{ color: '#6cdffb' }}>Staking</span> Platform             </Typography>
               <TextItem>
                 We offer a unique staking experience for our clients. Our platform allows you to gamify traits by adding staking boosters for designated traits, as well as reward up to 3 different tokens.
               </TextItem>
