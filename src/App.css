@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face {
+    font-family: 'Akira';
+    src: url('./assets/font/AkiraExpandedDemo.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body, html {
   margin: 0;
   padding: 0;
