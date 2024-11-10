@@ -4,43 +4,43 @@ import styled from 'styled-components';
 import stakingPic from '../assets/staking.webp'; // Import the staking image
 import { FaDiscord } from 'react-icons/fa'; // Discord icon
 
-// Styled Button (same as Fluxtility)
+// Styled Button (consistent with Fluxtility)
 const StyledButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 30px;
+  padding: 8px 20px;
   border: 2px solid #6cdffb;
   border-radius: 50px;
   color: #6cdffb;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  max-width: 300px;
-  margin: 0 auto;
+  max-width: 250px;
+  margin: 20px auto;
+  font-family: 'Akira', sans-serif;
 
   &:hover {
     background-color: #6cdffb;
     color: #121212;
   }
 
-  @media (max-width: 480px) {
-    font-size: 16px;
-    padding: 8px 20px;
-    max-width: 200px;
+  .discord-icon {
+    font-size: 30px;
+    margin-right: 8px;
   }
 `;
 
-
-// Staking Image (similar to Fluxtility)
+// Staking Image (consistent with Fluxtility)
 const StakingImage = styled.img`
   width: 100%;
-  max-width: 300px;
-  margin-top: 20px;
+  max-width: 440px;
   border-radius: 10px;
+  margin-top: 20px;
 `;
 
+// Text and list item styles
 const TextItem = styled(Typography)`
   display: flex;
   text-align: left;
@@ -50,7 +50,6 @@ const TextItem = styled(Typography)`
   font-size: 1.1rem;
 `;
 
-// List item with Apple Symbols font (same as Fluxtility)
 const ListItem = styled(Typography)`
   display: flex;
   text-align: left;
@@ -105,23 +104,30 @@ function Staking() {
   const handleClose = () => setOpen(false);
 
   return (
-    <Card sx={{ color: '#fff', padding: '20px', boxShadow: 'none', backgroundColor: 'transparent' }}>
+    <Card sx={{ color: '#fff', boxShadow: 'none', backgroundColor: 'transparent' }}>
       <CardContent>
         <Grid container spacing={3}>
-          {/* Left Section: Centered Image and Invite Button */}
+          {/* Left Section: Staking Image and Invite Button */}
           <Grid item xs={12} md={3} sx={{ textAlign: 'center' }}>
             <StakingImage src={stakingPic} alt="Staking" />
             <StyledButton href="https://discord.com/invite/fluxinc" target="_blank" rel="noopener noreferrer">
-              <FaDiscord style={{ marginRight: '10px' }} /> Join Discord
+              <FaDiscord className="discord-icon" /> Join Discord
             </StyledButton>
           </Grid>
 
           {/* Right Section: Description and Feature List */}
-          <Grid item xs={12} md={9}>
+          <Grid 
+            item 
+            xs={12} 
+            md={9} 
+            style={{
+              paddingLeft: window.innerWidth >= 960 ? '80px' : '0px', // Apply 80px padding on desktop
+              textAlign: 'left'
+            }}
+          >  
             <RightSection>
-              <Typography variant="h3" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif', mb: 2 }}>
-                Flux Inc. Staking
-              </Typography>
+              <Typography variant="h3" sx={{ color: '#6cdffb', fontFamily: 'Bebas Neue, Arial, sans-serif', letterSpacing: '0.2em', mb: 2 }}>
+                Flux Inc. Staking Platform              </Typography>
               <TextItem>
                 We offer a unique staking experience for our clients. Our platform allows you to gamify traits by adding staking boosters for designated traits, as well as reward up to 3 different tokens.
               </TextItem>
@@ -143,25 +149,25 @@ function Staking() {
               <ListItem>Earn up to 3 different tokens</ListItem>
               <ListItem>Quickly Download their NFT images</ListItem>
 
-          <Typography
-  variant="h4"
-  sx={{
-    color: '#6cdffb',
-    fontFamily: 'Bebas Neue, Arial, sans-serif',
-    mt: 2,
-    textAlign: 'center',
-    cursor: 'pointer', // Make it look clickable
-    transition: 'color 0.3s ease', // Smooth color transition on hover
-    '&:hover': {
-      color: '#5ac6e0', // Slightly darker shade for hover effect
-    },
-  }}
-  onClick={handleOpen}
->
-  Click for Fees
-</Typography>
-  
-          </RightSection>
+              {/* Click for Fees Button */}
+              <Typography
+                variant="h4"
+                sx={{
+                  color: '#6cdffb',
+                  fontFamily: 'Bebas Neue, Arial, sans-serif',
+                  mt: 2,
+                  textAlign: 'center',
+                  cursor: 'pointer', // Makes it look clickable
+                  transition: 'color 0.3s ease', // Smooth color transition on hover
+                  '&:hover': {
+                    color: '#5ac6e0', // Slightly darker shade for hover effect
+                  },
+                }}
+                onClick={handleOpen}
+              >
+                Click for Fees
+              </Typography>
+            </RightSection>
           </Grid>
         </Grid>
       </CardContent>
