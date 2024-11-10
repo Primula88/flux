@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import styled, { createGlobalStyle } from 'styled-components';
 import BebasNeueFont from '../assets/font/BebasNeue-Regular.ttf'; // Import Bebas Neue font
