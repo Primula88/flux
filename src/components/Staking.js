@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Card, CardContent, Grid, Modal, Box, useMediaQuery } from '@mui/material';
+import { Typography, Card, CardContent, Grid, Modal, Box } from '@mui/material';
 import styled from 'styled-components';
 import stakingPic from '../assets/staking.webp'; // Import the staking image
 import { FaDiscord } from 'react-icons/fa'; // Discord icon
@@ -103,7 +103,6 @@ function Staking() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const isDesktop = useMediaQuery('(min-width: 960px)'); // Media query for desktop view
 
   return (
     <Card sx={{ color: '#fff', padding: '20px', boxShadow: 'none', backgroundColor: 'transparent' }}>
