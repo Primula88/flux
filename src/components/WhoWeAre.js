@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Grid, Typography, Card, CardContent, useMediaQuery } from '@mui/material';
 import styled from 'styled-components';
 import TensorIcon from '../assets/tensor.webp'; // Import Tensor icon
