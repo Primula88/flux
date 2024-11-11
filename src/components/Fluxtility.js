@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Typography, Card, CardContent, Grid, Modal, Box } from '@mui/material';
 import styled from 'styled-components';
 import fluxtilityPic from '../assets/fluxtility.webp';
-import { FaDiscord } from 'react-icons/fa';
 
 // Styled Button with Akira font and adjusted icon/text sizes
 const StyledButton = styled.a`

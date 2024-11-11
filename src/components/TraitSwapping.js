@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Typography, Card, CardContent, Grid, Modal, Box } from '@mui/material';
 import styled from 'styled-components';
 import traitSwapImage from '../assets/traits.webp'; // Example image for Trait Swapping
-import { FaDiscord } from 'react-icons/fa'; // Discord icon
 
 // Styled Button (consistent with Adventure)
 const StyledButton = styled.a`

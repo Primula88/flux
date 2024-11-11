@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Typography, Card, CardContent, Grid, Modal, Box } from '@mui/material';
 import styled from 'styled-components';
 import stakingPic from '../assets/staking.webp'; // Import the staking image
-import { FaDiscord } from 'react-icons/fa'; // Discord icon
 
 // Styled Button (consistent with Fluxtility)
 const StyledButton = styled.a`

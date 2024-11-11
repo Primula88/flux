@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Typography, Card, CardContent, Grid, Modal, Box } from '@mui/material';
 import styled from 'styled-components';
 import adventurePic from '../assets/adventure.webp'; // Import the adventure image
-import { FaDiscord } from 'react-icons/fa'; // Discord icon
 
 // Styled Button (consistent with Fluxtility)
 const StyledButton = styled.a`
