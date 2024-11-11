@@ -131,9 +131,6 @@ function Services() {
   return (
     <div style={{ }}>
       {/* Header Title */}
-      <CustomHeaderTypography variant="h2">
-        SERVICES WE OFFER
-      </CustomHeaderTypography>
       <CenteredContainer container>
         <Grid item xs={12} md={10}>
           {/* Services Grid */}

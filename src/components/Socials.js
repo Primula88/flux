@@ -54,7 +54,6 @@ function Socials() {
       <Container>
         {/* Twitter Embeds */}
         <Tweets>
-          <CustomHeaderTypography>X Updates</CustomHeaderTypography>
           <TwitterTimelineEmbed
             sourceType="profile"
             screenName="FluxInc_"

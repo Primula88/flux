@@ -68,7 +68,7 @@ function Fluxtility() {
           <Grid item xs={12} md={3} sx={{ textAlign: 'center' }}>
             <FluxtilityImage src={fluxtilityPic} alt="Fluxtility" />
             <StyledButton href="https://discord.com/oauth2/authorize?client_id=1041223731328065607&permissions=361047256272&scope=applications.commands%20bot" target="_blank" rel="noopener noreferrer">
-              <FaDiscord className="discord-icon" /> Invite Fluxtility
+              Invite Fluxtility
             </StyledButton>
           </Grid>
 

@@ -111,7 +111,7 @@ function Adventure() {
           <Grid item xs={12} md={3} sx={{ textAlign: 'center' }}>
             <AdventureImage src={adventurePic} alt="Adventure" />
             <StyledButton href="https://discord.com/invite/fluxinc" target="_blank" rel="noopener noreferrer">
-              <FaDiscord className="discord-icon" /> Join Discord
+              Join Discord
             </StyledButton>
           </Grid>
 
@@ -158,21 +158,17 @@ function Adventure() {
               <ListItem>Use case for the token being staked</ListItem>
               <ListItem>Prizes!</ListItem>
 
-              <Typography
-                variant="h4"
-                sx={{
-                  color: '#6cdffb',
-                  fontFamily: 'Bebas Neue, Arial, sans-serif',
-                  mt: 2,
-                  textAlign: 'center',
-                  cursor: 'pointer',
-                  transition: 'color 0.3s ease',
-                  '&:hover': {
-                    color: '#5ac6e0',
-                  },
-                }}
-                onClick={handleOpen}
-              >
+            <Typography 
+              onClick={handleOpen}
+              sx={{
+                fontFamily: 'Bebas Neue, Arial, sans-serif',
+                color: '#6cdffb',
+                textAlign: 'center',
+                cursor: 'pointer',
+                letterSpacing: '0.2em',
+                mt: 2
+              }}
+            >
                 Click for Fees
               </Typography>
             </RightSection>

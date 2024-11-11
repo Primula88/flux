@@ -111,7 +111,7 @@ function Staking() {
           <Grid item xs={12} md={3} sx={{ textAlign: 'center' }}>
             <StakingImage src={stakingPic} alt="Staking" />
             <StyledButton href="https://discord.com/invite/fluxinc" target="_blank" rel="noopener noreferrer">
-              <FaDiscord className="discord-icon" /> Join Discord
+      Join Discord
             </StyledButton>
           </Grid>
 
@@ -150,22 +150,18 @@ function Staking() {
               <ListItem>Quickly Download their NFT images</ListItem>
 
               {/* Click for Fees Button */}
-              <Typography
-                variant="h4"
-                sx={{
-                  color: '#6cdffb',
-                  fontFamily: 'Bebas Neue, Arial, sans-serif',
-                  mt: 2,
-                  textAlign: 'center',
-                  cursor: 'pointer', // Makes it look clickable
-                  transition: 'color 0.3s ease', // Smooth color transition on hover
-                  '&:hover': {
-                    color: '#5ac6e0', // Slightly darker shade for hover effect
-                  },
-                }}
-                onClick={handleOpen}
-              >
-                Click for Fees
+                            <Typography 
+              onClick={handleOpen}
+              sx={{
+                fontFamily: 'Bebas Neue, Arial, sans-serif',
+                color: '#6cdffb',
+                textAlign: 'center',
+                cursor: 'pointer',
+                letterSpacing: '0.2em',
+                mt: 2
+              }}
+            >
+		Click for Fees
               </Typography>
             </RightSection>
           </Grid>
