@@ -3,6 +3,7 @@ import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import styled, { createGlobalStyle } from 'styled-components';
 import BebasNeueFont from '../assets/font/BebasNeue-Regular.ttf'; // Import Bebas Neue font
 
+
 // Global font styles
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -33,19 +34,6 @@ const Tweets = styled.div`
   margin: 0 auto;
 `;
 
-
-const CustomHeaderTypography = styled.h1`
-  font-family: 'Bebas Neue', sans-serif;
-  color: white;
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-
-  @media (min-width: 960px) {
-    font-size: 3rem;
-    font-weight: 300;
-  }
-`;
 
 function Socials() {
   return (

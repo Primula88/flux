@@ -7,27 +7,8 @@ import Adventure from './Adventure';
 import Fluxtility from './Fluxtility';
 import PlusIcon from '../assets/plus.webp';
 import MinusIcon from '../assets/minus.webp';
-import BebasNeueFont from '../assets/font/BebasNeue-Regular.ttf'; // Import Bebas Neue font
 import AkiraFont from '../assets/font/AkiraExpandedDemo.otf'; // Import Akira font
 
-// Custom font-face for Bebas Neue
-const CustomHeaderTypography = styled(Typography)`
-  @font-face {
-    font-family: 'Bebas Neue';
-    src: url(${BebasNeueFont}) format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  font-family: 'Bebas Neue', sans-serif;
-  color: white;
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-
-  @media (min-width: 960px) {
-    font-size: 3rem;
-  }
-`;
 
 // Custom font-face for Akira font
 const CustomTypography = styled(Typography)`
