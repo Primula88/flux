@@ -11,7 +11,7 @@ const StyledButton = styled.a`
   padding: 8px 20px;
   border: 2px solid #6cdffb;
   border-radius: 50px;
-  color: #6cdffb;
+  color: #fff;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
@@ -154,7 +154,7 @@ function Staking() {
               sx={{
                 fontFamily: 'Bebas Neue, Arial, sans-serif',
                 color: '#6cdffb',
-                textAlign: 'center',
+                textAlign: 'left',
                 cursor: 'pointer',
                 letterSpacing: '0.2em',
                 mt: 2

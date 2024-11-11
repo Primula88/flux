@@ -9,7 +9,6 @@ import PlusIcon from '../assets/plus.webp';
 import MinusIcon from '../assets/minus.webp';
 import AkiraFont from '../assets/font/AkiraExpandedDemo.otf'; // Import Akira font
 
-
 // Custom font-face for Akira font
 const CustomTypography = styled(Typography)`
   @font-face {
@@ -60,7 +59,7 @@ const IconImage = styled('img')`
 // Full width container for the component that expands (Desktop)
 const ActiveServiceContainer = styled('div')`
   width: 100%;
-background-color: transparent;
+  background-color: transparent;
   margin: 20px auto 0 auto;
   border-radius: 12px;
 `;
@@ -94,6 +93,14 @@ const MobileFullWidthContainer = styled('div')`
   transition: max-height 0.5s ease;
 `;
 
+// Blue Divider styling
+const BlueDivider = styled('div')`
+  width: 100%;
+  height: 2px;
+  background-color: #6cdffb;
+  margin: 10px 0;
+`;
+
 const servicesList = [
   { id: 'staking', title: 'Staking', component: <Staking /> },
   { id: 'adventure', title: 'Adventure', component: <Adventure /> },
@@ -110,7 +117,10 @@ function Services() {
   };
 
   return (
-    <div style={{ }}>
+    <div>
+      {/* Top Blue Divider */}
+      <BlueDivider />
+
       {/* Header Title */}
       <CenteredContainer container>
         <Grid item xs={12} md={10}>
@@ -154,9 +164,11 @@ function Services() {
           )}
         </Grid>
       </CenteredContainer>
+
+      {/* Bottom Blue Divider */}
     </div>
   );
 }
 
-
 export default Services;
+
