@@ -25,8 +25,8 @@ const SidescrollerWrapper = styled.div`
 `;
 
 const SeparatorImage = styled.img`
-  padding-left: -40px;
-  width: 100%;
+  margin: 0 auto; /* Center the image */  
+width: 100%;
   height: auto;
 `;
 
