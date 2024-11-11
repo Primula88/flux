@@ -142,7 +142,7 @@ export default function TopNavbar() {
                       offset={-80}
                       onClick={closeMenu}
                     >
-                      FAQ
+                      Tweets
                     </NavLink>
                   </DropdownContent>
                 )}
