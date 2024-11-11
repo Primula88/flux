@@ -75,13 +75,13 @@ export default function TopNavbar() {
         <NavInner className="container flexSpaceBetween">
           {/* Left: Services Link */}
           <LeftSide>
-            <ServicesLink to="home" spy={true} smooth={true} offset={-80}>
+            <ServicesLink to="home" spy={true} smooth={true} offset={-80} isHidden={y > 100}>
               Services
             </ServicesLink>
           </LeftSide>
 
           {/* Center: Chimp Logo */}
-<ChimpLogoWrapper isHidden={y > 100}>
+          <ChimpLogoWrapper isHidden={y > 100}>
             <ChimpLogoImg src={ChimpLogo} alt="Chimp Logo" />
           </ChimpLogoWrapper>
 
@@ -237,46 +237,46 @@ const Wrapper = styled.nav`
   left: 0;
   z-index: 9999;
   transition: height 0.3s ease, background-color 0.3s ease;
-  background-color: transparent; /* Change as needed */
+  background-color: transparent;
 `;
 
 const NavInner = styled.div`
   position: relative;
   height: 100%;
   display: flex;
-  justify-content: center; /* Space between left and right */
+  justify-content: center;
   align-items: center;
   padding: 0 20px;
 `;
 
-// Left Side: Services Link
 const LeftSide = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  left: 20px; /* Position it to the left */
+  left: 20px;
 `;
 
-// Services Link
 const ServicesLink = styled(Link)`
+  opacity: ${({ isHidden }) => (isHidden ? 0 : 1)};
+  transition: opacity 0.3s ease;
   font-size: 2rem;
   font-family: "Bebas Neue", Arial, sans-serif;
   color: #fff;
   cursor: pointer;
   font-weight: 500;
-  transition: color 0.3s ease;
   letter-spacing: 0.5rem;
-  margin-right: 20px; /* Space between Services and potentially other elements */
+  margin-right: 20px;
   padding-top: 40px;
   padding-left: 40px;
+
   &:hover {
     color: #64d9fb;
   }
 
   @media (max-width: 768px) {
     font-size: 1.75rem;
-  padding-top: 10px;
-  padding-left: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
   }
 
   @media (max-width: 480px) {
@@ -284,7 +284,6 @@ const ServicesLink = styled(Link)`
   }
 `;
 
-// Center: Chimp Logo
 const ChimpLogoWrapper = styled(({ isHidden, ...rest }) => <div {...rest} />)`
   opacity: ${({ isHidden }) => (isHidden ? 0 : 1)};
   transition: opacity 0.3s ease;
@@ -295,8 +294,8 @@ const ChimpLogoWrapper = styled(({ isHidden, ...rest }) => <div {...rest} />)`
   padding-top: 40px;
 
   @media (max-width: 768px) {
-    padding-top: 20px;  
-  }   
+    padding-top: 20px;
+  }
 `;
 
 const ChimpLogoImg = styled.img`
@@ -315,7 +314,6 @@ const ChimpLogoImg = styled.img`
   }
 `;
 
-// Menu Button
 const MenuButton = styled.button`
   display: flex;
   align-items: center;
@@ -325,44 +323,34 @@ const MenuButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-
-  /* Position it to the right */
   position: absolute;
   right: 20px;
-
-  @media (min-width: 761px) {
-    /* Optional: Adjust size or color for desktop */
-  }
 `;
 
-// Dropdown Menu
 const DropdownMenu = styled.div`
   position: absolute;
-  top: 80px; /* Adjust based on navbar height */
+  top: 80px;
   right: 20px;
   background-color: #1e1e1e;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  width: 140px; /* Adjust width as needed */
+  width: 140px;
   padding: 10px 0;
-  z-index: 1000; /* Ensure it appears above other elements */
+  z-index: 1000;
   display: flex;
   flex-direction: column;
 `;
 
-// Menu Links Container
 const MenuLinks = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
 `;
 
-// Dropdown Item for About and Holder Area
 const DropdownItem = styled.li`
   position: relative;
 `;
 
-// Dropdown Button
 const DropdownButton = styled.div`
   color: #fff;
   font-size: 1rem;
@@ -378,7 +366,6 @@ const DropdownButton = styled.div`
   }
 `;
 
-// Dropdown Content
 const DropdownContent = styled.div`
   background-color: #2e2e2e;
   border-radius: 8px;
@@ -388,7 +375,6 @@ const DropdownContent = styled.div`
   flex-direction: column;
 `;
 
-// Social Media Icons Container
 const SocialIcons = styled.div`
   display: flex;
   justify-content: center;
@@ -397,7 +383,6 @@ const SocialIcons = styled.div`
   margin-top: 10px;
 `;
 
-// Styled Link for all navigation items
 const NavLink = styled(Link)`
   color: #ffffff;
   padding: 10px 20px;
@@ -421,7 +406,6 @@ const NavLink = styled(Link)`
   }
 `;
 
-// Styled External Link for Holder Area and Mobile Menu
 const NavExternalLink = styled.a`
   color: #ffffff;
   text-decoration: none;
@@ -442,7 +426,6 @@ const NavExternalLink = styled.a`
   }
 `;
 
-// Styled Link for social media icons
 const SocialIconLink = styled.a`
   color: #ffffff;
   transition: color 0.3s ease;

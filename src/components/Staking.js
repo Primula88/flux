@@ -33,7 +33,7 @@ const StyledButton = styled.a`
 
 // Staking Image (consistent with Fluxtility)
 const StakingImage = styled.img`
-  width: 100%;
+  width: 75%;
   max-width: 440px;
   border-radius: 10px;
   margin-top: 20px;

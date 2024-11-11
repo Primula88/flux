@@ -32,7 +32,7 @@ const StyledButton = styled.a`
 `;
 
 const FluxtilityImage = styled.img`
-  width: 100%;
+  width: 75%;
   max-width: 440px;
   border-radius: 10px;
 `;
