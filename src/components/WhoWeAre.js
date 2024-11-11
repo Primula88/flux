@@ -3,29 +3,7 @@ import { Grid, Typography, Card, CardContent, useMediaQuery } from '@mui/materia
 import styled from 'styled-components';
 import TensorIcon from '../assets/tensor.webp'; // Import Tensor icon
 import MEIcon from '../assets/ME.webp'; // Import Magic Eden icon
-
-// Import all the .webp images
-import Image1 from '../assets/sidescroll/1-1.webp';
-import Image2 from '../assets/sidescroll/1-2.webp';
-import Image4 from '../assets/sidescroll/1-4.webp';
-import Image6 from '../assets/sidescroll/1-6.webp';
-import Image7 from '../assets/sidescroll/1-7.webp';
-import Image8 from '../assets/sidescroll/1-8.webp';
-import Image9 from '../assets/sidescroll/1.webp';
-import Image10 from '../assets/sidescroll/2.webp';
-import Image11 from '../assets/sidescroll/3.webp';
-import Image12 from '../assets/sidescroll/4.webp';
-import Image13 from '../assets/sidescroll/7.webp';
-
-// List of images
-const images = [
-  Image1, Image2, Image4, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13,
-];
-
-// Utility function to shuffle the images randomly
-const shuffleArray = (array) => {
-  return array.sort(() => Math.random() - 0.5);
-};
+import TransparentSeparator from '../assets/transparent_seperator.webp'; // Import separator image
 
 // Styled Sidescroller Container
 const SidescrollerWrapper = styled.div`
@@ -46,25 +24,10 @@ const SidescrollerWrapper = styled.div`
   }
 `;
 
-const Sidescroller = styled.div`
-  display: flex;
-  width: 200%;
-  animation: scroll 40s linear infinite;
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  img {
-    height: 250px;
-    flex-shrink: 0;
-    width: auto;
-  }
+const SeparatorImage = styled.img`
+  padding-left: -40px;
+  width: 100%;
+  height: auto;
 `;
 
 // TextWrapper without the logo
@@ -147,26 +110,14 @@ const IconWrapper = styled.div`
 
 function WhoWeAre() {
   const isDesktop = useMediaQuery('(min-width: 960px)');
-  const [shuffledImages, setShuffledImages] = useState([]);
-
-  useEffect(() => {
-    setShuffledImages(shuffleArray([...images]));
-  }, []);
 
   return (
     <Card sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
       <CardContent>
-        {/* Sidescroller for Desktop */}
+        {/* Static Separator Image for Desktop */}
         {isDesktop && (
           <SidescrollerWrapper>
-            <Sidescroller>
-              {shuffledImages.map((image, index) => (
-                <img key={index} src={image} alt={`Artwork ${index + 1}`} />
-              ))}
-              {shuffledImages.map((image, index) => (
-                <img key={`${index}-loop`} src={image} alt={`Artwork Loop ${index + 1}`} />
-              ))}
-            </Sidescroller>
+            <SeparatorImage src={TransparentSeparator} alt="Separator" />
           </SidescrollerWrapper>
         )}
 
@@ -196,7 +147,7 @@ function WhoWeAre() {
                     variant="body1"
                     gutterBottom
                     sx={{
-                      fontFamily: 'Apple Symbols, Arial, sans-serif', // Using Apple Symbols
+                      fontFamily: 'Apple Symbols, Arial, sans-serif',
                       fontSize: '1rem',
                       color: '#A9A9A9',
                       lineHeight: '1.8',
