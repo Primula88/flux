@@ -109,7 +109,7 @@ const servicesList = [
 ];
 
 function Services() {
-  const [activeService, setActiveService] = useState('staking'); // Set 'staking' as default active service
+  const [activeService, setActiveService] = useState(''); // Set 'staking' as default active service
   const isDesktop = window.innerWidth >= 960;
 
   const handleServiceClick = (serviceId) => {

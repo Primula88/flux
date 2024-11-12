@@ -135,15 +135,6 @@ export default function TopNavbar() {
                     >
                       Services
                     </NavLink>
-                    <NavLink
-                      to="FAQ"
-                      spy={true}
-                      smooth={true}
-                      offset={-80}
-                      onClick={closeMenu}
-                    >
-                      Tweets
-                    </NavLink>
                   </DropdownContent>
                 )}
               </DropdownItem>
