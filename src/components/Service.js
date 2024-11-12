@@ -101,6 +101,15 @@ const BlueDivider = styled('div')`
   margin: 10px 0;
 `;
 
+// Powered by Flux Inc. text styling
+const PoweredByText = styled(Typography)`
+  font-family: 'Akira', sans-serif;
+  color: #6cdffb;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 10px;
+`;
+
 const servicesList = [
   { id: 'staking', title: 'Staking', component: <Staking /> },
   { id: 'adventure', title: 'Adventure', component: <Adventure /> },
@@ -164,8 +173,14 @@ function Services() {
           )}
         </Grid>
       </CenteredContainer>
+<br></br>
+<br></br>
 
       {/* Bottom Blue Divider */}
+      <BlueDivider />
+       <br></br>
+      {/* Powered by Text */}
+      <PoweredByText variant="body2">POWERED BY FLUX INC.</PoweredByText>
     </div>
   );
 }
