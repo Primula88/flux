@@ -69,7 +69,7 @@ const ListItem = styled(Typography)`
 const RightSection = styled.div`
   overflow-y: auto;
   max-height: 750px;
-  padding: 20px;
+  padding: 30px;
   position: relative;
   text-align: left;
 
