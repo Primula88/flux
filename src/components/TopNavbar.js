@@ -128,7 +128,6 @@ const ServicesLink = styled.a`
   cursor: pointer;
   font-weight: 500;
   letter-spacing: 0.5rem;
-  opacity: 0.8;
   transition: all 0.3s ease;
   text-align: center;
   text-decoration: none;
