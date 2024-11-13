@@ -224,7 +224,7 @@ const OverlayContent = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1.6rem;
-  padding-top: 20px;
+  padding-top: 40px;
 `;
 
 const MenuItem = styled.a`
