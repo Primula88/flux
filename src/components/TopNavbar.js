@@ -1,17 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-scroll";
-import { FaTwitter, FaDiscord, FaBars, FaTimes } from "react-icons/fa"; // Import necessary icons
-// Assets
+import { FaTwitter, FaDiscord, FaBars, FaTimes } from "react-icons/fa";
 import ChimpLogo from "../assets/chimplogo.webp"; // Ensure this path is correct
 
 export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
-  const [menuOpen, setMenuOpen] = useState(false); // State for menu open/close
-  const [holderMenuOpen, setHolderMenuOpen] = useState(false); // State for desktop Holder Area dropdown
-  const [aboutMenuOpen, setAboutMenuOpen] = useState(false); // State for desktop About dropdown
-  const holderRef = useRef(null); // Reference for Holder Area dropdown
-  const aboutRef = useRef(null); // Reference for About dropdown
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setY(window.scrollY);
@@ -21,205 +15,85 @@ export default function TopNavbar() {
     };
   }, []);
 
-  // Close dropdowns when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        holderRef.current &&
-        !holderRef.current.contains(event.target) &&
-        aboutRef.current &&
-        !aboutRef.current.contains(event.target)
-      ) {
-        setHolderMenuOpen(false);
-        setAboutMenuOpen(false);
-      }
-    };
-
-    if (holderMenuOpen || aboutMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [holderMenuOpen, aboutMenuOpen]);
-
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen); // Toggle the dropdown menu
+    setMenuOpen(!menuOpen);
   };
 
   const closeMenu = () => {
-    setMenuOpen(false); // Close the dropdown menu when a menu item is clicked
-    setHolderMenuOpen(false); // Also close the Holder Area dropdown if open
-    setAboutMenuOpen(false); // Also close the About dropdown if open
-  };
-
-  const toggleHolderMenu = () => {
-    setHolderMenuOpen(!holderMenuOpen); // Toggle Holder Area dropdown on desktop
-    setAboutMenuOpen(false); // Close About dropdown if open
-  };
-
-  const toggleAboutMenu = () => {
-    setAboutMenuOpen(!aboutMenuOpen); // Toggle About dropdown on desktop
-    setHolderMenuOpen(false); // Close Holder Area dropdown if open
+    setMenuOpen(false);
   };
 
   return (
     <>
-      <Wrapper
-        className="flexCenter animate darkBg"
-        style={y > 100 ? { height: "60px" } : { height: "80px" }}
-      >
-        <NavInner className="container flexSpaceBetween">
+      <Wrapper style={y > 100 ? { height: "60px" } : { height: "80px" }}>
+        <NavInner>
           {/* Left: Services Link */}
-          <LeftSide>
-            <ServicesLink to="home" spy={true} smooth={true} offset={-80} isHidden={y > 100}>
+          <LeftSide isHidden={y > 100}>
+            <ServicesLink
+              href="https://services.fluxinc.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              isHidden={y > 100}
+            >
               Services
             </ServicesLink>
           </LeftSide>
 
           {/* Center: Chimp Logo */}
           <ChimpLogoWrapper isHidden={y > 100}>
-            <ChimpLogoImg src={ChimpLogo} alt="Chimp Logo" />
+            <a href="https://fluxinc.io" target="_blank" rel="noopener noreferrer">
+              <ChimpLogoImg src={ChimpLogo} alt="Chimp Logo" />
+            </a>
           </ChimpLogoWrapper>
 
-          {/* Right: Menu Button */}
-          <MenuButton onClick={toggleMenu} aria-label="Toggle menu">
-            {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </MenuButton>
+          {/* Right: Menu Button - Only display when menu is closed */}
+          {!menuOpen && (
+            <MenuButton onClick={toggleMenu} aria-label="Toggle menu">
+              <FaBars size={24} />
+            </MenuButton>
+          )}
         </NavInner>
 
-        {/* Dropdown Menu */}
+        {/* Overlay Menu */}
         {menuOpen && (
-          <DropdownMenu>
-            <MenuLinks>
-              <li>
-                <NavLink
-                  to="home"
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
-                  onClick={closeMenu}
+          <Overlay>
+            <OverlayContent>
+              <CloseButton onClick={closeMenu} aria-label="Close menu">
+                <FaTimes size={32} />
+              </CloseButton>
+              <MenuItem href="https://services.fluxinc.io/">Services</MenuItem>
+              <MenuItem href="https://flux.ttcc.app/">Whitepaper</MenuItem>
+              <MenuItem href="https://www.fluxinc.io/portal">Adventures</MenuItem>
+              <MenuItem href="https://www.fluxinc.io/factory">Factory</MenuItem>
+              <MenuItem href="https://www.fluxinc.io/tailor">Trait Tailor</MenuItem>
+              <MenuItem href="https://www.fluxinc.io/shop">Shop</MenuItem>
+              <MenuItem href="https://www.fluxinc.io/gm">GM Generator</MenuItem>
+              <MenuItem href="https://www.fluxinc.io/team">Team</MenuItem>
+              <SocialIcons>
+                <SocialIconLink
+                  href="https://twitter.com/fluxinc_"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Home
-                </NavLink>
-              </li>
-              {/* About Dropdown */}
-              <DropdownItem ref={aboutRef}>
-                <DropdownButton
-                  onClick={toggleAboutMenu}
-                  aria-haspopup="true"
-                  aria-expanded={aboutMenuOpen}
+                  <FaTwitter size={20} />
+                </SocialIconLink>
+                <SocialIconLink
+                  href="https://discord.gg/2eFxyCRU6g"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  About ▾
-                </DropdownButton>
-                {aboutMenuOpen && (
-                  <DropdownContent>
-                    <NavLink
-                      to="whoweare"
-                      spy={true}
-                      smooth={true}
-                      offset={-80}
-                      onClick={closeMenu}
-                    >
-                      Who We Are
-                    </NavLink>
-                    <NavLink
-                      to="services"
-                      spy={true}
-                      smooth={true}
-                      offset={-80}
-                      onClick={closeMenu}
-                    >
-                      Services
-                    </NavLink>
-                  </DropdownContent>
-                )}
-              </DropdownItem>
-              {/* Holder Area Dropdown */}
-              <DropdownItem ref={holderRef}>
-                <DropdownButton
-                  onClick={toggleHolderMenu}
-                  aria-haspopup="true"
-                  aria-expanded={holderMenuOpen}
-                >
-                  Holder Area ▾
-                </DropdownButton>
-                {holderMenuOpen && (
-                  <DropdownContent>
-                    <NavExternalLink
-                      href="https://www.fluxinc.io/factory"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={closeMenu}
-                    >
-                      Factory
-                    </NavExternalLink>
-                    <NavExternalLink
-                      href="https://www.fluxinc.io/portal"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={closeMenu}
-                    >
-                      Portal
-                    </NavExternalLink>
-                    <NavExternalLink
-                      href="https://www.fluxinc.io/tailor"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={closeMenu}
-                    >
-                      Tailor
-                    </NavExternalLink>
-                    <NavExternalLink
-                      href="https://www.fluxinc.io/gm"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={closeMenu}
-                    >
-                      GM Generator
-                    </NavExternalLink>
-                    <NavExternalLink
-                      href="https://www.fluxinc.io/shop"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={closeMenu}
-                    >
-                      Shop
-                    </NavExternalLink>
-                  </DropdownContent>
-                )}
-              </DropdownItem>
-            </MenuLinks>
-            {/* Social Media Icons */}
-            <SocialIcons>
-              <SocialIconLink
-                href="https://x.com/FluxInc_"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMenu}
-              >
-                <FaTwitter size={20} />
-              </SocialIconLink>
-              <SocialIconLink
-                href="https://discord.gg/adRHkNwWf9"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMenu}
-              >
-                <FaDiscord size={20} />
-              </SocialIconLink>
-            </SocialIcons>
-          </DropdownMenu>
+                  <FaDiscord size={20} />
+                </SocialIconLink>
+              </SocialIcons>
+            </OverlayContent>
+          </Overlay>
         )}
       </Wrapper>
     </>
   );
 }
 
-// Styled Components for Navbar
+// Styled Components for Navbar and Overlay
 
 const Wrapper = styled.nav`
   width: 100%;
@@ -237,31 +111,34 @@ const NavInner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
 `;
 
 const LeftSide = styled.div`
-  display: flex;
+  display: ${({ isHidden }) => (isHidden ? "none" : "flex")};
   align-items: center;
   position: absolute;
   left: 20px;
+  z-index: 10002;
 `;
 
-const ServicesLink = styled(Link)`
-  opacity: ${({ isHidden }) => (isHidden ? 0 : 1)};
-  transition: opacity 0.3s ease;
+const ServicesLink = styled.a`
   font-size: 2rem;
   font-family: "Bebas Neue", Arial, sans-serif;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
   font-weight: 500;
   letter-spacing: 0.5rem;
-  margin-right: 20px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
   padding-top: 40px;
   padding-left: 40px;
 
   &:hover {
-    color: #64d9fb;
+    opacity: 1;
+    transform: scale(1.1);
+    color: #6adffb;
   }
 
   @media (max-width: 768px) {
@@ -275,14 +152,12 @@ const ServicesLink = styled(Link)`
   }
 `;
 
-const ChimpLogoWrapper = styled(({ isHidden, ...rest }) => <div {...rest} />)`
-  opacity: ${({ isHidden }) => (isHidden ? 0 : 1)};
-  transition: opacity 0.3s ease;
-  pointer-events: ${({ isHidden }) => (isHidden ? "none" : "auto")};
-  display: flex;
+const ChimpLogoWrapper = styled.div`
+  display: ${({ isHidden }) => (isHidden ? "none" : "flex")};
+  z-index: 10002;
   justify-content: center;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 50px;
 
   @media (max-width: 768px) {
     padding-top: 20px;
@@ -309,119 +184,81 @@ const MenuButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 18px;
   color: #fff;
   background: transparent;
   border: none;
   cursor: pointer;
   position: absolute;
   right: 20px;
+  z-index: 10001;
 `;
 
-const DropdownMenu = styled.div`
-  position: absolute;
-  top: 80px;
-  right: 20px;
-  background-color: #1e1e1e;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  width: 140px;
-  padding: 10px 0;
+// Overlay Styles
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 1000;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 `;
 
-const MenuLinks = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-const DropdownItem = styled.li`
-  position: relative;
-`;
-
-const DropdownButton = styled.div`
+const CloseButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
   color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 10px 20px;
+  font-size: 32px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #2e2e2e;
-    color: #64d9fb;
-  }
 `;
 
-const DropdownContent = styled.div`
-  background-color: #2e2e2e;
-  border-radius: 8px;
-  margin-top: 5px;
-  padding-left: 10px;
+const OverlayContent = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  padding-top: 20px;
+`;
+
+const MenuItem = styled.a`
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    color: #6adffb;
+  }
 `;
 
 const SocialIcons = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px 0;
-  border-top: 1px solid #444;
-  margin-top: 10px;
-`;
-
-const NavLink = styled(Link)`
-  color: #ffffff;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: 'Bebas Neue', Arial, sans-serif;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  border-radius: 5px;
-  cursor: pointer;
-  display: block;
-
-  &:hover {
-    color: #64d9fb;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  &.active {
-    color: #64d9fb;
-  }
-`;
-
-const NavExternalLink = styled.a`
-  color: #ffffff;
-  text-decoration: none;
-  display: block;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: 'Bebas Neue', Arial, sans-serif;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    color: #64d9fb;
-    background-color: #3e3e3e;
-  }
+  gap: 20px;
+  margin-top: 20px;
 `;
 
 const SocialIconLink = styled.a`
   color: #ffffff;
   transition: color 0.3s ease;
   cursor: pointer;
-  padding: 0 10px;
 
   &:hover {
     color: #64d9fb;
