@@ -112,6 +112,9 @@ function TraitSwapping() {
             <StyledButton href="https://discord.com/invite/fluxinc" target="_blank" rel="noopener noreferrer">
               Join Discord
             </StyledButton>
+            <StyledButton href="https://forms.gle/ytwduz9x9JhUX3Z87" target="_blank" rel="noopener noreferrer">
+              Request Service
+            </StyledButton>
           </Grid>
 
           {/* Right Section: Description and Feature List */}

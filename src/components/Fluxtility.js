@@ -69,6 +69,9 @@ function Fluxtility() {
             <StyledButton href="https://discord.com/oauth2/authorize?client_id=1041223731328065607&permissions=361047256272&scope=applications.commands%20bot" target="_blank" rel="noopener noreferrer">
               Invite Fluxtility
             </StyledButton>
+            <StyledButton href="https://forms.gle/ytwduz9x9JhUX3Z87" target="_blank" rel="noopener noreferrer">
+              Request Service
+            </StyledButton>
           </Grid>
 
           {/* Right Section: Description and Feature List */}
