@@ -62,7 +62,7 @@ export default function TopNavbar() {
                 <FaTimes size={32} />
               </CloseButton>
               <MenuItem href="https://services.fluxinc.io/">Services</MenuItem>
-              <MenuItem href="https://flux.ttcc.app/">Whitepaper</MenuItem>
+              <MenuItem href="https://tools.fluxinc.io/">Whitepaper</MenuItem>
               <MenuItem href="https://www.fluxinc.io/portal">Adventures</MenuItem>
               <MenuItem href="https://www.fluxinc.io/factory">Factory</MenuItem>
               <MenuItem href="https://www.fluxinc.io/tailor">Trait Tailor</MenuItem>
